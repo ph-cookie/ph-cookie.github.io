@@ -278,5 +278,67 @@ window.PROJECTS = [
         "url": "https://github.com/jugesuke/rirekisho/blob/main/LICENSE"
       }
     ]
+  },
+  {
+    "name": "Oh-my-mermaid — AI生成コードの構造可視化ツール",
+    "url": "https://github.com/oh-my-mermaid/oh-my-mermaid",
+    "summary": "AIエージェントでコードベースを解析し、システム構成やデータの流れを階層化された図として可視化するツール。",
+    "description": "Oh-my-mermaidは、既存のソースコードをAIエージェントで解析し、ソフトウェアの内部構造を図と説明文にまとめる開発支援ツール。AIが生成したコードの理解や、初めて触れるプロジェクトの構成・依存関係の把握に使える。\nClaude CodeやCodexなどの対応ツール内でスキャン用スキルを実行し、全体のアーキテクチャ、データフロー、外部サービスとの連携などをMermaid形式の図として生成する。複雑な要素は子要素へ再帰的に分けられ、専用のインタラクティブビューアで全体構成から個別のモジュールへ展開して確認できる。\n生成物はローカルの.ommディレクトリに保存され、図・説明に加えて背景、制約、懸念、TODO、メモを持てる。設計資料の作成や共有にも利用でき、日本語READMEと生成言語の設定を備える。TypeScript製でMITライセンス。\nクラウドサービスohmymermaid.comへの保存は任意。ログインしてプロジェクトを紐付け、生成した資料をアップロードできる。公式READMEでは保存時は非公開で、チームへの共有や一般公開も可能と説明されている。\nコードの解析には対応するAIコーディングツールが必要で、Oh-my-mermaid単独で解析するわけではない。図や説明の正確性は利用者が確認する。ローカルで生成・閲覧しても、AIサービスへのコード送信は連携ツールの設定やポリシーに依存する。増分解析やビューアの自然言語検索はロードマップ上の予定機能。",
+    "environment": [
+      {
+        "label": "実行環境",
+        "value": "Node.js 18以降／npm"
+      },
+      {
+        "label": "対応AIツール",
+        "value": "Claude Code／Codex／Cursor／OpenClaw／Antigravity"
+      },
+      {
+        "label": "図・閲覧",
+        "value": "Mermaid／階層型インタラクティブビューア。ローカルで生成・閲覧可能"
+      },
+      {
+        "label": "保存・共有",
+        "value": "ローカルの.omm／任意のクラウド保存。公式READMEでは初期状態は非公開"
+      },
+      {
+        "label": "日本語",
+        "value": "日本語READMEあり／生成言語の設定に対応"
+      }
+    ],
+    "category": "開発ツール",
+    "tags": [
+      "開発支援",
+      "AIエージェント",
+      "コード解析",
+      "可視化",
+      "Mermaid",
+      "TypeScript",
+      "MIT"
+    ],
+    "addedAt": "2026-10-11",
+    "checkedAt": "2026-10-11",
+    "sources": [
+      {
+        "label": "公式README",
+        "url": "https://github.com/oh-my-mermaid/oh-my-mermaid/blob/main/README.md"
+      },
+      {
+        "label": "日本語README",
+        "url": "https://github.com/oh-my-mermaid/oh-my-mermaid/blob/main/README.ja.md"
+      },
+      {
+        "label": "開発ロードマップ",
+        "url": "https://github.com/oh-my-mermaid/oh-my-mermaid/blob/main/docs/ROADMAP.md"
+      },
+      {
+        "label": "実行条件・パッケージ情報",
+        "url": "https://github.com/oh-my-mermaid/oh-my-mermaid/blob/main/package.json"
+      },
+      {
+        "label": "MITライセンス",
+        "url": "https://github.com/oh-my-mermaid/oh-my-mermaid/blob/main/LICENSE"
+      }
+    ]
   }
 ];
