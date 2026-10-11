@@ -1,0 +1,29 @@
+Fonts used by ph-cookie
+
+Skranji Bold
+Copyright (c) 2012, Font Diner (www.fontdiner.com), with Reserved Font Name "Skranji".
+License: SIL Open Font License 1.1, included as Skranji-OFL.txt.
+Upstream: https://github.com/google/fonts/tree/main/ofl/skranji
+
+07YasashisaGothic (07やさしさゴシック)
+Copyright: Fontna.com, M+ FONTS PROJECT, Information-technology Promotion Agency, Japan.
+Original TTF is distributed unchanged, without subsetting or conversion.
+Fontna's original font incorporates M+ glyphs and IPA Gothic glyphs.
+Terms: https://www.fontna.com/readme.html
+Font information: https://www.fontna.com/blog/yasashigothic.html
+M+ license: included as MPLUS-LICENSE_E.txt and MPLUS-LICENSE_J.txt.
+License copies: https://github.com/itouhiro/PixelMplus/tree/master/misc/mplus_bitmap_fonts
+IPA Font License Agreement v1.0: included as IPA-LICENSE.txt.
+
+Replacing the derived font with its original IPA Gothic font
+Download IPAfont00303.zip from https://moji.or.jp/ipafont/ipa00303/ .
+Extract ipag.ttf and replace the @font-face source for CookieTitle with that file,
+or install IPA Gothic on the device and use font-family: "IPAGothic".
+Remove the CookieTitle web-font reference when using the installed original.
+The site includes the unchanged editable TTF; no additional font source files
+were produced when preparing this site. CSS synthetic bold does not modify it.
+
+日本語の原フォント置換手順：
+https://moji.or.jp/ipafont/ipa00303/ からIPAfont00303.zipを取得し、ipag.ttfを展開する。
+CookieTitleの@font-faceの参照先をipag.ttfへ変更するか、IPAゴシックを端末へ
+インストールし、font-familyをIPAGothicに変更してCookieTitleの参照を外す。

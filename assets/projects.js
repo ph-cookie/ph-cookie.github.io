@@ -1,6 +1,9 @@
 (() => {
   'use strict';
-  const data = window.PROJECTS;
+  const isReport = Array.isArray(window.REPORTS);
+  const data = isReport ? window.REPORTS : window.PROJECTS;
+  const viewKey = isReport ? 'reports-view' : 'projects-view';
+  const allowedSorts = isReport ? ['name', 'created'] : ['name', 'stars'];
   const cards = document.querySelector('#cards');
   const search = document.querySelector('#search');
   const category = document.querySelector('#category');
@@ -16,10 +19,10 @@
       } else heading.removeAttribute('aria-haspopup');
     });
     viewButtons.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.view === view)));
-    try { localStorage.setItem('projects-view', view); } catch (_) {}
+    try { localStorage.setItem(viewKey, view); } catch (_) {}
   }
   let savedView = 'list';
-  try { if (localStorage.getItem('projects-view') === 'tile') savedView = 'tile'; } catch (_) {}
+  try { if (localStorage.getItem(viewKey) === 'tile') savedView = 'tile'; } catch (_) {}
   setView(savedView);
   viewButtons.forEach(button => button.addEventListener('click', () => setView(button.dataset.view)));
   if (!Array.isArray(data)) {
@@ -51,7 +54,7 @@
     });
   }
   async function loadStars(p) {
-    const repo = new URL(p.url).pathname.slice(1);
+    const repo = new URL(p.url, location.href).pathname.slice(1);
     const key = `projects-stars:${repo}`;
     let cached;
     try { cached = JSON.parse(localStorage.getItem(key)); } catch (_) {}
@@ -106,14 +109,14 @@
   const state = new URLSearchParams(location.search);
   search.value = state.get('q') || '';
   if ([...category.options].some(o => o.value === state.get('category'))) category.value = state.get('category');
-  if (['name', 'stars'].includes(state.get('sort'))) sort.value = state.get('sort');
+  if (allowedSorts.includes(state.get('sort'))) sort.value = state.get('sort');
   function render() {
     const query = search.value.normalize('NFKC').toLocaleLowerCase().trim();
     const terms = query.split(/\s+/).filter(Boolean);
     const filtered = data.filter(p => (!category.value || p.category === category.value) && terms.every(term => [p.name,p.url,p.summary,p.description,p.category,...p.tags].join(' ').normalize('NFKC').toLocaleLowerCase().includes(term)));
     const newestFirst = (a,b) => b.addedAt.localeCompare(a.addedAt) || registrationOrder.get(b.url) - registrationOrder.get(a.url);
-    const starsOf = p => starCounts.get(new URL(p.url).pathname.slice(1))?.count ?? p.stars ?? -1;
-    filtered.sort(sort.value === 'name' ? (a,b) => a.name.localeCompare(b.name,'ja') : sort.value === 'stars' ? (a,b) => starsOf(b) - starsOf(a) || newestFirst(a,b) : newestFirst);
+    const starsOf = p => starCounts.get(new URL(p.url, location.href).pathname.slice(1))?.count ?? p.stars ?? -1;
+    filtered.sort(sort.value === 'name' ? (a,b) => a.name.localeCompare(b.name,'ja') : sort.value === 'stars' ? (a,b) => starsOf(b) - starsOf(a) || newestFirst(a,b) : sort.value === 'created' ? (a,b) => b.createdAt.localeCompare(a.createdAt) || newestFirst(a,b) : newestFirst);
     cards.replaceChildren();
     filtered.forEach(p => {
       const card = element('details', 'project-item', '');
@@ -122,8 +125,9 @@
       const overview = element('div', 'project-overview', '');
       const meta = element('div', 'project-meta', '');
       const stars = element('span', 'project-stars', '⭐︎—');
-      stars.dataset.repository = new URL(p.url).pathname.slice(1);
-      meta.append(element('span','category',p.category), stars);
+      stars.dataset.repository = new URL(p.url, location.href).pathname.slice(1);
+      meta.append(element('span','category',p.category));
+      if (!isReport) meta.append(stars);
       overview.append(meta, element('h2','',p.name), element('p','summary',p.summary));
       heading.append(overview, element('span','project-toggle',''));
       const body = element('div', 'project-body', '');
@@ -153,15 +157,16 @@
           environment.append(table);
           description.append(environment);
       }
-      body.append(element('span','repo',new URL(p.url).pathname.slice(1)), description);
+      if (!isReport) body.append(element('span','repo',new URL(p.url, location.href).pathname.slice(1)));
+      body.append(description);
       const bottom = element('div','card-bottom','');
-      bottom.append(link('GitHubで見る ↗',p.url,'external'),element('span','date',`確認 ${p.checkedAt}`));
+      bottom.append(link(isReport ? 'PDFを開く ↗' : 'GitHubで見る ↗',p.url,'external'),element('span','date',isReport ? `作成 ${p.createdAt}` : `確認 ${p.checkedAt}`));
       body.append(bottom);
       const sources = element('details','','');
       sources.append(element('summary','','説明の出典'));
       const list = element('ul','','');
       p.sources.forEach(source => {const item = element('li','','');item.append(link(source.label,source.url,''));list.append(item);});
-      sources.append(list);body.append(sources);card.append(heading,body);cards.append(card);
+      sources.append(list);if (!isReport || p.sources.length) body.append(sources);card.append(heading,body);cards.append(card);
       heading.addEventListener('click', event => {
         if (cards.classList.contains('tile-view')) {
           event.preventDefault();
@@ -169,20 +174,20 @@
         }
       });
     });
-    document.querySelector('#count').textContent = `${filtered.length} / ${data.length} PROJECTS`;
+    document.querySelector('#count').textContent = `${filtered.length} / ${data.length} ${isReport ? "REPORTS" : "PROJECTS"}`;
     empty.hidden = filtered.length > 0;
-    document.querySelector('#empty-title').textContent = data.length ? '一致するプロジェクトがない。' : 'コレクションは、ここから。';
-    document.querySelector('#empty-text').textContent = data.length ? 'キーワードや分類を変えて検索。' : '気になったプロジェクトを、少しずつ追加していく。';
+    document.querySelector('#empty-title').textContent = data.length ? (isReport ? '一致するレポートがない。' : '一致するプロジェクトがない。') : (isReport ? 'レポートは準備中。' : 'コレクションは、ここから。');
+    document.querySelector('#empty-text').textContent = data.length ? 'キーワードや分類を変えて検索。' : (isReport ? '大学で作成したレポートを、少しずつ追加していく。' : '気になったプロジェクトを、少しずつ追加していく。');
     updateStarLabels();
   }
   function update() {
     const params = new URLSearchParams();
     if (search.value.trim()) params.set('q',search.value.trim());
     if (category.value) params.set('category',category.value);
-    if (['name', 'stars'].includes(sort.value)) params.set('sort',sort.value);
+    if (allowedSorts.includes(sort.value)) params.set('sort',sort.value);
     try {history.replaceState(null,'',location.pathname + (params.size ? '?' + params : '') + location.hash);} catch (_) {}
     render();
   }
   search.addEventListener('input',update);category.addEventListener('change',update);sort.addEventListener('change',update);render();
-  Promise.all(data.map(loadStars)).then(() => { if (sort.value === 'stars') render(); });
+  Promise.all(isReport ? [] : data.map(loadStars)).then(() => { if (sort.value === 'stars') render(); });
 })();

@@ -1,0 +1,43 @@
+@font-face{font-family:"CookieTitle";src:url("fonts/YasashisaGothic.ttf") format("truetype");font-style:normal;font-weight:400;font-display:swap}
+@font-face{font-family:"CookieLogo";src:url("fonts/Skranji-Bold.ttf") format("truetype");font-style:normal;font-weight:700;font-display:swap}
+/* One continuous portrait illustration, vertical:horizontal 4:3; no stitched or mirrored strips. */
+.cookie-home{--cookie-top:790px;--art-width:max(100vw,1280px,calc((100svh - var(--cookie-top)) * 2.45));position:relative;min-height:100svh;background-color:transparent;background-image:url("cookie-portrait.png");background-size:var(--art-width) auto;background-position:center calc(var(--cookie-top) - var(--art-width) * .915);background-repeat:no-repeat}
+.cookie-home::before,.cookie-home::after{content:none}
+.cookie-home .header{max-width:none;margin:0 5vw;padding-left:0;padding-right:0;border-color:#f5f3ed40;color:var(--paper)}
+.cookie-home .brand{font-family:"CookieLogo",system-ui,sans-serif;font-weight:700;font-size:19px;letter-spacing:.02em}
+.cookie-home .brand span{font:400 14px system-ui,sans-serif;color:var(--paper)}
+.cookie-home .home{position:relative;max-width:1160px;padding:66px 36px 245px;text-align:center;min-height:0}
+.cookie-home .home>.eyebrow,.cookie-home .home>h1,.cookie-home .home>.lead{color:var(--paper)}
+.cookie-home .home>.lead{margin-bottom:0}
+.cookie-home .home>h1{font-family:inherit;font-weight:750;letter-spacing:-.04em}
+.cookie-home .collection{position:relative;width:min(100%,520px);margin:44px auto 0;text-align:left;padding:24px 30px;border:1px solid #24654d;border-radius:2px;background:var(--paper);box-shadow:8px 8px 0 #163d2f40;transition:none}
+.cookie-home .collection:hover{background:var(--paper)}
+.cookie-home .collection .eyebrow{margin:0}
+.cookie-home .collection h2{font-family:inherit;font-weight:700;margin:10px 0}
+.cookie-home .collection p{color:var(--ink)}
+.cookie-home .go{margin-top:20px}
+.cookie-home footer{position:relative;max-width:none;margin:0 5vw;padding:10px 0 16px;border-top:0;color:var(--ink);background:none;line-height:1.6}
+.cookie-home footer>span{padding:0;background:none;border:0}
+@media(max-width:700px){.cookie-home{--cookie-top:700px;min-height:100svh}.cookie-home .header{margin:0 20px}.cookie-home .home{padding:46px 20px 235px}.cookie-home .collection{padding:22px;margin-top:32px}.cookie-home footer{margin:0 20px}}
+
+/* Footer follows the bottom of a taller viewport; content still scrolls on short screens. */
+.cookie-home{display:flex;flex-direction:column}
+.cookie-home .header{flex:none}
+.cookie-home .home{flex:1;width:100%}
+.cookie-home footer{flex:none}
+.cookie-home .home>h1{font-family:"CookieTitle",system-ui,sans-serif;font-weight:400;letter-spacing:-.025em}
+.cookie-home .collection h2{font-family:"CookieTitle",system-ui,sans-serif;font-weight:400}
+
+/* Restore heading hierarchy with the Japanese display face. */
+.cookie-home .home>h1{font-weight:700;font-synthesis:weight}
+.cookie-home .collection h2{font-weight:700;font-synthesis:weight}
+
+/* Scale the secondary collection card with the hero on narrow screens. */
+@media(max-width:700px){
+ .cookie-home .collection{width:min(100%,400px);padding:18px 20px;margin-top:28px;box-shadow:5px 5px 0 #163d2f40}
+ .cookie-home .collection .eyebrow{font-size:10px;letter-spacing:.14em}
+ .cookie-home .collection h2{font-size:clamp(20px,4.2vw,25px);line-height:1.5;margin:8px 0}
+ .cookie-home .collection p{font-size:12px;line-height:1.7;margin:8px 0}
+ .cookie-home .collection .go{font-size:12px;margin-top:16px}
+ .cookie-home .collection .go b{font-size:20px}
+}

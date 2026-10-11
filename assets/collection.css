@@ -1,0 +1,42 @@
+@font-face{font-family:"CookieLogo";src:url("fonts/Skranji-Bold.ttf") format("truetype");font-style:normal;font-weight:700;font-display:swap}
+@font-face{font-family:"CookieTitle";src:url("fonts/YasashisaGothic.ttf") format("truetype");font-style:normal;font-weight:400;font-display:swap}
+.cookie-projects{background:var(--paper)}
+.project-masthead{background:url("cookie-portrait.png") center top / max(100%,1100px) auto no-repeat;color:var(--paper)}
+.cookie-projects .header{border-color:#f5f3ed40}
+.cookie-projects .brand{font-family:"CookieLogo",system-ui,sans-serif;font-size:19px;letter-spacing:.02em}
+.cookie-projects .brand span{font:400 14px system-ui,sans-serif;color:var(--paper)}
+.project-intro{max-width:1160px;margin:auto;padding:44px 36px 54px;text-align:center}
+.project-intro .eyebrow,.project-intro .accent,.project-intro .lead{color:var(--paper)}
+.project-intro h1{font-family:"CookieTitle",system-ui,sans-serif;font-weight:700;font-synthesis:weight}
+.project-intro .eyebrow{margin-bottom:14px}
+.project-intro .lead{margin:0}
+.cookie-projects .project-content{padding-top:30px}
+.cookie-projects .toolbar{border:1px solid #d5dbd3;background:#fffefa;padding:18px 20px;border-radius:8px}
+.cookie-projects .toolbar label{color:var(--ink);margin-bottom:6px}
+.cookie-projects input,.cookie-projects select{background:var(--paper)}
+.cookie-projects .count{margin:24px 0 12px;color:var(--green);letter-spacing:.08em;font-weight:600}
+.cookie-projects .project-list:not(.tile-view){border-top:2px solid var(--green)}
+.cookie-projects .project-heading{padding:24px 12px;transition:none}
+.cookie-projects .project-overview h2{margin:8px 0 6px}
+.cookie-projects .project-overview .category{display:inline-block;border:1px solid #24654d33;border-radius:3px;padding:1px 7px;line-height:1.7}
+.cookie-projects .project-stars{color:#4c5c53}
+.cookie-projects .project-overview .summary{color:#38483e}
+.cookie-projects .tile-view .project-item{border:1px solid #bfcbbf;background:#fffefa;box-shadow:3px 3px 0 #24654d0a}
+.cookie-projects .tile-view .project-heading{padding:20px 18px}
+.cookie-projects .tile-view .project-overview h2{font-size:18px}
+.cookie-projects .project-heading:hover{background:#eaf0e8}
+.cookie-projects .project-toggle{border:1px solid #24654d33;border-radius:50%;width:28px;height:28px;font-size:19px}
+.cookie-projects .project-dialog{border-color:#a8bba9}
+.cookie-projects .dialog-header{border-top:4px solid var(--green)}
+.cookie-projects footer{color:var(--ink)}
+@media(max-width:700px){
+ .project-intro{padding:32px 20px 38px}
+ .project-intro h1{font-size:32px}
+ .project-intro .lead{font-size:13px}
+ .cookie-projects .project-content{padding-top:20px}
+ .cookie-projects .toolbar{padding:14px;gap:12px}
+ .cookie-projects .project-heading{padding:20px 0}
+ .cookie-projects .project-overview h2{font-size:18px}
+ .cookie-projects .project-overview .summary{font-size:13px}
+ .cookie-projects .tile-view .project-heading{padding:18px 16px}
+}
