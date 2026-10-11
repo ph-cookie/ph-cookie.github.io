@@ -340,5 +340,75 @@ window.PROJECTS = [
         "url": "https://github.com/oh-my-mermaid/oh-my-mermaid/blob/main/LICENSE"
       }
     ]
+  },
+  {
+    "name": "hayamimi（早耳）— CPUで動く多言語文字起こしツール",
+    "url": "https://github.com/oboroge0/hayamimi",
+    "summary": "GPUやクラウドAPIを使わず、CPUで多言語音声をリアルタイムに文字起こしし、字幕表示・話者ラベル・日本語からの翻訳に対応するツール。",
+    "description": "hayamimi（早耳）は、CPUだけで多言語音声をリアルタイムに文字起こしする、Python製のローカル音声認識ツール。発話ごとに言語を判定し、日本語・英語・中国語・韓国語・広東語などに応じて専用モデルを使い分ける。\n話している途中から字幕を更新し、ブラウザのダッシュボードやOBSの字幕として表示できる。話者ラベルの付与、発話の再処理による清書、日本語から英語・中国語・韓国語などへの翻訳も備え、配信字幕や会議の記録に使える。WebSocket音声入力やPython APIによる外部アプリへの組み込みにも対応する。\n公式READMEは日本語の発話終了後の字幕確定を約100msと説明している。性能評価資料ではテレビ放送由来の日本語音声15クリップで文字誤り率（CER）3.8%を報告しているが、開発者による特定条件の測定であり、すべての音声やPCで同じ遅延・精度を保証するものではない。\n同じ発話内に複数言語が混ざる場合や、複数人が同時に話す音声には制約がある。話者ラベルや翻訳には誤りがあり、特に数値・金額の翻訳は確認が必要。PC内部音声の直接取得はWindows専用で、macOS/Linuxは実機での通し確認が未実施とされている。\n本体コードはMITライセンス。初回にモデルのダウンロードが必要で、取得するモデルには個別のライセンスが適用される。日英翻訳用のFuguMTモデルはCC BY-SA 4.0で、モデルの重みを再配布する場合の条件を公式の第三者ライセンス資料で確認する必要がある。",
+    "environment": [
+      {
+        "label": "OS",
+        "value": "Windows 11で開発・検証。macOS／Linuxは動作想定・実機での通し確認は未実施"
+      },
+      {
+        "label": "必要ソフト",
+        "value": "Python 3.10以降／PATHに登録したffmpeg。GPU・クラウドAPIは不要"
+      },
+      {
+        "label": "字幕・入力",
+        "value": "ブラウザ／OBS、マイク／WAV／WebSocket。PC内部音声の直接取得はWindows限定"
+      },
+      {
+        "label": "追加取得",
+        "value": "モデル約3.1GB。日本語・英語の最小構成は約1.1GB。追加オプションは別途取得"
+      },
+      {
+        "label": "メモリ",
+        "value": "公式READMEは通常構成で2GB未満と説明。モデル退避による常駐数制御あり"
+      }
+    ],
+    "category": "音声認識",
+    "tags": [
+      "AI",
+      "リアルタイム字幕",
+      "文字起こし",
+      "翻訳",
+      "話者識別",
+      "Python",
+      "CPU",
+      "OBS",
+      "MIT"
+    ],
+    "addedAt": "2026-10-11",
+    "checkedAt": "2026-10-11",
+    "stars": 352,
+    "starsCheckedAt": "2026-10-11",
+    "sources": [
+      {
+        "label": "公式README",
+        "url": "https://github.com/oboroge0/hayamimi/blob/main/README.md"
+      },
+      {
+        "label": "日本語README",
+        "url": "https://github.com/oboroge0/hayamimi/blob/main/README.ja.md"
+      },
+      {
+        "label": "性能評価資料",
+        "url": "https://github.com/oboroge0/hayamimi/blob/main/docs/results/scorecard.md"
+      },
+      {
+        "label": "他モデルとの比較（評価条件・更新日に注意）",
+        "url": "https://github.com/oboroge0/hayamimi/blob/main/docs/results/comparison.md"
+      },
+      {
+        "label": "本体のMITライセンス",
+        "url": "https://github.com/oboroge0/hayamimi/blob/main/LICENSE"
+      },
+      {
+        "label": "モデル別ライセンス",
+        "url": "https://github.com/oboroge0/hayamimi/blob/main/THIRD_PARTY_NOTICES.md"
+      }
+    ]
   }
 ];
