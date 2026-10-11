@@ -1,0 +1,21 @@
+/* Cookie package. Text never shares the film opacity. */
+.cookie-home .cookie-wrapper{--tear:0%;--lift:0px;--twist:0deg;isolation:isolate;background:transparent;border:0;box-shadow:none;border-radius:0;padding:30px 46px 27px;overflow:visible}
+.cookie-home .cookie-wrapper:hover{background:transparent}
+.wrapper-art{position:absolute;inset:0;z-index:0;pointer-events:none;filter:drop-shadow(3px 5px 2px #163d2f24)}
+.wrapper-film,.wrapper-tear{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.wrapper-copy{display:block;position:relative;z-index:2;color:var(--ink);opacity:1}
+.wrapper-copy>span,.wrapper-copy h2,.wrapper-copy p{position:relative;z-index:2}
+.wrapper-copy .eyebrow,.wrapper-copy .go{color:#20523b}
+/* The lifted strip is deformed as one continuous SVG surface, anchored at the tear tip. */
+.wrapper-opening{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.wrapper-film{clip-path:none}
+.wrapper-curled-top{filter:none}
+/* A closed bag is rendered once, as its original unbroken silhouette. */
+.cookie-wrapper:not(.is-torn) .wrapper-body{clip-path:none}
+.cookie-wrapper:not(.is-torn) .wrapper-opening{visibility:hidden}
+.cookie-wrapper:focus-visible{outline-offset:8px}
+@media(max-width:700px){.cookie-home .cookie-wrapper{padding:24px 34px 22px;width:min(100%,400px)}}
+
+/* One continuous translucent surface until the strip is completely detached. */
+.wrapper-curled-top .curled-film,.wrapper-curled-top .curled-white-end,.wrapper-curled-top .curled-ribs{visibility:hidden}
+.cookie-wrapper.is-detached .wrapper-curled-top .curled-film,.cookie-wrapper.is-detached .wrapper-curled-top .curled-white-end,.cookie-wrapper.is-detached .wrapper-curled-top .curled-ribs{visibility:visible}
