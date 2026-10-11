@@ -1,5 +1,5 @@
 (() => {
-  const card = document.querySelector('.cookie-wrapper');
+  const card = document.querySelector('.collection-package');
   if (!card) return;
   // Cookie-wrapper interaction requested for this site.
   let progress = 0, frame = 0, opening = false;
