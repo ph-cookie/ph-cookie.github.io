@@ -66,3 +66,6 @@ body.dialog-open{overflow:hidden}
 .environment-block .environment-table{margin-bottom:0}
 .project-meta{display:flex;align-items:center;justify-content:space-between;gap:8px}
 .project-stars{flex:none;white-space:nowrap;font-size:12px;line-height:1.8;font-weight:500;color:var(--muted);font-variant-numeric:tabular-nums}
+
+/* Account link: a small icon with a comfortable touch target. */
+footer{display:flex;align-items:flex-end;justify-content:space-between;gap:16px}footer>span{min-width:0}.profile-link{display:inline-flex;flex:0 0 32px;width:32px;height:32px;align-items:center;justify-content:center;color:inherit;line-height:1}.profile-link svg{display:block;width:18px;height:18px}.profile-link:hover{color:var(--green)}
