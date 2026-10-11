@@ -390,5 +390,63 @@ window.PROJECTS = [
         "url": "https://github.com/oboroge0/hayamimi/blob/main/THIRD_PARTY_NOTICES.md"
       }
     ]
+  },
+  {
+    "name": "Answer me with HTML — AIの回答を図解付きHTMLに変換するツール",
+    "url": "https://github.com/QingYunA/answer-me-with-html",
+    "summary": "AIエージェントの複雑な回答を、図解・比較表・フローチャートなどを備えた見やすいHTMLページに変換するスキル。",
+    "description": "Answer me with HTMLは、AIエージェントの回答を、文章と図表を組み合わせた見やすいHTMLページにするスキル。複雑な技術解説や比較資料を、フローチャート・シーケンス図・比較表などで整理できる。\nコードベースの構成把握や学習資料の作成に使え、ページ上のコメントや選択肢への回答をまとめてAIへ返信できる。図の段階的な表示とナレーションを組み合わせた解説動画も作成が可能。\nAIがMarkdownの原稿を作り、同梱のCLIがHTMLのレイアウトや図の描画を担当し、AIがCSSやSVGを一から書く量を減らせる。標準の出力は単一HTMLでオフライン閲覧・共有が可能だが、外部画像を使う場合は接続が必要。MITライセンス。",
+    "environment": [
+      {
+        "label": "実行環境",
+        "value": "Node.js 20以降"
+      },
+      {
+        "label": "対応AIツール",
+        "value": "Claude Code／Codex／Cursor／OpenCode／Piなど"
+      },
+      {
+        "label": "動画書き出し時",
+        "value": "Chrome・Node.js 22以降。MP4出力には追加でffmpegが必要"
+      }
+    ],
+    "category": "開発ツール",
+    "tags": [
+      "AIエージェント",
+      "情報可視化",
+      "ドキュメント生成",
+      "開発支援",
+      "HTML",
+      "JavaScript",
+      "MIT"
+    ],
+    "addedAt": "2026-10-11",
+    "checkedAt": "2026-10-11",
+    "sources": [
+      {
+        "label": "公式README",
+        "url": "https://github.com/QingYunA/answer-me-with-html/blob/main/README.md"
+      },
+      {
+        "label": "機能リファレンス",
+        "url": "https://github.com/QingYunA/answer-me-with-html/blob/main/docs/reference.md"
+      },
+      {
+        "label": "性能比較資料",
+        "url": "https://github.com/QingYunA/answer-me-with-html/blob/main/bench/README.md"
+      },
+      {
+        "label": "動画生成・書き出し条件",
+        "url": "https://github.com/QingYunA/answer-me-with-html/blob/main/docs/video.md"
+      },
+      {
+        "label": "実行条件・パッケージ情報",
+        "url": "https://github.com/QingYunA/answer-me-with-html/blob/main/package.json"
+      },
+      {
+        "label": "MITライセンス",
+        "url": "https://github.com/QingYunA/answer-me-with-html/blob/main/LICENSE"
+      }
+    ]
   }
 ];
