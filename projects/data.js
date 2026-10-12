@@ -421,7 +421,7 @@ window.PROJECTS = [
       "MIT"
     ],
     "addedAt": "2026-10-11",
-    "checkedAt": "2026-10-11",
+    "checkedAt": "2026-10-12",
     "sources": [
       {
         "label": "公式README",
