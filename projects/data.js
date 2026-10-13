@@ -110,7 +110,7 @@ window.PROJECTS = [
         "value": "macOS 14未満はGitHub ReleasesのVentura用配布版を選択"
       }
     ],
-    "category": "macOS管理",
+    "category": "システム管理",
     "tags": [
       "システム管理",
       "ユーティリティ",
@@ -148,7 +148,7 @@ window.PROJECTS = [
         "value": "インストール時に管理者権限が必要。ソースビルドはXcode・Swift 6.2以降"
       }
     ],
-    "category": "macOS管理",
+    "category": "システム管理",
     "tags": [
       "ユーティリティ",
       "開発支援",
@@ -348,7 +348,7 @@ window.PROJECTS = [
         "value": "公式READMEは通常構成で2GB未満と説明。モデル退避による常駐数制御あり"
       }
     ],
-    "category": "音声認識",
+    "category": "音声・字幕",
     "tags": [
       "AI",
       "リアルタイム字幕",
@@ -504,5 +504,74 @@ window.PROJECTS = [
       }
     ],
     "environmentLabel": "資料形式・利用方法"
+  },
+  {
+    "name": "Claude-BugHunter — AIによる脆弱性調査を支援するスキル集",
+    "url": "https://github.com/elementalsouls/Claude-BugHunter",
+    "summary": "Claude CodeなどのAIエージェントに調査手順と専門知識を追加し、情報収集から脆弱性の検証・報告書作成までを支援するスキル集。",
+    "description": "Claude-BugHunterは、AIエージェントによるWebアプリ・API・外部公開システムの脆弱性調査を支援するスキル集。83種類のスキルと15種類のコマンドを収録し、XSS、SQLインジェクション、SSRF、認証・認可の不備などを扱う。開発者は、公開済みの脆弱性報告681件から抽出した調査パターンを収録していると説明している。\n調査したい内容を伝えると、AIが関連スキルを参照し、公開情報の収集、調査対象の整理、検証、証拠の整理、報告書作成を支援する。Burp SuiteとのMCP連携も利用できる。Claude CodeのほかCodex CLIやOpenCodeなどでも専門スキルを読み込めるが、専用コマンドと調査管理機能はClaude Code向け。\n自分が管理するシステム、CTF環境、明示的に診断許可を得た対象での利用を前提とする。内部Active Directoryへの攻撃や侵入後の横展開などは対象外。導入だけで脆弱性を自動発見できるものではなく、診断結果と影響度の確認は人間が行う必要がある。コードはMIT、スキル内容・ドキュメントなどはCC BY 4.0で提供される。",
+    "environment": [
+      {
+        "label": "OS",
+        "value": "macOS／Linux／Windows"
+      },
+      {
+        "label": "AIエージェント",
+        "value": "Claude Code／Codex CLI／OpenCodeなど"
+      },
+      {
+        "label": "追加ツール",
+        "value": "Burp連携にはBurp SuiteとMCP Server拡張。cbh CLIにはPython 3.9以降"
+      }
+    ],
+    "category": "セキュリティ",
+    "tags": [
+      "AIエージェント",
+      "脆弱性診断",
+      "OSINT",
+      "CTF",
+      "Burp Suite",
+      "MCP",
+      "MIT",
+      "CC BY 4.0"
+    ],
+    "addedAt": "2026-10-13",
+    "checkedAt": "2026-10-13",
+    "stars": 5067,
+    "starsCheckedAt": "2026-10-13",
+    "sources": [
+      {
+        "label": "公式README",
+        "url": "https://github.com/elementalsouls/Claude-BugHunter/blob/main/README.md"
+      },
+      {
+        "label": "利用ガイド",
+        "url": "https://github.com/elementalsouls/Claude-BugHunter/blob/main/USAGE.md"
+      },
+      {
+        "label": "スキル一覧",
+        "url": "https://github.com/elementalsouls/Claude-BugHunter/blob/main/docs/skills.md"
+      },
+      {
+        "label": "セキュリティ方針",
+        "url": "https://github.com/elementalsouls/Claude-BugHunter/blob/main/SECURITY.md"
+      },
+      {
+        "label": "コードのMITライセンス",
+        "url": "https://github.com/elementalsouls/Claude-BugHunter/blob/main/LICENSE"
+      },
+      {
+        "label": "コンテンツのCC BY 4.0ライセンス",
+        "url": "https://github.com/elementalsouls/Claude-BugHunter/blob/main/LICENSE-CONTENT"
+      },
+      {
+        "label": "cbh CLIの必要環境",
+        "url": "https://github.com/elementalsouls/Claude-BugHunter/blob/main/pyproject.toml"
+      },
+      {
+        "label": "公式サイト",
+        "url": "https://elementalsouls.github.io/Claude-BugHunter/"
+      }
+    ]
   }
 ];
