@@ -142,9 +142,10 @@
       });
       if (p.environment?.length) {
           const environment = element('div', 'environment-block', '');
-          environment.append(element('p', 'environment-label', '▼対応環境'));
+          const environmentLabel = p.environmentLabel || '対応環境';
+          environment.append(element('p', 'environment-label', `▼${environmentLabel}`));
           const table = element('table', 'environment-table', '');
-          table.setAttribute('aria-label', '対応環境');
+          table.setAttribute('aria-label', environmentLabel);
           const tbody = element('tbody', '', '');
           p.environment.forEach(row => {
             const tr = element('tr', '', '');
