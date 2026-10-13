@@ -1,7 +1,7 @@
 @font-face{font-family:"CookieTitle";src:url("fonts/YasashisaGothic.ttf") format("truetype");font-style:normal;font-weight:400;font-display:swap}
 @font-face{font-family:"CookieLogo";src:url("fonts/Skranji-Bold.ttf") format("truetype");font-style:normal;font-weight:700;font-display:swap}
 /* One continuous portrait illustration, vertical:horizontal 4:3; no stitched or mirrored strips. */
-.cookie-home{--cookie-top:790px;--art-width:max(100vw,1280px,calc((100svh - var(--cookie-top)) * 2.45));position:relative;min-height:100svh;background-color:transparent;background-image:url("cookie-portrait.png");background-size:var(--art-width) auto;background-position:center calc(var(--cookie-top) - var(--art-width) * .915);background-repeat:no-repeat}
+.cookie-home{--cookie-top:790px;--art-width:max(100vw,1280px,calc((100svh - var(--cookie-top)) * 2.45));position:relative;min-height:100svh;background-color:#1A5A3A;background-image:url("cookie-portrait.png");background-image:image-set(url("cookie-home.webp") type("image/webp"),url("cookie-portrait.png") type("image/png"));background-size:var(--art-width) auto;background-position:center calc(var(--cookie-top) - var(--art-width) * .915);background-repeat:no-repeat}
 .cookie-home::before,.cookie-home::after{content:none}
 .cookie-home .header{max-width:none;margin:0 5vw;padding-left:0;padding-right:0;border-color:#f5f3ed40;color:var(--paper)}
 .cookie-home .brand{font-family:"CookieLogo",system-ui,sans-serif;font-weight:700;font-size:19px;letter-spacing:.02em}
