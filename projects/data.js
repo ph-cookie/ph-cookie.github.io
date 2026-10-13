@@ -5,7 +5,7 @@ window.PROJECTS = [
     "stars": 62056,
     "starsCheckedAt": "2026-10-10",
     "summary": "AIエージェントと連携し、アプリや実行ファイルの内部構造・動作を解析できるリバースエンジニアリングツール。",
-    "description": "REAは、AIエージェントと連携し、ソースコードが公開されていないアプリや実行ファイルの内部構造・処理の流れを調査するツール。解析結果をもとに、AIエージェントが類似機能を実装する用途にも使える。\nClaude CodeやCodexなどのAIエージェントとMCP経由で連携し、JavaScript・Electron製アプリ、Webサイト、ネイティブバイナリなどの内部構造や処理の流れを解析できる。\n公式事例にはNotionのコピー処理の追跡、Chromeの恐竜ゲーム由来のブラウザ版の加速処理の調査と速度調整機能付きの再現、Windows電卓の「%」ボタンの計算処理の調査と再現がある。\n対応環境：MCP対応AIエージェント、Node.js・npm\nREAはAIエージェントに解析手段を提供する仕組みで、ネイティブバイナリの詳細解析にはGhidra・Hopper・IDAのいずれかが必要。MITライセンスで公開。",
+    "description": "REAは、AIエージェントと連携し、ソースコードが公開されていないアプリや実行ファイルの内部構造・処理の流れを調査するツール。解析結果をもとに、AIエージェントが類似機能を実装する用途にも使える。\nClaude CodeやCodexなどのAIエージェントとMCP経由で連携し、JavaScript・Electron製アプリ、Webサイト、ネイティブバイナリなどの内部構造や処理の流れを解析できる。\n公式事例にはNotionのコピー処理の追跡、Chromeの恐竜ゲーム由来のブラウザ版の加速処理の調査と速度調整機能付きの再現、Windows電卓の「%」ボタンの計算処理の調査と再現がある。\n対応環境：MCP対応AIエージェント、Node.js・npm\nREAはAIエージェントに解析手段を提供する仕組みで、ネイティブバイナリの詳細解析にはGhidra・Hopper・IDAのいずれかが必要。MITライセンスで公開。\n※Claude CodeやCodexでREAを利用したユーザが、利用規約違反としてアカウント削除される事案が確認されています。利用には注意しましょう。",
     "environment": [
       {
         "label": "連携",
@@ -24,7 +24,7 @@ window.PROJECTS = [
       "MIT"
     ],
     "addedAt": "2026-10-10",
-    "checkedAt": "2026-10-10",
+    "checkedAt": "2026-10-14",
     "sources": [
       {
         "label": "公式README",
@@ -571,6 +571,63 @@ window.PROJECTS = [
       {
         "label": "公式サイト",
         "url": "https://elementalsouls.github.io/Claude-BugHunter/"
+      }
+    ]
+  },
+  {
+    "name": "Diagram Design — AIで図解を制作するスキル",
+    "url": "https://github.com/cathrynlavery/diagram-design",
+    "summary": "自然言語の指示から構成図やフローチャートなど45種類の図表をHTML・SVGで制作し、既存サイトの配色やフォントに合わせられるAIエージェント向けスキル。",
+    "description": "Diagram Designは、Claude CodeやCodexなどのAIエージェントで図解を制作するスキル。システム構成図、フローチャート、ER図、シーケンス図、ガントチャート、散布図など45種類の図表形式を扱い、作りたい内容を自然言語で伝えるとHTMLとSVGで描画する。技術資料、研究発表、ブログ、プレゼンテーションの図に利用できる。\n既存サイトから配色やフォントを取得して図のデザインに反映できる。Mermaid・draw.io・Excalidrawの元データを読み込み、用途や詳細度に応じて描き直す機能も備える。ライト・ダークテーマや16:9のスライド向けサイズに対応し、ブラウザで閲覧できるHTMLのほか、SVG・PNGとして書き出せる。\n単独のGUI図表編集アプリではなく、修正はAIへの再指示やSVGの編集で行う。取り込み時には詳細度に応じて要素が統合・省略されるため、元データとの対応を確認する必要がある。初期設定のHTML・SVGはGoogle Fontsを取得するが、フォント参照を外してシステムフォントを使えば外部通信なしで閲覧できる。入力した内容は利用するAIの処理・データ管理方針に従う。MITライセンスで公開。",
+    "environment": [
+      {
+        "label": "AIエージェント",
+        "value": "Claude Code／Codex／Cursor／GitHub Copilotなど、Agent Skills対応環境"
+      },
+      {
+        "label": "閲覧",
+        "value": "HTML・SVGを表示できるブラウザ。オフライン時はシステムフォントで表示"
+      },
+      {
+        "label": "PNG書き出し",
+        "value": "Playwright・Chromiumの追加導入が必要"
+      }
+    ],
+    "category": "文書・図解",
+    "tags": [
+      "AIエージェント",
+      "図解",
+      "可視化",
+      "デザイン",
+      "HTML",
+      "SVG",
+      "Mermaid",
+      "MIT"
+    ],
+    "addedAt": "2026-10-14",
+    "checkedAt": "2026-10-14",
+    "stars": 53696,
+    "starsCheckedAt": "2026-10-14",
+    "sources": [
+      {
+        "label": "公式README",
+        "url": "https://github.com/cathrynlavery/diagram-design/blob/main/README.md"
+      },
+      {
+        "label": "公式サイト",
+        "url": "https://diagramdesign.dev/"
+      },
+      {
+        "label": "図表ギャラリー",
+        "url": "https://cathrynlavery.github.io/diagram-design/"
+      },
+      {
+        "label": "プライバシー方針",
+        "url": "https://github.com/cathrynlavery/diagram-design/blob/main/PRIVACY.md"
+      },
+      {
+        "label": "MITライセンス",
+        "url": "https://github.com/cathrynlavery/diagram-design/blob/main/LICENSE"
       }
     ]
   }
