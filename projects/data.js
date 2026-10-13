@@ -448,5 +448,64 @@ window.PROJECTS = [
         "url": "https://github.com/QingYunA/answer-me-with-html/blob/main/LICENSE"
       }
     ]
+  },
+  {
+    "name": "Awesome DESIGN.md — AIのUI制作に使うWebデザイン資料集",
+    "url": "https://github.com/VoltAgent/awesome-design-md",
+    "summary": "AppleやSpotify、NotionなどのWebサイトを分析したデザインルールを収録し、AIエージェントによるUI制作の指針にできる資料集。",
+    "description": "Awesome DESIGN.mdは、公開Webサイトの配色・フォント・余白・レイアウト・UI部品などを分析し、AIエージェントが参照できるMarkdown形式にまとめたデザイン資料集。Apple、Spotify、Notion、Linear、Stripeなど84件を収録している（2026年10月13日確認）。\n使いたいサイトのDESIGN.mdをプロジェクトのルートに配置し、CodexやClaude Codeなどに参照するよう指示して利用する。ボタンやカードの状態、レスポンシブ設計、避けるべき表現も記載されており、参考サイトに近いUIの制作や複数ページの見た目を揃える際の指針にできる。Markdownを直接編集して、自分のプロジェクト向けに調整することも可能。\nUIを自動生成するアプリではなく、制作を支援する設計資料。各企業が公式に配布したガイドラインとは限らず、元サイトの更新や使用するAI・指示内容によって生成結果は異なる。READMEは通常・ダークテーマのHTMLプレビューを案内しているが、確認時点のリポジトリにはHTMLファイルが見当たらなかった。\nリポジトリの資料はMITライセンスで提供される。元サイトの視覚的な特徴の所有権を主張せず、内容は無保証としている。商標・ロゴ・独自フォントなどを利用する場合は、それぞれの権利条件を別途確認する必要がある。",
+    "environment": [
+      {
+        "label": "形式",
+        "value": "Markdown（DESIGN.md）。閲覧・編集に専用ツールは不要"
+      },
+      {
+        "label": "収録数",
+        "value": "84件（2026年10月13日確認）"
+      },
+      {
+        "label": "AI連携",
+        "value": "DESIGN.mdをプロジェクトに配置し、AIエージェントに参照を指示"
+      },
+      {
+        "label": "ライセンス",
+        "value": "MIT。元サイトの商標・素材等の権利は別途確認"
+      }
+    ],
+    "category": "開発ツール",
+    "tags": [
+      "Webデザイン",
+      "UI・UX",
+      "AIエージェント",
+      "開発支援",
+      "Markdown",
+      "MIT"
+    ],
+    "addedAt": "2026-10-13",
+    "checkedAt": "2026-10-13",
+    "stars": 120574,
+    "starsCheckedAt": "2026-10-13",
+    "sources": [
+      {
+        "label": "公式README",
+        "url": "https://github.com/VoltAgent/awesome-design-md/blob/main/README.md"
+      },
+      {
+        "label": "DESIGN.mdコレクション",
+        "url": "https://github.com/VoltAgent/awesome-design-md/tree/main/design-md"
+      },
+      {
+        "label": "Appleのデザイン分析資料",
+        "url": "https://github.com/VoltAgent/awesome-design-md/blob/main/design-md/apple/DESIGN.md"
+      },
+      {
+        "label": "MITライセンス",
+        "url": "https://github.com/VoltAgent/awesome-design-md/blob/main/LICENSE"
+      },
+      {
+        "label": "公式サイト",
+        "url": "https://getdesign.md/"
+      }
+    ]
   }
 ];
