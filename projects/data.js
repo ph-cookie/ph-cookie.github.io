@@ -809,5 +809,63 @@ window.PROJECTS = [
         "url": "https://pngmini.com/"
       }
     ]
+  },
+  {
+    "name": "imozuru（いもづる）— 原文と引用をたどるAIリサーチスキル",
+    "url": "https://github.com/MaryCache/imozuru",
+    "summary": "未知の分野の用語・人物・情報源を探し、引用やリンクをたどって原文を収集し、調査した主張と根拠の箇所を対応づけるClaude Code向けスキル。",
+    "description": "imozuru（いもづる）は、Claude Codeで未知の分野を調査し、根拠となる原文を集めるリサーチスキル。最初に調査したい問いを整理し、専門用語、中心となる人物、情報が集まる場所を探す。そこから論文の参考文献・被引用文献、記事のリンク、著者の発信をたどる。論文だけでなく、ブログやYouTubeなどの個人の発信も対象にする。\n取得できたPDF・記事・動画字幕をローカルに保存し、主張ごとに原文のファイルと該当行を記録する。原文を要約せずに抜き書きを並べるHTMLレポートも作成でき、引用文が指定した原文の行と一致するかをスクリプトで照合する。調査記録と資料は既定で~/research/\u003c話題>/に保存する。見つけた情報源の新着をRSSで取得するモードも備える。\n原文との照合は、情報そのものの正しさを保証するものではなく、解釈や評価は利用者が行う。検索語は外部サービスへ送信されるため、機密情報や個人データを含む調査には使わない。有料・ログイン必須などで取得できない資料は、その旨とURLを記録する。収集資料は手元で読むための写しとして扱い、再配布しない。調査終了の基準には経験的な目安も含まれ、文献の網羅性は保証されない。スキル本体はMITライセンスで公開。",
+    "environment": [
+      {
+        "label": "基本環境",
+        "value": "Claude Code／Python 3.10以降。Python外部ライブラリは不要"
+      },
+      {
+        "label": "PDF取得後の処理",
+        "value": "本文抽出にpdftotext。画像PDFのOCRにはpdftoppmとtesseract"
+      },
+      {
+        "label": "YouTube字幕",
+        "value": "yt-dlpが必要"
+      }
+    ],
+    "category": "調査・情報収集",
+    "tags": [
+      "AIエージェント",
+      "リサーチ",
+      "文献調査",
+      "情報収集",
+      "原文",
+      "引用",
+      "Python",
+      "RSS",
+      "MIT"
+    ],
+    "addedAt": "2026-10-16",
+    "checkedAt": "2026-10-16",
+    "stars": 139,
+    "starsCheckedAt": "2026-10-16",
+    "sources": [
+      {
+        "label": "公式README",
+        "url": "https://github.com/MaryCache/imozuru/blob/main/README.md"
+      },
+      {
+        "label": "スキル本体",
+        "url": "https://github.com/MaryCache/imozuru/blob/main/skills/imozuru/SKILL.md"
+      },
+      {
+        "label": "設計資料",
+        "url": "https://github.com/MaryCache/imozuru/blob/main/skills/imozuru/references/theory.md"
+      },
+      {
+        "label": "レポート生成処理",
+        "url": "https://github.com/MaryCache/imozuru/blob/main/skills/imozuru/scripts/report.py"
+      },
+      {
+        "label": "MITライセンス",
+        "url": "https://github.com/MaryCache/imozuru/blob/main/LICENSE"
+      }
+    ]
   }
 ];
