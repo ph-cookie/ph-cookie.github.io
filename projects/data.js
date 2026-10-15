@@ -747,5 +747,67 @@ window.PROJECTS = [
         "url": "https://zenn.dev/algoartis/articles/0b1c731881b25c"
       }
     ]
+  },
+  {
+    "name": "ImageOptim-CLI — Macの画像最適化を自動化するツール",
+    "url": "https://github.com/JamieMason/ImageOptim-CLI",
+    "summary": "ImageOptimなどのMac向け画像圧縮アプリをコマンドラインから操作し、大量の画像の最適化をスクリプトやビルド処理に組み込めるツール。",
+    "description": "ImageOptim-CLIは、macOSの画像最適化アプリをコマンドラインから操作し、画像の一括圧縮を自動化するツール。ImageOptim、ImageAlpha、JPEGminiと連携し、Webサイトの画像素材の軽量化や、公開前のビルド処理への組み込みに使える。本体はRust製で、npmからMac向けのバイナリを配布している。\nフォルダやファイル名のパターンで処理対象を指定でき、ImageAlphaでは画質・色数・処理速度を調整できる。処理せずに対象だけを確認する--dry-run、削減量などの統計表示、改行区切りのJSON出力も備え、処理対象の確認や結果の記録に利用できる。\n圧縮エンジンを内蔵するツールではなく、使用する連携アプリを別途導入する必要がある。ImageOptimとImageAlphaは無料、JPEGminiは有料。JPEGminiのGUI操作を自動化する場合は、ターミナルなどにアクセシビリティ権限が必要になる。圧縮方式や設定によって画質やメタデータが変わるため、重要な原本は別に保存しておく。ImageOptim-CLIはMITライセンスで公開。",
+    "environment": [
+      {
+        "label": "OS・CPU",
+        "value": "macOS／Apple Silicon・Intel"
+      },
+      {
+        "label": "導入",
+        "value": "Node.js・npm。Mac向けバイナリを配布"
+      },
+      {
+        "label": "連携アプリ",
+        "value": "使用するImageOptim／ImageAlpha／JPEGminiを個別に導入"
+      }
+    ],
+    "category": "画像処理",
+    "tags": [
+      "画像最適化",
+      "画像圧縮",
+      "自動化",
+      "macOS",
+      "Rust",
+      "ImageOptim",
+      "ImageAlpha",
+      "JPEGmini",
+      "MIT"
+    ],
+    "addedAt": "2026-10-15",
+    "checkedAt": "2026-10-15",
+    "stars": 3535,
+    "starsCheckedAt": "2026-10-15",
+    "sources": [
+      {
+        "label": "公式README",
+        "url": "https://github.com/JamieMason/ImageOptim-CLI/blob/main/README.md"
+      },
+      {
+        "label": "変更履歴",
+        "url": "https://github.com/JamieMason/ImageOptim-CLI/blob/main/CHANGELOG.md"
+      },
+      {
+        "label": "配布対象の設定",
+        "url": "https://github.com/JamieMason/ImageOptim-CLI/blob/main/.github/workflows/matrix.json"
+      },
+      {
+        "label": "MITライセンス",
+        "url": "https://github.com/JamieMason/ImageOptim-CLI/blob/main/LICENSE"
+      },
+      {
+        "label": "ImageOptim公式",
+        "url": "https://imageoptim.com/mac"
+      },
+      {
+        "label": "ImageAlpha公式",
+        "url": "https://pngmini.com/"
+      }
+    ]
   }
 ];
