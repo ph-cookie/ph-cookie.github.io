@@ -696,5 +696,56 @@ window.PROJECTS = [
         "url": "https://openrouter.ai/models"
       }
     ]
+  },
+  {
+    "name": "yomiyasu（よみやす）— AI生成の日本語を推敲するスキル",
+    "url": "https://github.com/nanaism/yomiyasu",
+    "summary": "主述関係や不自然な比喩、過剰な装飾を見直し、元の意味や文体を尊重して日本語を推敲するエージェントスキル。",
+    "description": "yomiyasu（よみやす）は、AIが生成した日本語を推敲するエージェントスキル。Claude CodeやCodex、Cursorなどに導入し、技術記事、仕様書、レポート、エッセイなどを整える。単語の置き換えにとどまらず、主語と述語、修飾語、条件や否定の関係まで確認する。\n元の主張・文体・言い切りの強さを尊重し、根拠のない情報を加えずに、不自然な比喩や不要な強調、文のつながりを見直す。技術記事・業務文書・エッセイに応じた指針があり、文章を渡して用途を指定できる。表現やMarkdownの書式を検査するyomiyasu_lint.pyと、推敲前後の語句・文末・構造の変化を確認するyomiyasu_diff.pyも付属する。\n検査ツールの指摘は見直し候補であり、文章の自然さや意味の保持を保証するものではない。AI製か人間製かを判定する機能もない。類似する校正スキルとの併用では指示が競合する場合がある。READMEで紹介された外部試験では、生成前にスキルを読ませる使い方で、情報の加筆が減った一方、文章が短くなり、読みやすさの評価も下がった。少数の文章をAIが採点した試験であり、すべての用途で改善するとは限らない。コードとドキュメントはMITライセンスで公開。",
+    "environment": [
+      {
+        "label": "AIエージェント",
+        "value": "Codex／Claude Code／Cursorなど"
+      },
+      {
+        "label": "付属検査ツール",
+        "value": "Pythonで動作。標準ライブラリのみ使用"
+      }
+    ],
+    "category": "文書・図解",
+    "tags": [
+      "日本語",
+      "文章校正",
+      "執筆支援",
+      "AIエージェント",
+      "Python",
+      "MIT"
+    ],
+    "addedAt": "2026-10-15",
+    "checkedAt": "2026-10-15",
+    "stars": 1974,
+    "starsCheckedAt": "2026-10-15",
+    "sources": [
+      {
+        "label": "公式README",
+        "url": "https://github.com/nanaism/yomiyasu/blob/main/README.md"
+      },
+      {
+        "label": "スキル本体",
+        "url": "https://github.com/nanaism/yomiyasu/blob/main/skills/yomiyasu/SKILL.md"
+      },
+      {
+        "label": "検査ツール",
+        "url": "https://github.com/nanaism/yomiyasu/tree/main/scripts"
+      },
+      {
+        "label": "MITライセンス",
+        "url": "https://github.com/nanaism/yomiyasu/blob/main/LICENSE"
+      },
+      {
+        "label": "開発者による解説記事",
+        "url": "https://zenn.dev/algoartis/articles/0b1c731881b25c"
+      }
+    ]
   }
 ];
