@@ -630,5 +630,71 @@ window.PROJECTS = [
         "url": "https://github.com/cathrynlavery/diagram-design/blob/main/LICENSE"
       }
     ]
+  },
+  {
+    "name": "OpenRouter Skills — AIモデルの選定・API開発を支援するスキル集",
+    "url": "https://github.com/OpenRouterTeam/skills",
+    "summary": "OpenRouterを使ったモデル選定、API連携、画像・音声・動画生成、利用状況の分析を支援する公式エージェントスキル集。",
+    "description": "OpenRouter Skillsは、複数のAIモデルを統一APIで利用できるOpenRouterの公式エージェントスキル集。18種類のスキルを収録し、モデルの料金・コンテキスト長・提供事業者の比較、公開ベンチマークの参照、APIを使った実装を支援する。Claude CodeやCodexなどに導入し、会話の内容に応じて必要な知識や手順を参照させる。\nテキスト生成やツール呼び出しに加え、画像生成・編集、文字起こし、音声合成、動画生成のAPI利用も扱う。TypeScriptによるターミナルUI付きエージェントや、APIサーバーなどに組み込むエージェントのひな形も生成できる。モデル別の費用、リクエスト数、トークン使用量、応答速度を調べるスキルもあり、モデル選定から実装、運用時の利用状況確認までに使える。\nスキル自体がAIモデルを提供するわけではなく、実際の呼び出しはOpenRouter経由で行う。モデルや機能によって料金・利用条件が異なり、価格や提供状況も変動する。付属スクリプトにはAPIキーの設定が必要で、利用状況の分析には通常のキーではなく管理用キーを使う。追加環境はスキルごとに異なる。リポジトリ全体のライセンス表記は確認できなかった。",
+    "environment": [
+      {
+        "label": "AIエージェント",
+        "value": "Claude Code／Codex／Cursor／OpenCode／Piなど"
+      },
+      {
+        "label": "認証",
+        "value": "OpenRouter APIキー。利用状況の分析には管理用キー"
+      },
+      {
+        "label": "追加環境",
+        "value": "使用するスキルに応じてBunなどの実行環境が必要"
+      }
+    ],
+    "category": "AI開発",
+    "tags": [
+      "AIエージェント",
+      "LLM",
+      "API開発",
+      "OpenRouter",
+      "TypeScript",
+      "モデル選定",
+      "画像生成",
+      "音声",
+      "動画生成"
+    ],
+    "addedAt": "2026-10-15",
+    "checkedAt": "2026-10-15",
+    "stars": 298,
+    "starsCheckedAt": "2026-10-15",
+    "sources": [
+      {
+        "label": "公式README",
+        "url": "https://github.com/OpenRouterTeam/skills/blob/main/README.md"
+      },
+      {
+        "label": "モデル選定スキル",
+        "url": "https://github.com/OpenRouterTeam/skills/blob/main/skills/openrouter-models/SKILL.md"
+      },
+      {
+        "label": "利用状況分析スキル",
+        "url": "https://github.com/OpenRouterTeam/skills/blob/main/skills/openrouter-analytics/SKILL.md"
+      },
+      {
+        "label": "エージェント生成スキル",
+        "url": "https://github.com/OpenRouterTeam/skills/blob/main/skills/create-headless-agent/SKILL.md"
+      },
+      {
+        "label": "動画生成スキル",
+        "url": "https://github.com/OpenRouterTeam/skills/blob/main/skills/openrouter-video/SKILL.md"
+      },
+      {
+        "label": "OpenRouter公式ドキュメント",
+        "url": "https://openrouter.ai/docs/quickstart"
+      },
+      {
+        "label": "モデル一覧",
+        "url": "https://openrouter.ai/models"
+      }
+    ]
   }
 ];
