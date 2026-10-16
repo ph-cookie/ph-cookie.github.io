@@ -867,5 +867,58 @@ window.PROJECTS = [
         "url": "https://github.com/MaryCache/imozuru/blob/main/LICENSE"
       }
     ]
+  },
+  {
+    "name": "Ambient light for YouTube — 動画の周囲に光を広げるブラウザ拡張機能",
+    "url": "https://github.com/WesselKroos/youtube-ambilight",
+    "summary": "YouTube動画の色に合わせて周囲に光の効果を加え、映像が画面の外まで広がるように表示するブラウザ拡張機能。",
+    "description": "Ambient light for YouTubeは、YouTube動画の周囲にアンビエントライト（間接照明のような光）を追加するブラウザ拡張機能。映像に合わせた光を動画プレーヤーの外側に表示し、視聴画面の演出を変えられる。\nChrome・Edge・Firefox・Opera向けに配布されており、各ブラウザの拡張機能ストアから導入できる。YouTubeの動画視聴時に、映像と周囲の背景がつながるような視覚効果を加えたい場合に使える。\n描画処理にはGPU性能が影響する。開発者はPassMark Video Card Benchmarkで1000点以上のGPUを推奨しており、それ未満でも動作するが、動画ページの動作が遅くなったり、映像が途切れたりする可能性がある。",
+    "environmentLabel": "利用条件",
+    "environment": [
+      {
+        "label": "対応ブラウザ",
+        "value": "Chrome・Edge・Firefox・Opera"
+      },
+      {
+        "label": "最低バージョン",
+        "value": "Chromium 80／Firefox 74"
+      },
+      {
+        "label": "推奨GPU性能",
+        "value": "PassMark 1000点以上"
+      },
+      {
+        "label": "ライセンス",
+        "value": "MIT"
+      }
+    ],
+    "category": "動画・視聴",
+    "tags": [
+      "YouTube",
+      "ブラウザ拡張",
+      "アンビエントライト",
+      "映像演出",
+      "MIT"
+    ],
+    "addedAt": "2026-10-16",
+    "checkedAt": "2026-10-16",
+    "sources": [
+      {
+        "label": "公式README",
+        "url": "https://github.com/WesselKroos/youtube-ambilight/blob/develop/README.md"
+      },
+      {
+        "label": "公式リポジトリ",
+        "url": "https://github.com/WesselKroos/youtube-ambilight"
+      },
+      {
+        "label": "トラブルシューティング",
+        "url": "https://github.com/WesselKroos/youtube-ambilight/blob/develop/TROUBLESHOOT.md"
+      },
+      {
+        "label": "MITライセンス",
+        "url": "https://github.com/WesselKroos/youtube-ambilight/blob/develop/LICENSE"
+      }
+    ]
   }
 ];
