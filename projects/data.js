@@ -8,12 +8,45 @@ window.PROJECTS = [
     "description": "REAは、AIエージェントと連携し、ソースコードが公開されていないアプリや実行ファイルの内部構造・処理の流れを調査するツール。解析結果をもとに、AIエージェントが類似機能を実装する用途にも使える。\nClaude CodeやCodexなどのAIエージェントとMCP経由で連携し、JavaScript・Electron製アプリ、Webサイト、ネイティブバイナリなどの内部構造や処理の流れを解析できる。\n公式事例にはNotionのコピー処理の追跡、Chromeの恐竜ゲーム由来のブラウザ版の加速処理の調査と速度調整機能付きの再現、Windows電卓の「%」ボタンの計算処理の調査と再現がある。\n対応環境：MCP対応AIエージェント、Node.js・npm\nREAはAIエージェントに解析手段を提供する仕組みで、ネイティブバイナリの詳細解析にはGhidra・Hopper・IDAのいずれかが必要。MITライセンスで公開。\n※Claude CodeやCodexでREAを利用したユーザが、利用規約違反としてアカウント削除される事案が確認されています。利用には注意しましょう。",
     "environment": [
       {
-        "label": "連携",
-        "value": "MCP対応のAIエージェント（Claude Code・Codexなど）"
+        "label": "AIツール",
+        "value": "MCP対応のAIエージェント（Claude Code・Codexなど）",
+        "key": "agent",
+        "scope": "basic",
+        "level": "required",
+        "status": "documented",
+        "brief": "MCP対応AIエージェント",
+        "group": "requirements",
+        "order": 5,
+        "stateLabel": "",
+        "scopeLabel": "",
+        "levelLabel": "必須"
       },
       {
         "label": "実行環境",
-        "value": "Node.js・npm"
+        "value": "Node.js・npm",
+        "key": "runtime",
+        "scope": "basic",
+        "level": "required",
+        "status": "documented",
+        "brief": "Node.js・npm",
+        "group": "requirements",
+        "order": 6,
+        "stateLabel": "",
+        "scopeLabel": "",
+        "levelLabel": "必須"
+      },
+      {
+        "key": "license",
+        "label": "ライセンス",
+        "scope": "basic",
+        "level": "info",
+        "status": "documented",
+        "value": "MIT",
+        "group": "licenses",
+        "order": 22,
+        "stateLabel": "",
+        "scopeLabel": "",
+        "levelLabel": ""
       }
     ],
     "category": "コード解析",
@@ -42,7 +75,81 @@ window.PROJECTS = [
         "label": "MITライセンス",
         "url": "https://github.com/morluto/rea/blob/main/LICENSE"
       }
-    ]
+    ],
+    "related": [
+      {
+        "label": "ソースコードのあるプロジェクトを図で把握したい",
+        "url": "https://github.com/oh-my-mermaid/oh-my-mermaid"
+      }
+    ],
+    "environmentVersion": 1,
+    "requirementsStatus": "documented",
+    "presentation": {
+      "groups": [
+        {
+          "key": "requirements",
+          "label": "利用条件",
+          "rows": [
+            {
+              "label": "AIツール",
+              "value": "MCP対応のAIエージェント（Claude Code・Codexなど）",
+              "key": "agent",
+              "scope": "basic",
+              "level": "required",
+              "status": "documented",
+              "brief": "MCP対応AIエージェント",
+              "group": "requirements",
+              "order": 5,
+              "stateLabel": "",
+              "scopeLabel": "",
+              "levelLabel": "必須"
+            },
+            {
+              "label": "実行環境",
+              "value": "Node.js・npm",
+              "key": "runtime",
+              "scope": "basic",
+              "level": "required",
+              "status": "documented",
+              "brief": "Node.js・npm",
+              "group": "requirements",
+              "order": 6,
+              "stateLabel": "",
+              "scopeLabel": "",
+              "levelLabel": "必須"
+            }
+          ]
+        },
+        {
+          "key": "licenses",
+          "label": "ライセンス",
+          "rows": [
+            {
+              "key": "license",
+              "label": "ライセンス",
+              "scope": "basic",
+              "level": "info",
+              "status": "documented",
+              "value": "MIT",
+              "group": "licenses",
+              "order": 22,
+              "stateLabel": "",
+              "scopeLabel": "",
+              "levelLabel": ""
+            }
+          ]
+        }
+      ],
+      "overview": {
+        "label": "利用条件",
+        "value": "AIツール：MCP対応AIエージェント ／ 実行環境：Node.js・npm",
+        "lines": [
+          "AIツール：MCP対応AIエージェント",
+          "実行環境：Node.js・npm"
+        ],
+        "remaining": 0
+      }
+    }
   },
   {
     "name": "mcopt — Apple Silicon向けMinecraft最適化MOD",
@@ -53,16 +160,57 @@ window.PROJECTS = [
     "description": "mcoptは、Apple Silicon搭載Mac向けのMinecraft Java Edition最適化MOD。OpenGLベースのワールド描画を独自のMetalレンダラーに置き換え、より滑らかな動作を目指す。\n対応環境：macOS 26以降、Apple Silicon、Java 25、Minecraft 26.3、Fabric Loader 0.19.5以降。描画APIはMetal 3\n公式READMEの測定では、Mac mini M4（10コアGPU・16 GB）、1920×1080、描画距離16、VSync無効の同一ワールドで、旋回時の通常版156 FPSに対しmcopt 0.3.0-alpha.1は1209〜1211 FPSだったが、すべての環境で同等の向上を保証する数値ではない。\n最新リリースは0.3.0-alpha.2のAlpha版で、バグに備えて導入前のワールドのバックアップが推奨される。Sodiumは不要かつ併用不可で、Sodium依存のMODやOpenGLを直接呼ぶMODにも互換性の制約がある。Apache License 2.0で公開。",
     "environment": [
       {
-        "label": "Mac",
-        "value": "macOS 26以降／Apple Silicon"
+        "label": "OS・CPU",
+        "value": "macOS 26以降／Apple Silicon",
+        "key": "platform",
+        "scope": "basic",
+        "level": "required",
+        "status": "documented",
+        "group": "requirements",
+        "order": 0,
+        "stateLabel": "",
+        "scopeLabel": "",
+        "levelLabel": "必須"
       },
       {
-        "label": "ゲーム・実行環境",
-        "value": "Minecraft 26.3／Java 25／Fabric Loader 0.19.5以降"
+        "label": "実行環境",
+        "value": "Minecraft 26.3／Java 25／Fabric Loader 0.19.5以降",
+        "key": "runtime",
+        "scope": "basic",
+        "level": "required",
+        "status": "documented",
+        "brief": "Minecraft 26.3／Java 25／Fabric Loader 0.19.5以降",
+        "group": "requirements",
+        "order": 6,
+        "stateLabel": "",
+        "scopeLabel": "",
+        "levelLabel": "必須"
       },
       {
         "label": "描画API",
-        "value": "Metal 3"
+        "value": "Metal 3",
+        "key": "graphics",
+        "scope": "basic",
+        "level": "required",
+        "status": "documented",
+        "group": "requirements",
+        "order": 12,
+        "stateLabel": "",
+        "scopeLabel": "",
+        "levelLabel": "必須"
+      },
+      {
+        "key": "license",
+        "label": "ライセンス",
+        "scope": "basic",
+        "level": "info",
+        "status": "documented",
+        "value": "Apache License 2.0",
+        "group": "licenses",
+        "order": 22,
+        "stateLabel": "",
+        "scopeLabel": "",
+        "levelLabel": ""
       }
     ],
     "category": "ゲーム",
@@ -87,7 +235,87 @@ window.PROJECTS = [
         "label": "公式リリース v0.3.0-alpha.2",
         "url": "https://github.com/noahdunnagan/mcopt/releases/tag/v0.3.0-alpha.2"
       }
-    ]
+    ],
+    "environmentVersion": 1,
+    "requirementsStatus": "documented",
+    "presentation": {
+      "groups": [
+        {
+          "key": "requirements",
+          "label": "利用条件",
+          "rows": [
+            {
+              "label": "OS・CPU",
+              "value": "macOS 26以降／Apple Silicon",
+              "key": "platform",
+              "scope": "basic",
+              "level": "required",
+              "status": "documented",
+              "group": "requirements",
+              "order": 0,
+              "stateLabel": "",
+              "scopeLabel": "",
+              "levelLabel": "必須"
+            },
+            {
+              "label": "実行環境",
+              "value": "Minecraft 26.3／Java 25／Fabric Loader 0.19.5以降",
+              "key": "runtime",
+              "scope": "basic",
+              "level": "required",
+              "status": "documented",
+              "brief": "Minecraft 26.3／Java 25／Fabric Loader 0.19.5以降",
+              "group": "requirements",
+              "order": 6,
+              "stateLabel": "",
+              "scopeLabel": "",
+              "levelLabel": "必須"
+            },
+            {
+              "label": "描画API",
+              "value": "Metal 3",
+              "key": "graphics",
+              "scope": "basic",
+              "level": "required",
+              "status": "documented",
+              "group": "requirements",
+              "order": 12,
+              "stateLabel": "",
+              "scopeLabel": "",
+              "levelLabel": "必須"
+            }
+          ]
+        },
+        {
+          "key": "licenses",
+          "label": "ライセンス",
+          "rows": [
+            {
+              "key": "license",
+              "label": "ライセンス",
+              "scope": "basic",
+              "level": "info",
+              "status": "documented",
+              "value": "Apache License 2.0",
+              "group": "licenses",
+              "order": 22,
+              "stateLabel": "",
+              "scopeLabel": "",
+              "levelLabel": ""
+            }
+          ]
+        }
+      ],
+      "overview": {
+        "label": "利用条件",
+        "value": "OS・CPU：macOS 26以降／Apple Silicon ／ 実行環境：Minecraft 26.3／Java 25／Fabric Loader 0.19.5以降",
+        "lines": [
+          "OS・CPU：macOS 26以降／Apple Silicon",
+          "実行環境：Minecraft 26.3／Java 25／Fabric Loader 0.19.5以降"
+        ],
+        "remaining": 1
+      }
+    }
   },
   {
     "name": "PluginKits — macOS拡張機能管理ツール",
@@ -99,15 +327,55 @@ window.PROJECTS = [
     "environment": [
       {
         "label": "OS",
-        "value": "macOS 13 Ventura以降"
+        "value": "macOS 13 Ventura以降",
+        "key": "os",
+        "scope": "basic",
+        "level": "required",
+        "status": "documented",
+        "group": "requirements",
+        "order": 1,
+        "stateLabel": "",
+        "scopeLabel": "",
+        "levelLabel": "必須"
       },
       {
         "label": "CPU",
-        "value": "Apple Silicon・Intel"
+        "value": "Apple Silicon・Intel",
+        "key": "cpu",
+        "scope": "basic",
+        "level": "required",
+        "status": "documented",
+        "group": "requirements",
+        "order": 2,
+        "stateLabel": "",
+        "scopeLabel": "",
+        "levelLabel": "必須"
       },
       {
-        "label": "配布版",
-        "value": "macOS 14未満はGitHub ReleasesのVentura用配布版を選択"
+        "label": "配布版の条件",
+        "value": "macOS 14未満はGitHub ReleasesのVentura用配布版を選択",
+        "key": "distribution",
+        "scope": "basic",
+        "level": "info",
+        "status": "documented",
+        "group": "requirements",
+        "order": 11,
+        "stateLabel": "",
+        "scopeLabel": "",
+        "levelLabel": ""
+      },
+      {
+        "key": "license",
+        "label": "ライセンス",
+        "scope": "basic",
+        "level": "info",
+        "status": "unverified",
+        "value": "具体的なライセンス名は未確認",
+        "group": "licenses",
+        "order": 22,
+        "stateLabel": "未確認",
+        "scopeLabel": "",
+        "levelLabel": ""
       }
     ],
     "category": "システム管理",
@@ -129,7 +397,86 @@ window.PROJECTS = [
         "label": "公式リリース",
         "url": "https://github.com/Oil3/PluginKits/releases/tag/pluginkit-v1.0"
       }
-    ]
+    ],
+    "environmentVersion": 1,
+    "requirementsStatus": "documented",
+    "presentation": {
+      "groups": [
+        {
+          "key": "requirements",
+          "label": "利用条件",
+          "rows": [
+            {
+              "label": "OS",
+              "value": "macOS 13 Ventura以降",
+              "key": "os",
+              "scope": "basic",
+              "level": "required",
+              "status": "documented",
+              "group": "requirements",
+              "order": 1,
+              "stateLabel": "",
+              "scopeLabel": "",
+              "levelLabel": "必須"
+            },
+            {
+              "label": "CPU",
+              "value": "Apple Silicon・Intel",
+              "key": "cpu",
+              "scope": "basic",
+              "level": "required",
+              "status": "documented",
+              "group": "requirements",
+              "order": 2,
+              "stateLabel": "",
+              "scopeLabel": "",
+              "levelLabel": "必須"
+            },
+            {
+              "label": "配布版の条件",
+              "value": "macOS 14未満はGitHub ReleasesのVentura用配布版を選択",
+              "key": "distribution",
+              "scope": "basic",
+              "level": "info",
+              "status": "documented",
+              "group": "requirements",
+              "order": 11,
+              "stateLabel": "",
+              "scopeLabel": "",
+              "levelLabel": ""
+            }
+          ]
+        },
+        {
+          "key": "licenses",
+          "label": "ライセンス",
+          "rows": [
+            {
+              "key": "license",
+              "label": "ライセンス",
+              "scope": "basic",
+              "level": "info",
+              "status": "unverified",
+              "value": "具体的なライセンス名は未確認",
+              "group": "licenses",
+              "order": 22,
+              "stateLabel": "未確認",
+              "scopeLabel": "",
+              "levelLabel": ""
+            }
+          ]
+        }
+      ],
+      "overview": {
+        "label": "利用条件",
+        "value": "OS：macOS 13 Ventura以降 ／ CPU：Apple Silicon・Intel",
+        "lines": [
+          "OS：macOS 13 Ventura以降",
+          "CPU：Apple Silicon・Intel"
+        ],
+        "remaining": 1
+      }
+    }
   },
   {
     "name": "Insomnia — Macの長時間処理・省電力管理ツール",
@@ -141,11 +488,56 @@ window.PROJECTS = [
     "environment": [
       {
         "label": "OS・CPU",
-        "value": "macOS 26以降／Apple Silicon（配布版はarm64専用）"
+        "value": "macOS 26以降／Apple Silicon（配布版はarm64専用）",
+        "key": "platform",
+        "scope": "basic",
+        "level": "required",
+        "status": "documented",
+        "group": "requirements",
+        "order": 0,
+        "stateLabel": "",
+        "scopeLabel": "",
+        "levelLabel": "必須"
       },
       {
         "label": "導入条件",
-        "value": "インストール時に管理者権限が必要。ソースビルドはXcode・Swift 6.2以降"
+        "value": "インストール時に管理者権限が必要。",
+        "key": "installation",
+        "scope": "basic",
+        "level": "required",
+        "status": "documented",
+        "brief": "インストール時に管理者権限が必要",
+        "group": "requirements",
+        "order": 10,
+        "stateLabel": "",
+        "scopeLabel": "",
+        "levelLabel": "必須"
+      },
+      {
+        "key": "runtime",
+        "label": "実行環境",
+        "scope": "ソースビルド",
+        "level": "required",
+        "status": "documented",
+        "value": "ソースビルドはXcode・Swift 6.2以降",
+        "group": "requirements",
+        "order": 6,
+        "stateLabel": "",
+        "scopeLabel": "ソースビルド",
+        "levelLabel": "必須"
+      },
+      {
+        "key": "license",
+        "label": "ライセンス",
+        "scope": "basic",
+        "level": "info",
+        "status": "documented",
+        "value": "MIT",
+        "group": "licenses",
+        "order": 22,
+        "stateLabel": "",
+        "scopeLabel": "",
+        "levelLabel": ""
       }
     ],
     "category": "システム管理",
@@ -173,7 +565,87 @@ window.PROJECTS = [
         "label": "MITライセンス",
         "url": "https://github.com/krishhgg/Insomnia/blob/main/LICENSE"
       }
-    ]
+    ],
+    "environmentVersion": 1,
+    "requirementsStatus": "documented",
+    "presentation": {
+      "groups": [
+        {
+          "key": "requirements",
+          "label": "利用条件",
+          "rows": [
+            {
+              "label": "OS・CPU",
+              "value": "macOS 26以降／Apple Silicon（配布版はarm64専用）",
+              "key": "platform",
+              "scope": "basic",
+              "level": "required",
+              "status": "documented",
+              "group": "requirements",
+              "order": 0,
+              "stateLabel": "",
+              "scopeLabel": "",
+              "levelLabel": "必須"
+            },
+            {
+              "label": "導入条件",
+              "value": "インストール時に管理者権限が必要。",
+              "key": "installation",
+              "scope": "basic",
+              "level": "required",
+              "status": "documented",
+              "brief": "インストール時に管理者権限が必要",
+              "group": "requirements",
+              "order": 10,
+              "stateLabel": "",
+              "scopeLabel": "",
+              "levelLabel": "必須"
+            },
+            {
+              "key": "runtime",
+              "label": "実行環境",
+              "scope": "ソースビルド",
+              "level": "required",
+              "status": "documented",
+              "value": "ソースビルドはXcode・Swift 6.2以降",
+              "group": "requirements",
+              "order": 6,
+              "stateLabel": "",
+              "scopeLabel": "ソースビルド",
+              "levelLabel": "必須"
+            }
+          ]
+        },
+        {
+          "key": "licenses",
+          "label": "ライセンス",
+          "rows": [
+            {
+              "key": "license",
+              "label": "ライセンス",
+              "scope": "basic",
+              "level": "info",
+              "status": "documented",
+              "value": "MIT",
+              "group": "licenses",
+              "order": 22,
+              "stateLabel": "",
+              "scopeLabel": "",
+              "levelLabel": ""
+            }
+          ]
+        }
+      ],
+      "overview": {
+        "label": "利用条件",
+        "value": "OS・CPU：macOS 26以降／Apple Silicon（配布版はarm64専用） ／ 導入条件：インストール時に管理者権限が必要",
+        "lines": [
+          "OS・CPU：macOS 26以降／Apple Silicon（配布版はarm64専用）",
+          "導入条件：インストール時に管理者権限が必要"
+        ],
+        "remaining": 1
+      }
+    }
   },
   {
     "name": "ローカルモデル診断書 — ローカルLLMの性能・回答傾向評価ツール",
@@ -185,15 +657,70 @@ window.PROJECTS = [
     "environment": [
       {
         "label": "実行環境",
-        "value": "Python 3.10以降／requests・Pillow・matplotlib。採点用サーバーの自動取得先はWindows x64用で、他OSでの動作は未確認"
+        "value": "Python 3.10以降／requests・Pillow・matplotlib。採点用サーバーの自動取得先はWindows x64用で、他OSでの動作は未確認",
+        "key": "runtime",
+        "scope": "basic",
+        "level": "required",
+        "status": "documented",
+        "brief": "Python 3.10以降（採点サーバーの自動取得先はWindows x64用、他OS未確認）",
+        "group": "requirements",
+        "order": 6,
+        "stateLabel": "",
+        "scopeLabel": "",
+        "levelLabel": "必須"
       },
       {
-        "label": "接続・文脈長",
-        "value": "OpenAI互換APIのローカルLLM環境。コンテキスト長32,768トークン以上が必要"
+        "label": "接続条件",
+        "value": "OpenAI互換APIのローカルLLM環境。コンテキスト長32,768トークン以上が必要",
+        "key": "api",
+        "scope": "basic",
+        "level": "required",
+        "status": "documented",
+        "brief": "OpenAI互換APIのローカルLLM／32,768トークン以上",
+        "group": "requirements",
+        "order": 8,
+        "stateLabel": "",
+        "scopeLabel": "",
+        "levelLabel": "必須"
       },
       {
-        "label": "出力・追加取得",
-        "value": "HTML・JSON、ブラウザからPDF印刷。初回に採点用モデル約5.6GBとサーバーを取得"
+        "key": "download",
+        "label": "追加ダウンロード",
+        "scope": "初回利用",
+        "level": "required",
+        "status": "documented",
+        "value": "初回に採点用モデル約5.6GBとサーバーを取得",
+        "group": "requirements",
+        "order": 13,
+        "stateLabel": "",
+        "scopeLabel": "初回利用",
+        "levelLabel": "必須"
+      },
+      {
+        "label": "形式・出力",
+        "value": "HTML・JSON、ブラウザからPDF印刷。",
+        "key": "format",
+        "scope": "basic",
+        "level": "info",
+        "status": "documented",
+        "group": "specifications",
+        "order": 17,
+        "stateLabel": "",
+        "scopeLabel": "",
+        "levelLabel": ""
+      },
+      {
+        "key": "license",
+        "label": "ライセンス",
+        "scope": "basic",
+        "level": "info",
+        "status": "notSpecified",
+        "value": "リポジトリ全体のライセンス明示を確認できず",
+        "group": "licenses",
+        "order": 22,
+        "stateLabel": "記載なし",
+        "scopeLabel": "",
+        "levelLabel": ""
       }
     ],
     "category": "AI評価",
@@ -221,7 +748,113 @@ window.PROJECTS = [
         "label": "公式診断処理（HTML・JSON出力）",
         "url": "https://github.com/isichan-ai/local-model-diagnosis/blob/main/%E8%A8%BA%E6%96%AD.py"
       }
-    ]
+    ],
+    "related": [
+      {
+        "label": "APIで使うモデルを選びたい",
+        "url": "https://github.com/OpenRouterTeam/skills"
+      }
+    ],
+    "environmentVersion": 1,
+    "requirementsStatus": "documented",
+    "presentation": {
+      "groups": [
+        {
+          "key": "requirements",
+          "label": "利用条件",
+          "rows": [
+            {
+              "label": "実行環境",
+              "value": "Python 3.10以降／requests・Pillow・matplotlib。採点用サーバーの自動取得先はWindows x64用で、他OSでの動作は未確認",
+              "key": "runtime",
+              "scope": "basic",
+              "level": "required",
+              "status": "documented",
+              "brief": "Python 3.10以降（採点サーバーの自動取得先はWindows x64用、他OS未確認）",
+              "group": "requirements",
+              "order": 6,
+              "stateLabel": "",
+              "scopeLabel": "",
+              "levelLabel": "必須"
+            },
+            {
+              "label": "接続条件",
+              "value": "OpenAI互換APIのローカルLLM環境。コンテキスト長32,768トークン以上が必要",
+              "key": "api",
+              "scope": "basic",
+              "level": "required",
+              "status": "documented",
+              "brief": "OpenAI互換APIのローカルLLM／32,768トークン以上",
+              "group": "requirements",
+              "order": 8,
+              "stateLabel": "",
+              "scopeLabel": "",
+              "levelLabel": "必須"
+            },
+            {
+              "key": "download",
+              "label": "追加ダウンロード",
+              "scope": "初回利用",
+              "level": "required",
+              "status": "documented",
+              "value": "初回に採点用モデル約5.6GBとサーバーを取得",
+              "group": "requirements",
+              "order": 13,
+              "stateLabel": "",
+              "scopeLabel": "初回利用",
+              "levelLabel": "必須"
+            }
+          ]
+        },
+        {
+          "key": "specifications",
+          "label": "仕様・出力",
+          "rows": [
+            {
+              "label": "形式・出力",
+              "value": "HTML・JSON、ブラウザからPDF印刷。",
+              "key": "format",
+              "scope": "basic",
+              "level": "info",
+              "status": "documented",
+              "group": "specifications",
+              "order": 17,
+              "stateLabel": "",
+              "scopeLabel": "",
+              "levelLabel": ""
+            }
+          ]
+        },
+        {
+          "key": "licenses",
+          "label": "ライセンス",
+          "rows": [
+            {
+              "key": "license",
+              "label": "ライセンス",
+              "scope": "basic",
+              "level": "info",
+              "status": "notSpecified",
+              "value": "リポジトリ全体のライセンス明示を確認できず",
+              "group": "licenses",
+              "order": 22,
+              "stateLabel": "記載なし",
+              "scopeLabel": "",
+              "levelLabel": ""
+            }
+          ]
+        }
+      ],
+      "overview": {
+        "label": "利用条件",
+        "value": "実行環境：Python 3.10以降（採点サーバーの自動取得先はWindows x64用、他OS未確認） ／ 接続条件：OpenAI互換APIのローカルLLM／32,768トークン以上",
+        "lines": [
+          "実行環境：Python 3.10以降（採点サーバーの自動取得先はWindows x64用、他OS未確認）",
+          "接続条件：OpenAI互換APIのローカルLLM／32,768トークン以上"
+        ],
+        "remaining": 1
+      }
+    }
   },
   {
     "name": "rirekisho — LaTeX製の履歴書作成テンプレート",
@@ -233,11 +866,43 @@ window.PROJECTS = [
     "environment": [
       {
         "label": "必要ソフト",
-        "value": "Docker／Node.js・npmが利用できる環境。初回に依存パッケージとDockerイメージを取得"
+        "value": "Docker／Node.js・npmが利用できる環境。初回に依存パッケージとDockerイメージを取得",
+        "key": "dependencies",
+        "scope": "basic",
+        "level": "required",
+        "status": "documented",
+        "brief": "Docker／Node.js・npm",
+        "group": "requirements",
+        "order": 7,
+        "stateLabel": "",
+        "scopeLabel": "",
+        "levelLabel": "必須"
       },
       {
-        "label": "AI連携",
-        "value": "Claude Code用スキルを同梱。対話支援にはClaude Code本体と利用環境が必要"
+        "label": "AIツール",
+        "value": "Claude Code用スキルを同梱。対話支援にはClaude Code本体と利用環境が必要",
+        "key": "agent",
+        "scope": "対話支援",
+        "level": "required",
+        "status": "documented",
+        "group": "requirements",
+        "order": 5,
+        "stateLabel": "",
+        "scopeLabel": "対話支援",
+        "levelLabel": "必須"
+      },
+      {
+        "key": "license",
+        "label": "ライセンス",
+        "scope": "basic",
+        "level": "info",
+        "status": "documented",
+        "value": "MIT",
+        "group": "licenses",
+        "order": 22,
+        "stateLabel": "",
+        "scopeLabel": "",
+        "levelLabel": ""
       }
     ],
     "category": "文書・図解",
@@ -269,7 +934,73 @@ window.PROJECTS = [
         "label": "MITライセンス",
         "url": "https://github.com/jugesuke/rirekisho/blob/main/LICENSE"
       }
-    ]
+    ],
+    "environmentVersion": 1,
+    "requirementsStatus": "documented",
+    "presentation": {
+      "groups": [
+        {
+          "key": "requirements",
+          "label": "利用条件",
+          "rows": [
+            {
+              "label": "必要ソフト",
+              "value": "Docker／Node.js・npmが利用できる環境。初回に依存パッケージとDockerイメージを取得",
+              "key": "dependencies",
+              "scope": "basic",
+              "level": "required",
+              "status": "documented",
+              "brief": "Docker／Node.js・npm",
+              "group": "requirements",
+              "order": 7,
+              "stateLabel": "",
+              "scopeLabel": "",
+              "levelLabel": "必須"
+            },
+            {
+              "label": "AIツール",
+              "value": "Claude Code用スキルを同梱。対話支援にはClaude Code本体と利用環境が必要",
+              "key": "agent",
+              "scope": "対話支援",
+              "level": "required",
+              "status": "documented",
+              "group": "requirements",
+              "order": 5,
+              "stateLabel": "",
+              "scopeLabel": "対話支援",
+              "levelLabel": "必須"
+            }
+          ]
+        },
+        {
+          "key": "licenses",
+          "label": "ライセンス",
+          "rows": [
+            {
+              "key": "license",
+              "label": "ライセンス",
+              "scope": "basic",
+              "level": "info",
+              "status": "documented",
+              "value": "MIT",
+              "group": "licenses",
+              "order": 22,
+              "stateLabel": "",
+              "scopeLabel": "",
+              "levelLabel": ""
+            }
+          ]
+        }
+      ],
+      "overview": {
+        "label": "利用条件",
+        "value": "必要ソフト：Docker／Node.js・npm",
+        "lines": [
+          "必要ソフト：Docker／Node.js・npm"
+        ],
+        "remaining": 1
+      }
+    }
   },
   {
     "name": "Oh-my-mermaid — AI生成コードの構造可視化ツール",
@@ -278,16 +1009,56 @@ window.PROJECTS = [
     "description": "Oh-my-mermaidは、既存のソースコードをAIエージェントで解析し、ソフトウェアの内部構造を図・説明文にまとめる開発支援ツール。AIが生成したコードの理解や、初めて触れるプロジェクトの構成・依存関係の把握に使える。\nClaude CodeやCodexなどでスキャン用スキルを実行し、全体のアーキテクチャ、データフロー、外部サービスとの連携などをMermaid形式の図として生成する。複雑な要素は子要素へ再帰的に分けられ、専用のインタラクティブビューアで全体構成から個別のモジュールへ展開して確認できる。\n生成物はローカルの.ommディレクトリに保存され、図・説明に加えて背景、制約、懸念、TODO、メモを持てる。設計資料の作成や共有にも利用でき、日本語READMEと生成言語の設定を備える。TypeScript製でMITライセンス。\nクラウドサービスohmymermaid.comへの保存は任意。ログインしてプロジェクトを紐付け、生成した資料をアップロードできる。公式READMEでは保存時は非公開で、チームへの共有や一般公開も可能と説明されている。\nコードの解析には対応するAIコーディングツールが必要で、Oh-my-mermaid単独で解析するわけではない。図や説明の正確性は利用者が確認する。",
     "environment": [
       {
-        "label": "実行環境",
-        "value": "Node.js 18以降／npm"
+        "label": "AIツール",
+        "value": "Claude Code／Codex／Cursor／OpenClaw／Antigravity",
+        "key": "agent",
+        "scope": "basic",
+        "level": "required",
+        "status": "documented",
+        "group": "requirements",
+        "order": 5,
+        "stateLabel": "",
+        "scopeLabel": "",
+        "levelLabel": "必須"
       },
       {
-        "label": "対応AIツール",
-        "value": "Claude Code／Codex／Cursor／OpenClaw／Antigravity"
+        "label": "実行環境",
+        "value": "Node.js 18以降／npm",
+        "key": "runtime",
+        "scope": "basic",
+        "level": "required",
+        "status": "documented",
+        "group": "requirements",
+        "order": 6,
+        "stateLabel": "",
+        "scopeLabel": "",
+        "levelLabel": "必須"
       },
       {
         "label": "保存・共有",
-        "value": "ローカルの.omm／任意のクラウド保存。公式READMEでは初期状態は非公開"
+        "value": "ローカルの.omm／任意のクラウド保存。公式READMEでは初期状態は非公開",
+        "key": "storage",
+        "scope": "basic",
+        "level": "info",
+        "status": "documented",
+        "group": "specifications",
+        "order": 19,
+        "stateLabel": "",
+        "scopeLabel": "",
+        "levelLabel": ""
+      },
+      {
+        "key": "license",
+        "label": "ライセンス",
+        "scope": "basic",
+        "level": "info",
+        "status": "documented",
+        "value": "MIT",
+        "group": "licenses",
+        "order": 22,
+        "stateLabel": "",
+        "scopeLabel": "",
+        "levelLabel": ""
       }
     ],
     "category": "コード解析",
@@ -323,7 +1094,98 @@ window.PROJECTS = [
         "label": "MITライセンス",
         "url": "https://github.com/oh-my-mermaid/oh-my-mermaid/blob/main/LICENSE"
       }
-    ]
+    ],
+    "related": [
+      {
+        "label": "ソース非公開のアプリを調べたい",
+        "url": "https://github.com/morluto/rea"
+      }
+    ],
+    "environmentVersion": 1,
+    "requirementsStatus": "documented",
+    "presentation": {
+      "groups": [
+        {
+          "key": "requirements",
+          "label": "利用条件",
+          "rows": [
+            {
+              "label": "AIツール",
+              "value": "Claude Code／Codex／Cursor／OpenClaw／Antigravity",
+              "key": "agent",
+              "scope": "basic",
+              "level": "required",
+              "status": "documented",
+              "group": "requirements",
+              "order": 5,
+              "stateLabel": "",
+              "scopeLabel": "",
+              "levelLabel": "必須"
+            },
+            {
+              "label": "実行環境",
+              "value": "Node.js 18以降／npm",
+              "key": "runtime",
+              "scope": "basic",
+              "level": "required",
+              "status": "documented",
+              "group": "requirements",
+              "order": 6,
+              "stateLabel": "",
+              "scopeLabel": "",
+              "levelLabel": "必須"
+            }
+          ]
+        },
+        {
+          "key": "specifications",
+          "label": "仕様・出力",
+          "rows": [
+            {
+              "label": "保存・共有",
+              "value": "ローカルの.omm／任意のクラウド保存。公式READMEでは初期状態は非公開",
+              "key": "storage",
+              "scope": "basic",
+              "level": "info",
+              "status": "documented",
+              "group": "specifications",
+              "order": 19,
+              "stateLabel": "",
+              "scopeLabel": "",
+              "levelLabel": ""
+            }
+          ]
+        },
+        {
+          "key": "licenses",
+          "label": "ライセンス",
+          "rows": [
+            {
+              "key": "license",
+              "label": "ライセンス",
+              "scope": "basic",
+              "level": "info",
+              "status": "documented",
+              "value": "MIT",
+              "group": "licenses",
+              "order": 22,
+              "stateLabel": "",
+              "scopeLabel": "",
+              "levelLabel": ""
+            }
+          ]
+        }
+      ],
+      "overview": {
+        "label": "利用条件",
+        "value": "AIツール：Claude Code／Codex／Cursor／OpenClaw／Antigravity ／ 実行環境：Node.js 18以降／npm",
+        "lines": [
+          "AIツール：Claude Code／Codex／Cursor／OpenClaw／Antigravity",
+          "実行環境：Node.js 18以降／npm"
+        ],
+        "remaining": 0
+      }
+    }
   },
   {
     "name": "hayamimi（早耳）— CPUで動く多言語文字起こしツール",
@@ -333,19 +1195,108 @@ window.PROJECTS = [
     "environment": [
       {
         "label": "OS",
-        "value": "Windows 11で開発・検証。macOS／Linuxは動作想定・実機確認は未実施"
+        "value": "Windows 11で開発・検証。macOS／Linuxは動作想定・実機確認は未実施",
+        "key": "os",
+        "scope": "basic",
+        "level": "info",
+        "status": "documented",
+        "group": "requirements",
+        "order": 1,
+        "stateLabel": "",
+        "scopeLabel": "",
+        "levelLabel": ""
       },
       {
         "label": "必要ソフト",
-        "value": "Python 3.10以降／PATHに登録したffmpeg。GPU・クラウドAPIは不要"
+        "value": "Python 3.10以降／PATHに登録したffmpeg。",
+        "key": "dependencies",
+        "scope": "basic",
+        "level": "required",
+        "status": "documented",
+        "brief": "Python 3.10以降／ffmpeg",
+        "group": "requirements",
+        "order": 7,
+        "stateLabel": "",
+        "scopeLabel": "",
+        "levelLabel": "必須"
       },
       {
-        "label": "追加取得",
-        "value": "モデル約3.1GB。日本語・英語の最小構成は約1.1GB。追加オプションは別途取得"
+        "key": "gpuCloud",
+        "label": "GPU・クラウドAPI",
+        "value": "GPU・クラウドAPIは不要",
+        "scope": "basic",
+        "level": "unnecessary",
+        "status": "documented",
+        "group": "requirements",
+        "order": 15,
+        "stateLabel": "",
+        "scopeLabel": "",
+        "levelLabel": "不要"
       },
       {
-        "label": "メモリ",
-        "value": "公式READMEは通常構成で2GB未満と説明。モデル退避による常駐数制御あり"
+        "label": "追加ダウンロード",
+        "value": "モデル約3.1GB。日本語・英語の最小構成は約1.1GB。追加オプションは別途取得",
+        "key": "download",
+        "scope": "初回利用",
+        "level": "required",
+        "status": "documented",
+        "group": "requirements",
+        "order": 13,
+        "stateLabel": "",
+        "scopeLabel": "初回利用",
+        "levelLabel": "必須"
+      },
+      {
+        "label": "メモリ使用量",
+        "value": "公式READMEは通常構成で2GB未満と説明。モデル退避による常駐数制御あり",
+        "key": "memoryUsage",
+        "scope": "basic",
+        "level": "info",
+        "status": "documented",
+        "group": "specifications",
+        "order": 18,
+        "stateLabel": "",
+        "scopeLabel": "",
+        "levelLabel": ""
+      },
+      {
+        "key": "license",
+        "label": "ライセンス",
+        "scope": "取得するAIモデル",
+        "level": "info",
+        "status": "documented",
+        "value": "個別のライセンスが適用される",
+        "group": "licenses",
+        "order": 22,
+        "stateLabel": "",
+        "scopeLabel": "取得するAIモデル",
+        "levelLabel": ""
+      },
+      {
+        "key": "license",
+        "label": "ライセンス",
+        "scope": "日英翻訳用FuguMTモデル",
+        "level": "info",
+        "status": "documented",
+        "value": "CC BY-SA 4.0",
+        "group": "licenses",
+        "order": 22,
+        "stateLabel": "",
+        "scopeLabel": "日英翻訳用FuguMTモデル",
+        "levelLabel": ""
+      },
+      {
+        "key": "license",
+        "label": "ライセンス",
+        "scope": "本体コード",
+        "level": "info",
+        "status": "documented",
+        "value": "MIT",
+        "group": "licenses",
+        "order": 22,
+        "stateLabel": "",
+        "scopeLabel": "本体コード",
+        "levelLabel": ""
       }
     ],
     "category": "音声・字幕",
@@ -389,7 +1340,144 @@ window.PROJECTS = [
         "label": "モデル別ライセンス",
         "url": "https://github.com/oboroge0/hayamimi/blob/main/THIRD_PARTY_NOTICES.md"
       }
-    ]
+    ],
+    "environmentVersion": 1,
+    "requirementsStatus": "documented",
+    "presentation": {
+      "groups": [
+        {
+          "key": "requirements",
+          "label": "利用条件",
+          "rows": [
+            {
+              "label": "OS",
+              "value": "Windows 11で開発・検証。macOS／Linuxは動作想定・実機確認は未実施",
+              "key": "os",
+              "scope": "basic",
+              "level": "info",
+              "status": "documented",
+              "group": "requirements",
+              "order": 1,
+              "stateLabel": "",
+              "scopeLabel": "",
+              "levelLabel": ""
+            },
+            {
+              "label": "必要ソフト",
+              "value": "Python 3.10以降／PATHに登録したffmpeg。",
+              "key": "dependencies",
+              "scope": "basic",
+              "level": "required",
+              "status": "documented",
+              "brief": "Python 3.10以降／ffmpeg",
+              "group": "requirements",
+              "order": 7,
+              "stateLabel": "",
+              "scopeLabel": "",
+              "levelLabel": "必須"
+            },
+            {
+              "key": "gpuCloud",
+              "label": "GPU・クラウドAPI",
+              "value": "GPU・クラウドAPIは不要",
+              "scope": "basic",
+              "level": "unnecessary",
+              "status": "documented",
+              "group": "requirements",
+              "order": 15,
+              "stateLabel": "",
+              "scopeLabel": "",
+              "levelLabel": "不要"
+            },
+            {
+              "label": "追加ダウンロード",
+              "value": "モデル約3.1GB。日本語・英語の最小構成は約1.1GB。追加オプションは別途取得",
+              "key": "download",
+              "scope": "初回利用",
+              "level": "required",
+              "status": "documented",
+              "group": "requirements",
+              "order": 13,
+              "stateLabel": "",
+              "scopeLabel": "初回利用",
+              "levelLabel": "必須"
+            }
+          ]
+        },
+        {
+          "key": "specifications",
+          "label": "仕様・出力",
+          "rows": [
+            {
+              "label": "メモリ使用量",
+              "value": "公式READMEは通常構成で2GB未満と説明。モデル退避による常駐数制御あり",
+              "key": "memoryUsage",
+              "scope": "basic",
+              "level": "info",
+              "status": "documented",
+              "group": "specifications",
+              "order": 18,
+              "stateLabel": "",
+              "scopeLabel": "",
+              "levelLabel": ""
+            }
+          ]
+        },
+        {
+          "key": "licenses",
+          "label": "ライセンス",
+          "rows": [
+            {
+              "key": "license",
+              "label": "ライセンス",
+              "scope": "取得するAIモデル",
+              "level": "info",
+              "status": "documented",
+              "value": "個別のライセンスが適用される",
+              "group": "licenses",
+              "order": 22,
+              "stateLabel": "",
+              "scopeLabel": "取得するAIモデル",
+              "levelLabel": ""
+            },
+            {
+              "key": "license",
+              "label": "ライセンス",
+              "scope": "日英翻訳用FuguMTモデル",
+              "level": "info",
+              "status": "documented",
+              "value": "CC BY-SA 4.0",
+              "group": "licenses",
+              "order": 22,
+              "stateLabel": "",
+              "scopeLabel": "日英翻訳用FuguMTモデル",
+              "levelLabel": ""
+            },
+            {
+              "key": "license",
+              "label": "ライセンス",
+              "scope": "本体コード",
+              "level": "info",
+              "status": "documented",
+              "value": "MIT",
+              "group": "licenses",
+              "order": 22,
+              "stateLabel": "",
+              "scopeLabel": "本体コード",
+              "levelLabel": ""
+            }
+          ]
+        }
+      ],
+      "overview": {
+        "label": "利用条件",
+        "value": "必要ソフト：Python 3.10以降／ffmpeg",
+        "lines": [
+          "必要ソフト：Python 3.10以降／ffmpeg"
+        ],
+        "remaining": 3
+      }
+    }
   },
   {
     "name": "Answer me with HTML — AIの回答を図解付きHTMLに変換するツール",
@@ -398,16 +1486,56 @@ window.PROJECTS = [
     "description": "Answer me with HTMLは、AIエージェントの回答を、文章と図表を組み合わせた見やすいHTMLページにするスキル。複雑な技術解説や比較資料を、フローチャート・シーケンス図・比較表などで整理できる。\nコードベースの構成把握や学習資料の作成に使え、ページ上のコメントや選択肢への回答をまとめてAIへ返信できる。図の段階的な表示とナレーションを組み合わせた解説動画も作成が可能。\nAIがMarkdownの原稿を作り、同梱のCLIがHTMLのレイアウトや図の描画を担当し、AIがCSSやSVGを一から書く量を減らせる。標準の出力は単一HTMLでオフライン閲覧・共有が可能だが、外部画像を使う場合は接続が必要。MITライセンス。",
     "environment": [
       {
+        "label": "AIツール",
+        "value": "Claude Code／Codex／Cursor／OpenCode／Piなど",
+        "key": "agent",
+        "scope": "basic",
+        "level": "required",
+        "status": "documented",
+        "group": "requirements",
+        "order": 5,
+        "stateLabel": "",
+        "scopeLabel": "",
+        "levelLabel": "必須"
+      },
+      {
         "label": "実行環境",
-        "value": "Node.js 20以降"
+        "value": "Node.js 20以降",
+        "key": "runtime",
+        "scope": "basic",
+        "level": "required",
+        "status": "documented",
+        "group": "requirements",
+        "order": 6,
+        "stateLabel": "",
+        "scopeLabel": "",
+        "levelLabel": "必須"
       },
       {
-        "label": "対応AIツール",
-        "value": "Claude Code／Codex／Cursor／OpenCode／Piなど"
+        "label": "必要ソフト",
+        "value": "Chrome・Node.js 22以降。MP4出力には追加でffmpegが必要",
+        "key": "dependencies",
+        "scope": "動画書き出し",
+        "level": "required",
+        "status": "documented",
+        "group": "requirements",
+        "order": 7,
+        "stateLabel": "",
+        "scopeLabel": "動画書き出し",
+        "levelLabel": "必須"
       },
       {
-        "label": "動画書き出し時",
-        "value": "Chrome・Node.js 22以降。MP4出力には追加でffmpegが必要"
+        "key": "license",
+        "label": "ライセンス",
+        "scope": "basic",
+        "level": "info",
+        "status": "documented",
+        "value": "MIT",
+        "group": "licenses",
+        "order": 22,
+        "stateLabel": "",
+        "scopeLabel": "",
+        "levelLabel": ""
       }
     ],
     "category": "文書・図解",
@@ -447,7 +1575,96 @@ window.PROJECTS = [
         "label": "MITライセンス",
         "url": "https://github.com/QingYunA/answer-me-with-html/blob/main/LICENSE"
       }
-    ]
+    ],
+    "related": [
+      {
+        "label": "図を独立した資料として作りたい",
+        "url": "https://github.com/cathrynlavery/diagram-design"
+      },
+      {
+        "label": "説明文の表現を整えたい",
+        "url": "https://github.com/nanaism/yomiyasu"
+      }
+    ],
+    "environmentVersion": 1,
+    "requirementsStatus": "documented",
+    "presentation": {
+      "groups": [
+        {
+          "key": "requirements",
+          "label": "利用条件",
+          "rows": [
+            {
+              "label": "AIツール",
+              "value": "Claude Code／Codex／Cursor／OpenCode／Piなど",
+              "key": "agent",
+              "scope": "basic",
+              "level": "required",
+              "status": "documented",
+              "group": "requirements",
+              "order": 5,
+              "stateLabel": "",
+              "scopeLabel": "",
+              "levelLabel": "必須"
+            },
+            {
+              "label": "実行環境",
+              "value": "Node.js 20以降",
+              "key": "runtime",
+              "scope": "basic",
+              "level": "required",
+              "status": "documented",
+              "group": "requirements",
+              "order": 6,
+              "stateLabel": "",
+              "scopeLabel": "",
+              "levelLabel": "必須"
+            },
+            {
+              "label": "必要ソフト",
+              "value": "Chrome・Node.js 22以降。MP4出力には追加でffmpegが必要",
+              "key": "dependencies",
+              "scope": "動画書き出し",
+              "level": "required",
+              "status": "documented",
+              "group": "requirements",
+              "order": 7,
+              "stateLabel": "",
+              "scopeLabel": "動画書き出し",
+              "levelLabel": "必須"
+            }
+          ]
+        },
+        {
+          "key": "licenses",
+          "label": "ライセンス",
+          "rows": [
+            {
+              "key": "license",
+              "label": "ライセンス",
+              "scope": "basic",
+              "level": "info",
+              "status": "documented",
+              "value": "MIT",
+              "group": "licenses",
+              "order": 22,
+              "stateLabel": "",
+              "scopeLabel": "",
+              "levelLabel": ""
+            }
+          ]
+        }
+      ],
+      "overview": {
+        "label": "利用条件",
+        "value": "AIツール：Claude Code／Codex／Cursor／OpenCode／Piなど ／ 実行環境：Node.js 20以降",
+        "lines": [
+          "AIツール：Claude Code／Codex／Cursor／OpenCode／Piなど",
+          "実行環境：Node.js 20以降"
+        ],
+        "remaining": 1
+      }
+    }
   },
   {
     "name": "Awesome DESIGN.md — AIのUI制作に使うWebデザイン資料集",
@@ -456,16 +1673,56 @@ window.PROJECTS = [
     "description": "Awesome DESIGN.mdは、公開Webサイトの配色・フォント・余白・レイアウトなどを分析し、AIによるUI制作の指針としてまとめた資料集。Apple、Spotify、Notion、Linear、Stripeなど84件を収録している。\n使いたいサイトのDESIGN.mdをプロジェクトに配置し、CodexやClaude Codeなどに参照するよう指示して利用する。ボタンやカードの状態、レスポンシブ設計も記載されており、参考サイトに近いUIの制作や、複数ページの見た目を揃える際に使える。Markdownを直接編集して、自分のプロジェクト向けに調整することも可能。\n各企業の公式ガイドラインではなく、公開サイトの分析に基づく資料。元サイトの更新や使用するAI・指示によって生成結果は異なる。READMEに記載されたHTMLプレビューは、確認時点のリポジトリには見当たらなかった。資料はMITライセンスだが、元サイトの商標・ロゴ・独自フォントなどの利用条件は別途確認が必要。",
     "environment": [
       {
-        "label": "資料形式",
-        "value": "Markdown（DESIGN.md）"
+        "label": "形式・出力",
+        "value": "Markdown（DESIGN.md）",
+        "key": "format",
+        "scope": "basic",
+        "level": "info",
+        "status": "documented",
+        "group": "specifications",
+        "order": 17,
+        "stateLabel": "",
+        "scopeLabel": "",
+        "levelLabel": ""
       },
       {
-        "label": "利用方法",
-        "value": "プロジェクトに配置し、AIに参照を指示"
+        "label": "参照方法",
+        "value": "プロジェクトに配置し、AIに参照を指示",
+        "key": "usage",
+        "scope": "basic",
+        "level": "info",
+        "status": "documented",
+        "group": "usage",
+        "order": 20,
+        "stateLabel": "",
+        "scopeLabel": "",
+        "levelLabel": ""
       },
       {
         "label": "編集方法",
-        "value": "テキストエディターで直接編集可能"
+        "value": "テキストエディターで直接編集可能",
+        "key": "editing",
+        "scope": "basic",
+        "level": "info",
+        "status": "documented",
+        "group": "usage",
+        "order": 21,
+        "stateLabel": "",
+        "scopeLabel": "",
+        "levelLabel": ""
+      },
+      {
+        "key": "license",
+        "label": "ライセンス",
+        "scope": "basic",
+        "level": "info",
+        "status": "documented",
+        "value": "MIT",
+        "group": "licenses",
+        "order": 22,
+        "stateLabel": "",
+        "scopeLabel": "",
+        "levelLabel": ""
       }
     ],
     "category": "Webデザイン",
@@ -503,7 +1760,97 @@ window.PROJECTS = [
         "url": "https://getdesign.md/"
       }
     ],
-    "environmentLabel": "資料形式・利用方法"
+    "related": [
+      {
+        "label": "サイトと配色を揃えた図を作りたい",
+        "url": "https://github.com/cathrynlavery/diagram-design"
+      }
+    ],
+    "environmentVersion": 1,
+    "requirementsStatus": "notApplicable",
+    "presentation": {
+      "groups": [
+        {
+          "key": "specifications",
+          "label": "仕様・出力",
+          "rows": [
+            {
+              "label": "形式・出力",
+              "value": "Markdown（DESIGN.md）",
+              "key": "format",
+              "scope": "basic",
+              "level": "info",
+              "status": "documented",
+              "group": "specifications",
+              "order": 17,
+              "stateLabel": "",
+              "scopeLabel": "",
+              "levelLabel": ""
+            }
+          ]
+        },
+        {
+          "key": "usage",
+          "label": "利用方法",
+          "rows": [
+            {
+              "label": "参照方法",
+              "value": "プロジェクトに配置し、AIに参照を指示",
+              "key": "usage",
+              "scope": "basic",
+              "level": "info",
+              "status": "documented",
+              "group": "usage",
+              "order": 20,
+              "stateLabel": "",
+              "scopeLabel": "",
+              "levelLabel": ""
+            },
+            {
+              "label": "編集方法",
+              "value": "テキストエディターで直接編集可能",
+              "key": "editing",
+              "scope": "basic",
+              "level": "info",
+              "status": "documented",
+              "group": "usage",
+              "order": 21,
+              "stateLabel": "",
+              "scopeLabel": "",
+              "levelLabel": ""
+            }
+          ]
+        },
+        {
+          "key": "licenses",
+          "label": "ライセンス",
+          "rows": [
+            {
+              "key": "license",
+              "label": "ライセンス",
+              "scope": "basic",
+              "level": "info",
+              "status": "documented",
+              "value": "MIT",
+              "group": "licenses",
+              "order": 22,
+              "stateLabel": "",
+              "scopeLabel": "",
+              "levelLabel": ""
+            }
+          ]
+        }
+      ],
+      "overview": {
+        "label": "利用方法",
+        "value": "参照方法：プロジェクトに配置し、AIに参照を指示 ／ 編集方法：テキストエディターで直接編集可能",
+        "lines": [
+          "参照方法：プロジェクトに配置し、AIに参照を指示",
+          "編集方法：テキストエディターで直接編集可能"
+        ],
+        "remaining": 0
+      }
+    }
   },
   {
     "name": "Claude-BugHunter — AIによる脆弱性調査を支援するスキル集",
@@ -513,15 +1860,81 @@ window.PROJECTS = [
     "environment": [
       {
         "label": "OS",
-        "value": "macOS／Linux／Windows"
+        "value": "macOS／Linux／Windows",
+        "key": "os",
+        "scope": "basic",
+        "level": "required",
+        "status": "documented",
+        "group": "requirements",
+        "order": 1,
+        "stateLabel": "",
+        "scopeLabel": "",
+        "levelLabel": "必須"
       },
       {
-        "label": "AIエージェント",
-        "value": "Claude Code／Codex CLI／OpenCodeなど"
+        "label": "AIツール",
+        "value": "Claude Code／Codex CLI／OpenCodeなど",
+        "key": "agent",
+        "scope": "basic",
+        "level": "required",
+        "status": "documented",
+        "group": "requirements",
+        "order": 5,
+        "stateLabel": "",
+        "scopeLabel": "",
+        "levelLabel": "必須"
       },
       {
-        "label": "追加ツール",
-        "value": "Burp連携にはBurp SuiteとMCP Server拡張。cbh CLIにはPython 3.9以降"
+        "label": "必要ソフト",
+        "value": "Burp連携にはBurp SuiteとMCP Server拡張。",
+        "key": "dependencies",
+        "scope": "Burp連携",
+        "level": "required",
+        "status": "documented",
+        "group": "requirements",
+        "order": 7,
+        "stateLabel": "",
+        "scopeLabel": "Burp連携",
+        "levelLabel": "必須"
+      },
+      {
+        "key": "runtime",
+        "label": "実行環境",
+        "value": "cbh CLIにはPython 3.9以降",
+        "scope": "cbh CLI",
+        "level": "required",
+        "status": "documented",
+        "group": "requirements",
+        "order": 6,
+        "stateLabel": "",
+        "scopeLabel": "cbh CLI",
+        "levelLabel": "必須"
+      },
+      {
+        "key": "license",
+        "label": "ライセンス",
+        "scope": "コード",
+        "level": "info",
+        "status": "documented",
+        "value": "MIT",
+        "group": "licenses",
+        "order": 22,
+        "stateLabel": "",
+        "scopeLabel": "コード",
+        "levelLabel": ""
+      },
+      {
+        "key": "license",
+        "label": "ライセンス",
+        "scope": "スキル内容・ドキュメント",
+        "level": "info",
+        "status": "documented",
+        "value": "CC BY 4.0",
+        "group": "licenses",
+        "order": 22,
+        "stateLabel": "",
+        "scopeLabel": "スキル内容・ドキュメント",
+        "levelLabel": ""
       }
     ],
     "category": "セキュリティ",
@@ -572,7 +1985,112 @@ window.PROJECTS = [
         "label": "公式サイト",
         "url": "https://elementalsouls.github.io/Claude-BugHunter/"
       }
-    ]
+    ],
+    "environmentVersion": 1,
+    "requirementsStatus": "documented",
+    "presentation": {
+      "groups": [
+        {
+          "key": "requirements",
+          "label": "利用条件",
+          "rows": [
+            {
+              "label": "OS",
+              "value": "macOS／Linux／Windows",
+              "key": "os",
+              "scope": "basic",
+              "level": "required",
+              "status": "documented",
+              "group": "requirements",
+              "order": 1,
+              "stateLabel": "",
+              "scopeLabel": "",
+              "levelLabel": "必須"
+            },
+            {
+              "label": "AIツール",
+              "value": "Claude Code／Codex CLI／OpenCodeなど",
+              "key": "agent",
+              "scope": "basic",
+              "level": "required",
+              "status": "documented",
+              "group": "requirements",
+              "order": 5,
+              "stateLabel": "",
+              "scopeLabel": "",
+              "levelLabel": "必須"
+            },
+            {
+              "label": "必要ソフト",
+              "value": "Burp連携にはBurp SuiteとMCP Server拡張。",
+              "key": "dependencies",
+              "scope": "Burp連携",
+              "level": "required",
+              "status": "documented",
+              "group": "requirements",
+              "order": 7,
+              "stateLabel": "",
+              "scopeLabel": "Burp連携",
+              "levelLabel": "必須"
+            },
+            {
+              "key": "runtime",
+              "label": "実行環境",
+              "value": "cbh CLIにはPython 3.9以降",
+              "scope": "cbh CLI",
+              "level": "required",
+              "status": "documented",
+              "group": "requirements",
+              "order": 6,
+              "stateLabel": "",
+              "scopeLabel": "cbh CLI",
+              "levelLabel": "必須"
+            }
+          ]
+        },
+        {
+          "key": "licenses",
+          "label": "ライセンス",
+          "rows": [
+            {
+              "key": "license",
+              "label": "ライセンス",
+              "scope": "コード",
+              "level": "info",
+              "status": "documented",
+              "value": "MIT",
+              "group": "licenses",
+              "order": 22,
+              "stateLabel": "",
+              "scopeLabel": "コード",
+              "levelLabel": ""
+            },
+            {
+              "key": "license",
+              "label": "ライセンス",
+              "scope": "スキル内容・ドキュメント",
+              "level": "info",
+              "status": "documented",
+              "value": "CC BY 4.0",
+              "group": "licenses",
+              "order": 22,
+              "stateLabel": "",
+              "scopeLabel": "スキル内容・ドキュメント",
+              "levelLabel": ""
+            }
+          ]
+        }
+      ],
+      "overview": {
+        "label": "利用条件",
+        "value": "OS：macOS／Linux／Windows ／ AIツール：Claude Code／Codex CLI／OpenCodeなど",
+        "lines": [
+          "OS：macOS／Linux／Windows",
+          "AIツール：Claude Code／Codex CLI／OpenCodeなど"
+        ],
+        "remaining": 2
+      }
+    }
   },
   {
     "name": "Diagram Design — AIで図解を制作するスキル",
@@ -581,16 +2099,56 @@ window.PROJECTS = [
     "description": "Diagram Designは、Claude CodeやCodexなどのAIエージェントで図解を制作するスキル。システム構成図、フローチャート、ER図、シーケンス図、ガントチャート、散布図など45種類の図表形式を扱い、作りたい内容を自然言語で伝えるとHTMLとSVGで描画する。技術資料、研究発表、ブログ、プレゼンテーションの図に利用できる。\n既存サイトから配色やフォントを取得して図のデザインに反映できる。Mermaid・draw.io・Excalidrawの元データを読み込み、用途や詳細度に応じて描き直す機能も備える。ライト・ダークテーマや16:9のスライド向けサイズに対応し、ブラウザで閲覧できるHTMLのほか、SVG・PNGとして書き出せる。\n単独のGUI図表編集アプリではなく、修正はAIへの再指示やSVGの編集で行う。取り込み時には詳細度に応じて要素が統合・省略されるため、元データとの対応を確認する必要がある。初期設定のHTML・SVGはGoogle Fontsを取得するが、フォント参照を外してシステムフォントを使えば外部通信なしで閲覧できる。入力した内容は利用するAIの処理・データ管理方針に従う。MITライセンスで公開。",
     "environment": [
       {
-        "label": "AIエージェント",
-        "value": "Claude Code／Codex／Cursor／GitHub Copilotなど、Agent Skills対応環境"
+        "label": "AIツール",
+        "value": "Claude Code／Codex／Cursor／GitHub Copilotなど、Agent Skills対応環境",
+        "key": "agent",
+        "scope": "basic",
+        "level": "required",
+        "status": "documented",
+        "group": "requirements",
+        "order": 5,
+        "stateLabel": "",
+        "scopeLabel": "",
+        "levelLabel": "必須"
       },
       {
-        "label": "閲覧",
-        "value": "HTML・SVGを表示できるブラウザ。オフライン時はシステムフォントで表示"
+        "label": "必要ソフト",
+        "value": "Playwright・Chromiumの追加導入が必要",
+        "key": "dependencies",
+        "scope": "PNG書き出し",
+        "level": "required",
+        "status": "documented",
+        "group": "requirements",
+        "order": 7,
+        "stateLabel": "",
+        "scopeLabel": "PNG書き出し",
+        "levelLabel": "必須"
       },
       {
-        "label": "PNG書き出し",
-        "value": "Playwright・Chromiumの追加導入が必要"
+        "label": "ブラウザ",
+        "value": "HTML・SVGを表示できるブラウザ。オフライン時はシステムフォントで表示",
+        "key": "browser",
+        "scope": "図の閲覧",
+        "level": "required",
+        "status": "documented",
+        "group": "requirements",
+        "order": 3,
+        "stateLabel": "",
+        "scopeLabel": "図の閲覧",
+        "levelLabel": "必須"
+      },
+      {
+        "key": "license",
+        "label": "ライセンス",
+        "scope": "basic",
+        "level": "info",
+        "status": "documented",
+        "value": "MIT",
+        "group": "licenses",
+        "order": 22,
+        "stateLabel": "",
+        "scopeLabel": "",
+        "levelLabel": ""
       }
     ],
     "category": "文書・図解",
@@ -629,7 +2187,95 @@ window.PROJECTS = [
         "label": "MITライセンス",
         "url": "https://github.com/cathrynlavery/diagram-design/blob/main/LICENSE"
       }
-    ]
+    ],
+    "related": [
+      {
+        "label": "図を含む説明全体をHTMLにしたい",
+        "url": "https://github.com/QingYunA/answer-me-with-html"
+      },
+      {
+        "label": "図に添える説明文を推敲したい",
+        "url": "https://github.com/nanaism/yomiyasu"
+      }
+    ],
+    "environmentVersion": 1,
+    "requirementsStatus": "documented",
+    "presentation": {
+      "groups": [
+        {
+          "key": "requirements",
+          "label": "利用条件",
+          "rows": [
+            {
+              "label": "AIツール",
+              "value": "Claude Code／Codex／Cursor／GitHub Copilotなど、Agent Skills対応環境",
+              "key": "agent",
+              "scope": "basic",
+              "level": "required",
+              "status": "documented",
+              "group": "requirements",
+              "order": 5,
+              "stateLabel": "",
+              "scopeLabel": "",
+              "levelLabel": "必須"
+            },
+            {
+              "label": "必要ソフト",
+              "value": "Playwright・Chromiumの追加導入が必要",
+              "key": "dependencies",
+              "scope": "PNG書き出し",
+              "level": "required",
+              "status": "documented",
+              "group": "requirements",
+              "order": 7,
+              "stateLabel": "",
+              "scopeLabel": "PNG書き出し",
+              "levelLabel": "必須"
+            },
+            {
+              "label": "ブラウザ",
+              "value": "HTML・SVGを表示できるブラウザ。オフライン時はシステムフォントで表示",
+              "key": "browser",
+              "scope": "図の閲覧",
+              "level": "required",
+              "status": "documented",
+              "group": "requirements",
+              "order": 3,
+              "stateLabel": "",
+              "scopeLabel": "図の閲覧",
+              "levelLabel": "必須"
+            }
+          ]
+        },
+        {
+          "key": "licenses",
+          "label": "ライセンス",
+          "rows": [
+            {
+              "key": "license",
+              "label": "ライセンス",
+              "scope": "basic",
+              "level": "info",
+              "status": "documented",
+              "value": "MIT",
+              "group": "licenses",
+              "order": 22,
+              "stateLabel": "",
+              "scopeLabel": "",
+              "levelLabel": ""
+            }
+          ]
+        }
+      ],
+      "overview": {
+        "label": "利用条件",
+        "value": "AIツール：Claude Code／Codex／Cursor／GitHub Copilotなど、Agent Skills対応環境",
+        "lines": [
+          "AIツール：Claude Code／Codex／Cursor／GitHub Copilotなど、Agent Skills対応環境"
+        ],
+        "remaining": 2
+      }
+    }
   },
   {
     "name": "OpenRouter Skills — AIモデルの選定・API開発を支援するスキル集",
@@ -638,16 +2284,70 @@ window.PROJECTS = [
     "description": "OpenRouter Skillsは、複数のAIモデルを統一APIで利用できるOpenRouterの公式エージェントスキル集。18種類のスキルを収録し、モデルの料金・コンテキスト長・提供事業者の比較、公開ベンチマークの参照、APIを使った実装を支援する。Claude CodeやCodexなどに導入し、会話の内容に応じて必要な知識や手順を参照させる。\nテキスト生成やツール呼び出しに加え、画像生成・編集、文字起こし、音声合成、動画生成のAPI利用も扱う。TypeScriptによるターミナルUI付きエージェントや、APIサーバーなどに組み込むエージェントのひな形も生成できる。モデル別の費用、リクエスト数、トークン使用量、応答速度を調べるスキルもあり、モデル選定から実装、運用時の利用状況確認までに使える。\nスキル自体がAIモデルを提供するわけではなく、実際の呼び出しはOpenRouter経由で行う。モデルや機能によって料金・利用条件が異なり、価格や提供状況も変動する。付属スクリプトにはAPIキーの設定が必要で、利用状況の分析には通常のキーではなく管理用キーを使う。追加環境はスキルごとに異なる。リポジトリ全体のライセンス表記は確認できなかった。",
     "environment": [
       {
-        "label": "AIエージェント",
-        "value": "Claude Code／Codex／Cursor／OpenCode／Piなど"
+        "label": "AIツール",
+        "value": "Claude Code／Codex／Cursor／OpenCode／Piなど",
+        "key": "agent",
+        "scope": "basic",
+        "level": "required",
+        "status": "documented",
+        "group": "requirements",
+        "order": 5,
+        "stateLabel": "",
+        "scopeLabel": "",
+        "levelLabel": "必須"
       },
       {
         "label": "認証",
-        "value": "OpenRouter APIキー。利用状況の分析には管理用キー"
+        "value": "OpenRouter APIキー。",
+        "key": "auth",
+        "scope": "basic",
+        "level": "required",
+        "status": "documented",
+        "brief": "OpenRouter APIキー",
+        "group": "requirements",
+        "order": 9,
+        "stateLabel": "",
+        "scopeLabel": "",
+        "levelLabel": "必須"
       },
       {
-        "label": "追加環境",
-        "value": "使用するスキルに応じてBunなどの実行環境が必要"
+        "label": "実行環境",
+        "value": "使用するスキルに応じてBunなどの実行環境が必要",
+        "key": "runtime",
+        "scope": "使用するスキルに応じた追加環境",
+        "level": "required",
+        "status": "documented",
+        "group": "requirements",
+        "order": 6,
+        "stateLabel": "",
+        "scopeLabel": "使用するスキルに応じた追加環境",
+        "levelLabel": "必須"
+      },
+      {
+        "key": "auth",
+        "label": "認証",
+        "scope": "利用状況の分析",
+        "level": "required",
+        "status": "documented",
+        "value": "利用状況の分析には管理用キー",
+        "group": "requirements",
+        "order": 9,
+        "stateLabel": "",
+        "scopeLabel": "利用状況の分析",
+        "levelLabel": "必須"
+      },
+      {
+        "key": "license",
+        "label": "ライセンス",
+        "scope": "basic",
+        "level": "info",
+        "status": "notSpecified",
+        "value": "リポジトリ全体のライセンス明示を確認できず",
+        "group": "licenses",
+        "order": 22,
+        "stateLabel": "記載なし",
+        "scopeLabel": "",
+        "levelLabel": ""
       }
     ],
     "category": "AI開発",
@@ -695,7 +2395,106 @@ window.PROJECTS = [
         "label": "モデル一覧",
         "url": "https://openrouter.ai/models"
       }
-    ]
+    ],
+    "related": [
+      {
+        "label": "手元で動かすLLMを評価したい",
+        "url": "https://github.com/isichan-ai/local-model-diagnosis"
+      }
+    ],
+    "environmentVersion": 1,
+    "requirementsStatus": "documented",
+    "presentation": {
+      "groups": [
+        {
+          "key": "requirements",
+          "label": "利用条件",
+          "rows": [
+            {
+              "label": "AIツール",
+              "value": "Claude Code／Codex／Cursor／OpenCode／Piなど",
+              "key": "agent",
+              "scope": "basic",
+              "level": "required",
+              "status": "documented",
+              "group": "requirements",
+              "order": 5,
+              "stateLabel": "",
+              "scopeLabel": "",
+              "levelLabel": "必須"
+            },
+            {
+              "label": "認証",
+              "value": "OpenRouter APIキー。",
+              "key": "auth",
+              "scope": "basic",
+              "level": "required",
+              "status": "documented",
+              "brief": "OpenRouter APIキー",
+              "group": "requirements",
+              "order": 9,
+              "stateLabel": "",
+              "scopeLabel": "",
+              "levelLabel": "必須"
+            },
+            {
+              "label": "実行環境",
+              "value": "使用するスキルに応じてBunなどの実行環境が必要",
+              "key": "runtime",
+              "scope": "使用するスキルに応じた追加環境",
+              "level": "required",
+              "status": "documented",
+              "group": "requirements",
+              "order": 6,
+              "stateLabel": "",
+              "scopeLabel": "使用するスキルに応じた追加環境",
+              "levelLabel": "必須"
+            },
+            {
+              "key": "auth",
+              "label": "認証",
+              "scope": "利用状況の分析",
+              "level": "required",
+              "status": "documented",
+              "value": "利用状況の分析には管理用キー",
+              "group": "requirements",
+              "order": 9,
+              "stateLabel": "",
+              "scopeLabel": "利用状況の分析",
+              "levelLabel": "必須"
+            }
+          ]
+        },
+        {
+          "key": "licenses",
+          "label": "ライセンス",
+          "rows": [
+            {
+              "key": "license",
+              "label": "ライセンス",
+              "scope": "basic",
+              "level": "info",
+              "status": "notSpecified",
+              "value": "リポジトリ全体のライセンス明示を確認できず",
+              "group": "licenses",
+              "order": 22,
+              "stateLabel": "記載なし",
+              "scopeLabel": "",
+              "levelLabel": ""
+            }
+          ]
+        }
+      ],
+      "overview": {
+        "label": "利用条件",
+        "value": "AIツール：Claude Code／Codex／Cursor／OpenCode／Piなど ／ 認証：OpenRouter APIキー",
+        "lines": [
+          "AIツール：Claude Code／Codex／Cursor／OpenCode／Piなど",
+          "認証：OpenRouter APIキー"
+        ],
+        "remaining": 2
+      }
+    }
   },
   {
     "name": "yomiyasu（よみやす）— AI生成の日本語を推敲するスキル",
@@ -704,12 +2503,43 @@ window.PROJECTS = [
     "description": "yomiyasu（よみやす）は、AIが生成した日本語を推敲するエージェントスキル。Claude CodeやCodex、Cursorなどに導入し、技術記事、仕様書、レポート、エッセイなどを整える。単語の置き換えにとどまらず、主語と述語、修飾語、条件や否定の関係まで確認する。\n元の主張・文体・言い切りの強さを尊重し、根拠のない情報を加えずに、不自然な比喩や不要な強調、文のつながりを見直す。技術記事・業務文書・エッセイに応じた指針があり、文章を渡して用途を指定できる。表現やMarkdownの書式を検査するyomiyasu_lint.pyと、推敲前後の語句・文末・構造の変化を確認するyomiyasu_diff.pyも付属する。\n検査ツールの指摘は見直し候補であり、文章の自然さや意味の保持を保証するものではない。AI製か人間製かを判定する機能もない。類似する校正スキルとの併用では指示が競合する場合がある。READMEで紹介された外部試験では、生成前にスキルを読ませる使い方で、情報の加筆が減った一方、文章が短くなり、読みやすさの評価も下がった。少数の文章をAIが採点した試験であり、すべての用途で改善するとは限らない。コードとドキュメントはMITライセンスで公開。",
     "environment": [
       {
-        "label": "AIエージェント",
-        "value": "Codex／Claude Code／Cursorなど"
+        "label": "AIツール",
+        "value": "Codex／Claude Code／Cursorなど",
+        "key": "agent",
+        "scope": "basic",
+        "level": "required",
+        "status": "documented",
+        "group": "requirements",
+        "order": 5,
+        "stateLabel": "",
+        "scopeLabel": "",
+        "levelLabel": "必須"
       },
       {
-        "label": "付属検査ツール",
-        "value": "Pythonで動作。標準ライブラリのみ使用"
+        "label": "実行環境",
+        "value": "Pythonで動作。標準ライブラリのみ使用",
+        "key": "runtime",
+        "scope": "付属検査ツール",
+        "level": "required",
+        "status": "documented",
+        "group": "requirements",
+        "order": 6,
+        "stateLabel": "",
+        "scopeLabel": "付属検査ツール",
+        "levelLabel": "必須"
+      },
+      {
+        "key": "license",
+        "label": "ライセンス",
+        "scope": "basic",
+        "level": "info",
+        "status": "documented",
+        "value": "MIT",
+        "group": "licenses",
+        "order": 22,
+        "stateLabel": "",
+        "scopeLabel": "",
+        "levelLabel": ""
       }
     ],
     "category": "文書・図解",
@@ -746,7 +2576,82 @@ window.PROJECTS = [
         "label": "開発者による解説記事",
         "url": "https://zenn.dev/algoartis/articles/0b1c731881b25c"
       }
-    ]
+    ],
+    "related": [
+      {
+        "label": "文章を図解付きHTMLで説明したい",
+        "url": "https://github.com/QingYunA/answer-me-with-html"
+      },
+      {
+        "label": "内容を図表で説明したい",
+        "url": "https://github.com/cathrynlavery/diagram-design"
+      }
+    ],
+    "environmentVersion": 1,
+    "requirementsStatus": "documented",
+    "presentation": {
+      "groups": [
+        {
+          "key": "requirements",
+          "label": "利用条件",
+          "rows": [
+            {
+              "label": "AIツール",
+              "value": "Codex／Claude Code／Cursorなど",
+              "key": "agent",
+              "scope": "basic",
+              "level": "required",
+              "status": "documented",
+              "group": "requirements",
+              "order": 5,
+              "stateLabel": "",
+              "scopeLabel": "",
+              "levelLabel": "必須"
+            },
+            {
+              "label": "実行環境",
+              "value": "Pythonで動作。標準ライブラリのみ使用",
+              "key": "runtime",
+              "scope": "付属検査ツール",
+              "level": "required",
+              "status": "documented",
+              "group": "requirements",
+              "order": 6,
+              "stateLabel": "",
+              "scopeLabel": "付属検査ツール",
+              "levelLabel": "必須"
+            }
+          ]
+        },
+        {
+          "key": "licenses",
+          "label": "ライセンス",
+          "rows": [
+            {
+              "key": "license",
+              "label": "ライセンス",
+              "scope": "basic",
+              "level": "info",
+              "status": "documented",
+              "value": "MIT",
+              "group": "licenses",
+              "order": 22,
+              "stateLabel": "",
+              "scopeLabel": "",
+              "levelLabel": ""
+            }
+          ]
+        }
+      ],
+      "overview": {
+        "label": "利用条件",
+        "value": "AIツール：Codex／Claude Code／Cursorなど",
+        "lines": [
+          "AIツール：Codex／Claude Code／Cursorなど"
+        ],
+        "remaining": 1
+      }
+    }
   },
   {
     "name": "ImageOptim-CLI — Macの画像最適化を自動化するツール",
@@ -756,15 +2661,70 @@ window.PROJECTS = [
     "environment": [
       {
         "label": "OS・CPU",
-        "value": "macOS／Apple Silicon・Intel"
+        "value": "macOS／Apple Silicon・Intel",
+        "key": "platform",
+        "scope": "basic",
+        "level": "required",
+        "status": "documented",
+        "group": "requirements",
+        "order": 0,
+        "stateLabel": "",
+        "scopeLabel": "",
+        "levelLabel": "必須"
       },
       {
-        "label": "導入",
-        "value": "Node.js・npm。Mac向けバイナリを配布"
+        "label": "必要ソフト",
+        "value": "使用するImageOptim／ImageAlpha／JPEGminiを個別に導入",
+        "key": "dependencies",
+        "scope": "basic",
+        "level": "required",
+        "status": "documented",
+        "brief": "使用するImageOptim／ImageAlpha／JPEGminiを個別に導入",
+        "group": "requirements",
+        "order": 7,
+        "stateLabel": "",
+        "scopeLabel": "",
+        "levelLabel": "必須"
       },
       {
-        "label": "連携アプリ",
-        "value": "使用するImageOptim／ImageAlpha／JPEGminiを個別に導入"
+        "key": "distribution",
+        "label": "配布版の条件",
+        "scope": "basic",
+        "level": "info",
+        "status": "documented",
+        "value": "Mac向けバイナリを配布",
+        "group": "requirements",
+        "order": 11,
+        "stateLabel": "",
+        "scopeLabel": "",
+        "levelLabel": ""
+      },
+      {
+        "label": "実行環境",
+        "value": "Node.js・npm。",
+        "key": "runtime",
+        "scope": "npmでの導入",
+        "level": "required",
+        "status": "documented",
+        "brief": "Node.js・npm",
+        "group": "requirements",
+        "order": 6,
+        "stateLabel": "",
+        "scopeLabel": "npmでの導入",
+        "levelLabel": "必須"
+      },
+      {
+        "key": "license",
+        "label": "ライセンス",
+        "scope": "basic",
+        "level": "info",
+        "status": "documented",
+        "value": "MIT",
+        "group": "licenses",
+        "order": 22,
+        "stateLabel": "",
+        "scopeLabel": "",
+        "levelLabel": ""
       }
     ],
     "category": "画像処理",
@@ -808,7 +2768,101 @@ window.PROJECTS = [
         "label": "ImageAlpha公式",
         "url": "https://pngmini.com/"
       }
-    ]
+    ],
+    "environmentVersion": 1,
+    "requirementsStatus": "documented",
+    "presentation": {
+      "groups": [
+        {
+          "key": "requirements",
+          "label": "利用条件",
+          "rows": [
+            {
+              "label": "OS・CPU",
+              "value": "macOS／Apple Silicon・Intel",
+              "key": "platform",
+              "scope": "basic",
+              "level": "required",
+              "status": "documented",
+              "group": "requirements",
+              "order": 0,
+              "stateLabel": "",
+              "scopeLabel": "",
+              "levelLabel": "必須"
+            },
+            {
+              "label": "必要ソフト",
+              "value": "使用するImageOptim／ImageAlpha／JPEGminiを個別に導入",
+              "key": "dependencies",
+              "scope": "basic",
+              "level": "required",
+              "status": "documented",
+              "brief": "使用するImageOptim／ImageAlpha／JPEGminiを個別に導入",
+              "group": "requirements",
+              "order": 7,
+              "stateLabel": "",
+              "scopeLabel": "",
+              "levelLabel": "必須"
+            },
+            {
+              "key": "distribution",
+              "label": "配布版の条件",
+              "scope": "basic",
+              "level": "info",
+              "status": "documented",
+              "value": "Mac向けバイナリを配布",
+              "group": "requirements",
+              "order": 11,
+              "stateLabel": "",
+              "scopeLabel": "",
+              "levelLabel": ""
+            },
+            {
+              "label": "実行環境",
+              "value": "Node.js・npm。",
+              "key": "runtime",
+              "scope": "npmでの導入",
+              "level": "required",
+              "status": "documented",
+              "brief": "Node.js・npm",
+              "group": "requirements",
+              "order": 6,
+              "stateLabel": "",
+              "scopeLabel": "npmでの導入",
+              "levelLabel": "必須"
+            }
+          ]
+        },
+        {
+          "key": "licenses",
+          "label": "ライセンス",
+          "rows": [
+            {
+              "key": "license",
+              "label": "ライセンス",
+              "scope": "basic",
+              "level": "info",
+              "status": "documented",
+              "value": "MIT",
+              "group": "licenses",
+              "order": 22,
+              "stateLabel": "",
+              "scopeLabel": "",
+              "levelLabel": ""
+            }
+          ]
+        }
+      ],
+      "overview": {
+        "label": "利用条件",
+        "value": "OS・CPU：macOS／Apple Silicon・Intel ／ 必要ソフト：使用するImageOptim／ImageAlpha／JPEGminiを個別に導入",
+        "lines": [
+          "OS・CPU：macOS／Apple Silicon・Intel",
+          "必要ソフト：使用するImageOptim／ImageAlpha／JPEGminiを個別に導入"
+        ],
+        "remaining": 2
+      }
+    }
   },
   {
     "name": "imozuru（いもづる）— 原文と引用をたどるAIリサーチスキル",
@@ -817,16 +2871,70 @@ window.PROJECTS = [
     "description": "imozuru（いもづる）は、Claude Codeで未知の分野を調査し、根拠となる原文を集めるリサーチスキル。最初に調査したい問いを整理し、専門用語、中心となる人物、情報が集まる場所を探す。そこから論文の参考文献・被引用文献、記事のリンク、著者の発信をたどる。論文だけでなく、ブログやYouTubeなどの個人の発信も対象にする。\n取得できたPDF・記事・動画字幕をローカルに保存し、主張ごとに原文のファイルと該当行を記録する。原文を要約せずに抜き書きを並べるHTMLレポートも作成でき、引用文が指定した原文の行と一致するかをスクリプトで照合する。調査記録と資料は既定で~/research/\u003c話題>/に保存する。見つけた情報源の新着をRSSで取得するモードも備える。\n原文との照合は、情報そのものの正しさを保証するものではなく、解釈や評価は利用者が行う。検索語は外部サービスへ送信されるため、機密情報や個人データを含む調査には使わない。有料・ログイン必須などで取得できない資料は、その旨とURLを記録する。収集資料は手元で読むための写しとして扱い、再配布しない。調査終了の基準には経験的な目安も含まれ、文献の網羅性は保証されない。スキル本体はMITライセンスで公開。",
     "environment": [
       {
-        "label": "基本環境",
-        "value": "Claude Code／Python 3.10以降。Python外部ライブラリは不要"
+        "key": "agent",
+        "label": "AIツール",
+        "scope": "basic",
+        "level": "required",
+        "status": "documented",
+        "value": "Claude Code",
+        "group": "requirements",
+        "order": 5,
+        "stateLabel": "",
+        "scopeLabel": "",
+        "levelLabel": "必須"
       },
       {
-        "label": "PDF取得後の処理",
-        "value": "本文抽出にpdftotext。画像PDFのOCRにはpdftoppmとtesseract"
+        "label": "実行環境",
+        "value": "Python 3.10以降。Python外部ライブラリは不要",
+        "key": "runtime",
+        "scope": "basic",
+        "level": "required",
+        "status": "documented",
+        "brief": "Python 3.10以降",
+        "group": "requirements",
+        "order": 6,
+        "stateLabel": "",
+        "scopeLabel": "",
+        "levelLabel": "必須"
       },
       {
-        "label": "YouTube字幕",
-        "value": "yt-dlpが必要"
+        "label": "必要ソフト",
+        "value": "本文抽出にpdftotext。画像PDFのOCRにはpdftoppmとtesseract",
+        "key": "dependencies",
+        "scope": "PDF本文抽出・OCR",
+        "level": "required",
+        "status": "documented",
+        "group": "requirements",
+        "order": 7,
+        "stateLabel": "",
+        "scopeLabel": "PDF本文抽出・OCR",
+        "levelLabel": "必須"
+      },
+      {
+        "label": "必要ソフト",
+        "value": "yt-dlpが必要",
+        "key": "dependencies",
+        "scope": "YouTube字幕取得",
+        "level": "required",
+        "status": "documented",
+        "group": "requirements",
+        "order": 7,
+        "stateLabel": "",
+        "scopeLabel": "YouTube字幕取得",
+        "levelLabel": "必須"
+      },
+      {
+        "key": "license",
+        "label": "ライセンス",
+        "scope": "basic",
+        "level": "info",
+        "status": "documented",
+        "value": "MIT",
+        "group": "licenses",
+        "order": 22,
+        "stateLabel": "",
+        "scopeLabel": "",
+        "levelLabel": ""
       }
     ],
     "category": "調査・情報収集",
@@ -866,30 +2974,168 @@ window.PROJECTS = [
         "label": "MITライセンス",
         "url": "https://github.com/MaryCache/imozuru/blob/main/LICENSE"
       }
-    ]
+    ],
+    "related": [
+      {
+        "label": "調査後に書いた日本語を推敲したい",
+        "url": "https://github.com/nanaism/yomiyasu"
+      },
+      {
+        "label": "調査内容を図で説明したい",
+        "url": "https://github.com/cathrynlavery/diagram-design"
+      }
+    ],
+    "environmentVersion": 1,
+    "requirementsStatus": "documented",
+    "presentation": {
+      "groups": [
+        {
+          "key": "requirements",
+          "label": "利用条件",
+          "rows": [
+            {
+              "key": "agent",
+              "label": "AIツール",
+              "scope": "basic",
+              "level": "required",
+              "status": "documented",
+              "value": "Claude Code",
+              "group": "requirements",
+              "order": 5,
+              "stateLabel": "",
+              "scopeLabel": "",
+              "levelLabel": "必須"
+            },
+            {
+              "label": "実行環境",
+              "value": "Python 3.10以降。Python外部ライブラリは不要",
+              "key": "runtime",
+              "scope": "basic",
+              "level": "required",
+              "status": "documented",
+              "brief": "Python 3.10以降",
+              "group": "requirements",
+              "order": 6,
+              "stateLabel": "",
+              "scopeLabel": "",
+              "levelLabel": "必須"
+            },
+            {
+              "label": "必要ソフト",
+              "value": "本文抽出にpdftotext。画像PDFのOCRにはpdftoppmとtesseract",
+              "key": "dependencies",
+              "scope": "PDF本文抽出・OCR",
+              "level": "required",
+              "status": "documented",
+              "group": "requirements",
+              "order": 7,
+              "stateLabel": "",
+              "scopeLabel": "PDF本文抽出・OCR",
+              "levelLabel": "必須"
+            },
+            {
+              "label": "必要ソフト",
+              "value": "yt-dlpが必要",
+              "key": "dependencies",
+              "scope": "YouTube字幕取得",
+              "level": "required",
+              "status": "documented",
+              "group": "requirements",
+              "order": 7,
+              "stateLabel": "",
+              "scopeLabel": "YouTube字幕取得",
+              "levelLabel": "必須"
+            }
+          ]
+        },
+        {
+          "key": "licenses",
+          "label": "ライセンス",
+          "rows": [
+            {
+              "key": "license",
+              "label": "ライセンス",
+              "scope": "basic",
+              "level": "info",
+              "status": "documented",
+              "value": "MIT",
+              "group": "licenses",
+              "order": 22,
+              "stateLabel": "",
+              "scopeLabel": "",
+              "levelLabel": ""
+            }
+          ]
+        }
+      ],
+      "overview": {
+        "label": "利用条件",
+        "value": "AIツール：Claude Code ／ 実行環境：Python 3.10以降",
+        "lines": [
+          "AIツール：Claude Code",
+          "実行環境：Python 3.10以降"
+        ],
+        "remaining": 2
+      }
+    }
   },
   {
     "name": "Ambient light for YouTube — 動画の周囲に光を広げるブラウザ拡張機能",
     "url": "https://github.com/WesselKroos/youtube-ambilight",
     "summary": "YouTube動画の色に合わせて周囲に光の効果を加え、映像が画面の外まで広がるように表示するブラウザ拡張機能。",
     "description": "Ambient light for YouTubeは、YouTube動画の周囲にアンビエントライト（間接照明のような光）を追加するブラウザ拡張機能。映像に合わせた光を動画プレーヤーの外側に表示し、視聴画面の演出を変えられる。\nChrome・Edge・Firefox・Opera向けに配布されており、各ブラウザの拡張機能ストアから導入できる。YouTubeの動画視聴時に、映像と周囲の背景がつながるような視覚効果を加えたい場合に使える。\n描画処理にはGPU性能が影響する。開発者はPassMark Video Card Benchmarkで1000点以上のGPUを推奨しており、それ未満でも動作するが、動画ページの動作が遅くなったり、映像が途切れたりする可能性がある。",
-    "environmentLabel": "利用条件",
     "environment": [
       {
-        "label": "対応ブラウザ",
-        "value": "Chrome・Edge・Firefox・Opera"
+        "label": "ブラウザ",
+        "value": "Chrome・Edge・Firefox・Opera",
+        "key": "browser",
+        "scope": "basic",
+        "level": "required",
+        "status": "documented",
+        "group": "requirements",
+        "order": 3,
+        "stateLabel": "",
+        "scopeLabel": "",
+        "levelLabel": "必須"
       },
       {
-        "label": "最低バージョン",
-        "value": "Chromium 80／Firefox 74"
+        "label": "ブラウザの最低版",
+        "value": "Chromium 80／Firefox 74",
+        "key": "browserVersion",
+        "scope": "basic",
+        "level": "required",
+        "status": "documented",
+        "group": "requirements",
+        "order": 4,
+        "stateLabel": "",
+        "scopeLabel": "",
+        "levelLabel": "必須"
       },
       {
-        "label": "推奨GPU性能",
-        "value": "PassMark 1000点以上"
+        "label": "GPU",
+        "value": "PassMark 1000点以上",
+        "key": "gpu",
+        "scope": "basic",
+        "level": "recommended",
+        "status": "documented",
+        "group": "requirements",
+        "order": 14,
+        "stateLabel": "",
+        "scopeLabel": "",
+        "levelLabel": "推奨"
       },
       {
         "label": "ライセンス",
-        "value": "MIT"
+        "value": "MIT",
+        "key": "license",
+        "scope": "basic",
+        "level": "info",
+        "status": "documented",
+        "group": "licenses",
+        "order": 22,
+        "stateLabel": "",
+        "scopeLabel": "",
+        "levelLabel": ""
       }
     ],
     "category": "動画・視聴",
@@ -919,6 +3165,85 @@ window.PROJECTS = [
         "label": "MITライセンス",
         "url": "https://github.com/WesselKroos/youtube-ambilight/blob/develop/LICENSE"
       }
-    ]
+    ],
+    "environmentVersion": 1,
+    "requirementsStatus": "documented",
+    "presentation": {
+      "groups": [
+        {
+          "key": "requirements",
+          "label": "利用条件",
+          "rows": [
+            {
+              "label": "ブラウザ",
+              "value": "Chrome・Edge・Firefox・Opera",
+              "key": "browser",
+              "scope": "basic",
+              "level": "required",
+              "status": "documented",
+              "group": "requirements",
+              "order": 3,
+              "stateLabel": "",
+              "scopeLabel": "",
+              "levelLabel": "必須"
+            },
+            {
+              "label": "ブラウザの最低版",
+              "value": "Chromium 80／Firefox 74",
+              "key": "browserVersion",
+              "scope": "basic",
+              "level": "required",
+              "status": "documented",
+              "group": "requirements",
+              "order": 4,
+              "stateLabel": "",
+              "scopeLabel": "",
+              "levelLabel": "必須"
+            },
+            {
+              "label": "GPU",
+              "value": "PassMark 1000点以上",
+              "key": "gpu",
+              "scope": "basic",
+              "level": "recommended",
+              "status": "documented",
+              "group": "requirements",
+              "order": 14,
+              "stateLabel": "",
+              "scopeLabel": "",
+              "levelLabel": "推奨"
+            }
+          ]
+        },
+        {
+          "key": "licenses",
+          "label": "ライセンス",
+          "rows": [
+            {
+              "label": "ライセンス",
+              "value": "MIT",
+              "key": "license",
+              "scope": "basic",
+              "level": "info",
+              "status": "documented",
+              "group": "licenses",
+              "order": 22,
+              "stateLabel": "",
+              "scopeLabel": "",
+              "levelLabel": ""
+            }
+          ]
+        }
+      ],
+      "overview": {
+        "label": "利用条件",
+        "value": "ブラウザ：Chrome・Edge・Firefox・Opera ／ ブラウザの最低版：Chromium 80／Firefox 74",
+        "lines": [
+          "ブラウザ：Chrome・Edge・Firefox・Opera",
+          "ブラウザの最低版：Chromium 80／Firefox 74"
+        ],
+        "remaining": 1
+      }
+    }
   }
 ];
