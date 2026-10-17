@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="description" content="気になったGitHubプロジェクトを、用途や利用条件とともに紹介。">
   <title>気になったGitHub — ph-cookie</title>
-  <link rel="stylesheet" href="../assets/collection.css?v=f32e034080eb">
+  <link rel="stylesheet" href="../assets/collection.css?v=aa5ba3bf111e">
   <script defer src="data.js?v=22a2d33045aa"></script>
-  <script defer src="../assets/projects.js?v=480c8471c91c"></script>
+  <script defer src="../assets/projects.js?v=5a2387fb8f4d"></script>
 </head>
 <body class="cookie-projects" data-concept="section">
   <svg class="filter-defs" aria-hidden="true" focusable="false"><defs><filter id="collection-grain"><feTurbulence type="fractalNoise" baseFrequency=".6" numOctaves="3" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter></defs></svg>
@@ -21,7 +21,7 @@
     </section>
     <div class="browse-toolbar">
       <div class="filter-state"><p id="count" role="status" hidden></p><span id="filter-summary"></span><button id="clear-filters" type="button" hidden>条件を解除 ×</button></div>
-      <button id="search-toggle" type="button" aria-expanded="false" aria-controls="search-panel" disabled>探す <span aria-hidden="true">⌕</span></button>
+      <div class="browse-actions"><button id="overview-toggle" type="button" aria-haspopup="dialog" disabled>全件 <svg class="browse-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 6h14M5 12h14M5 18h14"/></svg></button><button id="search-toggle" type="button" aria-expanded="false" aria-controls="search-panel" disabled>探す <svg class="browse-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.2 15.2 4.8 4.8"/></svg></button></div>
     </div>
     <section id="search-panel" class="tools" aria-label="プロジェクトを探す" hidden>
       <label for="search">キーワード<input id="search" type="search" placeholder="名前・用途から探す" autocomplete="off"></label>
@@ -41,6 +41,21 @@
     <div id="selected"></div><button id="compare" type="button" disabled>並べて確認 ↗</button>
   </aside>
   <div id="toast" class="toast" role="status"></div>
+  <dialog id="overview" aria-labelledby="overview-title">
+    <div class="dialog-head"><h2 id="overview-title">全件 <span id="overview-total"></span></h2><button class="close" type="button" aria-label="一覧を閉じる">×</button></div>
+    <div class="overview-body">
+      <div class="overview-tools">
+        <label>キーワード<input id="overview-search" type="search" placeholder="名前・用途から探す" autocomplete="off"></label>
+        <label>分類<select id="overview-category"><option value="">すべて</option></select></label>
+        <label>並び順<select id="overview-sort"><option value="new">追加順</option><option value="name">名前順</option><option value="stars">スター順</option></select></label>
+      </div>
+      <div class="overview-status"><span id="overview-count" role="status"></span><button id="overview-reset" type="button" hidden>全件表示</button></div>
+      <div class="overview-columns" aria-hidden="true"><span>名称 / 用途</span><span>分類</span><span>比較</span></div>
+      <ol id="overview-list" aria-label="プロジェクト一覧"></ol>
+      <p id="overview-empty" hidden>該当する項目がありません。</p>
+    </div>
+    <div class="overview-bottom"><span id="overview-selection" role="status"></span><button id="overview-compare" type="button" disabled>並べて確認 ↗</button></div>
+  </dialog>
   <dialog id="detail" aria-labelledby="detail-title">
     <div class="dialog-head"><span class="dialog-eyebrow"></span><button class="close" type="button" aria-label="詳細を閉じる">×</button></div>
     <h2 id="detail-title" class="detail-title"></h2><div class="dialog-body"></div>

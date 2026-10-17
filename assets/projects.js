@@ -216,11 +216,12 @@
   const relatedItems = (p, data) => (p.related || []).map(row => ({label: row.label, project: data.find(item => item.url === row.url)})).filter(row => row.project && row.project.url !== p.url).slice(0, 2);
   const overview = p => p.presentation?.overview || {label: '利用条件', value: '情報を再読み込みしてください', remaining: 0};
   const conditions = p => overview(p).value;
+  const canOpenOverviewDetail = (clickDetail, hasSelection) => clickDetail === 0 || !hasSelection;
   const slotNames = ['meta', 'title', 'purpose', 'summary', 'conditions', 'actions'];
   const slotMaxima = samples => Object.fromEntries(slotNames.map(key => [key, Math.ceil(Math.max(0, ...samples.map(row => Number.isFinite(row[key]) && row[key] >= 0 ? row[key] : 0)))]));
   // Pure helpers can be tested without a browser or third-party packages.
   if (typeof module === 'object' && module.exports) {
-    module.exports = {filterRecords, swipeStep, candidates, relatedItems, conditions, starLabel, overview, slotMaxima};
+    module.exports = {filterRecords, swipeStep, candidates, relatedItems, conditions, starLabel, overview, slotMaxima, canOpenOverviewDetail};
     return;
   }
   if (document.body.dataset.concept !== 'section') return;
@@ -329,6 +330,8 @@
       const on = selected.has(button.dataset.pick), p = data.find(p => p.url === button.dataset.pick);
       button.textContent = on ? '✓ 比較候補' : '＋ 比較候補';
       button.setAttribute('aria-pressed', String(on));
+      button.disabled = !on && selected.size >= 3;
+      button.title = button.disabled ? '比較候補は3件まで' : '';
       button.setAttribute('aria-label', `${short(p)}を比較候補${on ? 'から外す' : 'に追加'}`);
     });
     $('.candidate-dock').hidden = !selected.size;
@@ -347,6 +350,7 @@
       $('#selected').append(button);
     }
     $('#compare').disabled = selected.size < 2;
+    if ($('#overview').open) updateOverviewSelection();
     measureDock();
   }
   function measureDock() {
@@ -443,9 +447,10 @@
   }
 function cookieSvg(p, suffix){const i=data.indexOf(p);let dots='';for(let k=0;k<58;k++){const x=80+(k*67+i*13)%292,y=60+(k*43+i*11)%244;dots+=`<circle cx="${x}" cy="${y}" r="${k%4===0?2.7:1}" fill="#1a5a3a" opacity="${k%4===0?.55:.25}"/>`;}return `<svg viewBox="0 0 470 400" aria-hidden="true"><defs><mask id="bite-${suffix}"><rect width="470" height="400" fill="white"/><circle cx="378" cy="56" r="33" fill="black"/><circle cx="409" cy="86" r="37" fill="black"/><circle cx="420" cy="132" r="28" fill="black"/></mask><clipPath id="disc-${suffix}"><path d="M244 25C354 24 428 91 421 191C419 281 358 350 247 351C139 354 59 289 58 191C56 90 128 27 244 25Z"/></clipPath></defs><g transform="rotate(-9 235 200)"><g mask="url(#bite-${suffix})"><path d="M244 49C354 48 428 115 421 215C419 305 358 374 247 375C139 378 59 313 58 215C56 114 128 51 244 49Z" fill="#e5d5ae" stroke="#f2e8cd" stroke-width="2"/><path d="M244 25C354 24 428 91 421 191C419 281 358 350 247 351C139 354 59 289 58 191C56 90 128 27 244 25Z" fill="#f2e8cd" stroke="#173e2c" stroke-width="1.5"/><g clip-path="url(#disc-${suffix})">${dots}</g><path d="M112 88Q77 130 85 185M112 93Q87 131 92 174M310 310q-48 21-92 14" stroke="#1a5a3a" stroke-width="1.2" fill="none" opacity=".5"/><path d="M70 244Q245 209 404 247L395 265Q246 225 78 262Z" fill="#1a5a3a"/><path d="M78 262Q250 231 395 265L383 282Q237 247 87 280Z" fill="#f2e8cd" stroke="#1a5a3a" stroke-width="1"/><path d="M91 291q139-38 286 0" stroke="#1a5a3a" fill="none" stroke-dasharray="2 8" stroke-width="2"/></g><path d="M397 32l7 9-12 3zM439 62l8 8-11 5zM432 166l10 1-4 9zM405 181l5 7-9 2z" fill="#f2e8cd" stroke="#f2e8cd"/><path d="M37 277l-11 4m405 45l10 8M24 286l3 5" stroke="#f2e8cd" opacity=".5"/></g></svg>`;}
 
-  let opener = null;
+  const dialogOpeners = new WeakMap();
   function showDialog(dialog) {
-    opener = document.activeElement;
+    if (dialog.open) return;
+    dialogOpeners.set(dialog, document.activeElement);
     document.body.classList.add('dialog-open');
     dialog.showModal();
     dialog.scrollTop = 0;
@@ -597,11 +602,70 @@ function cookieSvg(p, suffix){const i=data.indexOf(p);let dots='';for(let k=0;k<
     };
     body.replaceChildren(grid, el('p', 'comparison-note', '—：この紹介に記載なし。未対応を意味するものではありません。'), copyButton); showDialog($('#comparison'));
   }
+  function overviewState() {
+    return {query: $('#overview-search').value, category: $('#overview-category').value, sort: $('#overview-sort').value};
+  }
+  function updateOverviewSelection() {
+    $('#overview-selection').textContent = `比較候補 ${selected.size} / 3`;
+    $('#overview-compare').disabled = selected.size < 2;
+    document.querySelectorAll('#overview-list [data-pick]').forEach(button => {
+      button.disabled = selected.size >= 3 && !selected.has(button.dataset.pick);
+      button.title = button.disabled ? '比較候補は3件まで' : '';
+    });
+  }
+  function renderOverview() {
+    const view = overviewState(), list = filterRecords(data, view, counts), host = $('#overview-list');
+    $('#overview-count').textContent = `${list.length} / ${data.length} 件`;
+    $('#overview-reset').hidden = !view.query.trim() && !view.category;
+    $('#overview-empty').hidden = !!list.length;
+    host.replaceChildren();
+    for (const [i, p] of list.entries()) {
+      const item = el('li', 'overview-row'), open = el('button', 'overview-open'), words = el('span', 'overview-words');
+      open.type = 'button'; open.setAttribute('aria-label', `${short(p)}の詳細を開く`); open.setAttribute('aria-haspopup', 'dialog');
+      const number = el('span', 'overview-number', String(i + 1).padStart(2, '0'));
+      words.append(el('strong', 'overview-name', short(p)), el('span', 'overview-purpose', what(p)));
+      open.append(number, words, el('span', 'overview-category', p.category), el('span', 'overview-arrow', '›'));
+      if (p.url === current()?.url) {
+        item.classList.add('is-current'); open.setAttribute('aria-current', 'true');
+        words.append(el('span', 'overview-current', '表示中'));
+      }
+      open.onclick = event => { if (!canOpenOverviewDetail(event.detail, selectedText())) return; openDetail(p); };
+      const pick = pickButton(p), toggle = pick.onclick;
+      pick.onclick = () => { toggle(); updateOverviewSelection(); };
+      item.append(open, pick); host.append(item);
+    }
+    updateDock(); updateOverviewSelection();
+  }
+  function showOverview() {
+    $('#overview-search').value = $('#search').value;
+    $('#overview-category').value = $('#category').value;
+    $('#overview-sort').value = $('#sort').value;
+    $('#overview-total').textContent = `/ ${data.length} 件`;
+    renderOverview(); showDialog($('#overview'));
+  }
+  $('#overview-toggle').disabled = false;
+  $('#overview-toggle').onclick = showOverview;
+  $('#overview-reset').onclick = () => { $('#overview-search').value = ''; $('#overview-category').value = ''; renderOverview(); };
+  for (const field of ['search', 'category', 'sort']) $('#overview-' + field).addEventListener(field === 'search' ? 'input' : 'change', renderOverview);
+  [...new Set(data.map(p => p.category))].sort((a,b) => a.localeCompare(b,'ja')).forEach(value => {
+    const option = el('option', '', value); option.value = value; $('#overview-category').append(option);
+  });
+  $('#overview-compare').onclick = showComparison;
   for (const dialog of document.querySelectorAll('dialog')) {
     dialog.querySelector('.close').onclick = () => dialog.close();
+    dialog.addEventListener('keydown', event => {
+      if (event.key !== 'Tab' || [...document.querySelectorAll('dialog[open]')].pop() !== dialog) return;
+      const controls = [...dialog.querySelectorAll('a[href],button,input,select,textarea,summary,[tabindex]')]
+        .filter(node => !node.disabled && node.tabIndex >= 0 && node.getClientRects().length);
+      const first = controls[0], last = controls[controls.length - 1];
+      if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last?.focus(); }
+      else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first?.focus(); }
+    });
     dialog.addEventListener('close', () => {
-      document.body.classList.remove('dialog-open');
-      (opener?.isConnected ? opener : $('.read-more') || $('#search-toggle'))?.focus({preventScroll: true});
+      if (!document.querySelector('dialog[open]')) document.body.classList.remove('dialog-open');
+      const opener = dialogOpeners.get(dialog);
+      (opener?.isConnected && (!opener.closest('dialog') || opener.closest('dialog').open) ? opener : $('#overview-toggle'))?.focus({preventScroll: true});
+      if ($('#overview').open) updateOverviewSelection();
     });
     dialog.addEventListener('click', event => {
       const rect = dialog.getBoundingClientRect();
