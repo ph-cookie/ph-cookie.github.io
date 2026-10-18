@@ -41,3 +41,6 @@
  .cookie-home .collection .go{font-size:12px;margin-top:16px}
  .cookie-home .collection .go b{font-size:20px}
 }
+
+/* Restore the package heading to the earlier system sans face. */
+.cookie-home .collection-package h2{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-weight:700}

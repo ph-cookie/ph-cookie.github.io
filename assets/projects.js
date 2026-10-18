@@ -216,12 +216,14 @@
   const relatedItems = (p, data) => (p.related || []).map(row => ({label: row.label, project: data.find(item => item.url === row.url)})).filter(row => row.project && row.project.url !== p.url).slice(0, 2);
   const overview = p => p.presentation?.overview || {label: '利用条件', value: '情報を再読み込みしてください', remaining: 0};
   const conditions = p => overview(p).value;
+  const hasBrowseFilters = view => !!(view.query.trim() || view.category || view.sort !== 'new');
+  const browseSummary = view => [view.query.trim(), view.category, ({name:'名前順',stars:'スター順'})[view.sort]].filter(Boolean).join(' / ');
   const canOpenOverviewDetail = (clickDetail, hasSelection) => clickDetail === 0 || !hasSelection;
   const slotNames = ['meta', 'title', 'purpose', 'summary', 'conditions', 'actions'];
   const slotMaxima = samples => Object.fromEntries(slotNames.map(key => [key, Math.ceil(Math.max(0, ...samples.map(row => Number.isFinite(row[key]) && row[key] >= 0 ? row[key] : 0)))]));
   // Pure helpers can be tested without a browser or third-party packages.
   if (typeof module === 'object' && module.exports) {
-    module.exports = {filterRecords, swipeStep, candidates, relatedItems, conditions, starLabel, overview, slotMaxima, canOpenOverviewDetail};
+    module.exports = {filterRecords, swipeStep, candidates, relatedItems, conditions, starLabel, overview, slotMaxima, canOpenOverviewDetail, hasBrowseFilters, browseSummary};
     return;
   }
   if (document.body.dataset.concept !== 'section') return;
@@ -492,11 +494,14 @@ function cookieSvg(p, suffix){const i=data.indexOf(p);let dots='';for(let k=0;k<
   }
   function render() {
     const content = $('#content'); content.replaceChildren();
-    const filtered = !!($('#search').value.trim() || $('#category').value);
+    const filtered = hasBrowseFilters(state());
+    $('.filter-state').hidden = !filtered;
+    $('.browse-toolbar').hidden = !filtered;
     $('#count').hidden = !filtered;
     $('#count').textContent = `${visible.length} / ${data.length} 件`;
-    $('#filter-summary').textContent = [$('#search').value.trim(), $('#category').value].filter(Boolean).join(' / ');
-    $('#clear-filters').hidden = !filtered;
+    $('#filter-summary').textContent = browseSummary(state());
+    $('#clear-filters').hidden = false;
+    $('#clear-filters').disabled = !filtered;
     $('#empty').hidden = !!visible.length;
     $('#boot-message').hidden = true;
     if (!visible.length) return;
@@ -549,7 +554,9 @@ function cookieSvg(p, suffix){const i=data.indexOf(p);let dots='';for(let k=0;k<
     ++epoch; switching = false; pointer = null;
     visible = filterRecords(data, state(), counts);
     active = Math.max(0, visible.findIndex(p => repository(p) === project));
+    syncBrowseControls();
     render(); urlState();
+    if ($('#overview').open) renderOverview();
   }
   function restore() {
     const params = new URLSearchParams(location.search);
@@ -602,8 +609,23 @@ function cookieSvg(p, suffix){const i=data.indexOf(p);let dots='';for(let k=0;k<
     };
     body.replaceChildren(grid, el('p', 'comparison-note', '—：この紹介に記載なし。未対応を意味するものではありません。'), copyButton); showDialog($('#comparison'));
   }
-  function overviewState() {
-    return {query: $('#overview-search').value, category: $('#overview-category').value, sort: $('#overview-sort').value};
+  function overviewState() { return state(); }
+  function syncBrowseControls(fromOverview = false) {
+    for (const field of ['search', 'category', 'sort']) {
+      const main = $('#' + field), overview = $('#overview-' + field);
+      if (fromOverview) main.value = overview.value;
+      else overview.value = main.value;
+    }
+  }
+  function changeBrowseFilters(fromOverview = false) {
+    const project = current() ? repository(current()) : '';
+    syncBrowseControls(fromOverview); refresh(project);
+  }
+  function resetBrowseFilters() {
+    const project = current() ? repository(current()) : '';
+    $('#search').value = ''; $('#category').value = ''; $('#sort').value = 'new';
+    refresh(project);
+    ($('#overview').open ? $('#overview-search') : $('#overview-toggle')).focus({preventScroll: true});
   }
   function updateOverviewSelection() {
     $('#overview-selection').textContent = `比較候補 ${selected.size} / 3`;
@@ -616,7 +638,8 @@ function cookieSvg(p, suffix){const i=data.indexOf(p);let dots='';for(let k=0;k<
   function renderOverview() {
     const view = overviewState(), list = filterRecords(data, view, counts), host = $('#overview-list');
     $('#overview-count').textContent = `${list.length} / ${data.length} 件`;
-    $('#overview-reset').hidden = !view.query.trim() && !view.category;
+    $('#overview-reset').hidden = false;
+    $('#overview-reset').disabled = !hasBrowseFilters(view);
     $('#overview-empty').hidden = !!list.length;
     host.replaceChildren();
     for (const [i, p] of list.entries()) {
@@ -637,16 +660,14 @@ function cookieSvg(p, suffix){const i=data.indexOf(p);let dots='';for(let k=0;k<
     updateDock(); updateOverviewSelection();
   }
   function showOverview() {
-    $('#overview-search').value = $('#search').value;
-    $('#overview-category').value = $('#category').value;
-    $('#overview-sort').value = $('#sort').value;
+    syncBrowseControls();
     $('#overview-total').textContent = `/ ${data.length} 件`;
     renderOverview(); showDialog($('#overview'));
   }
   $('#overview-toggle').disabled = false;
   $('#overview-toggle').onclick = showOverview;
-  $('#overview-reset').onclick = () => { $('#overview-search').value = ''; $('#overview-category').value = ''; renderOverview(); };
-  for (const field of ['search', 'category', 'sort']) $('#overview-' + field).addEventListener(field === 'search' ? 'input' : 'change', renderOverview);
+  $('#overview-reset').onclick = resetBrowseFilters;
+  for (const field of ['search', 'category', 'sort']) $('#overview-' + field).addEventListener(field === 'search' ? 'input' : 'change', () => changeBrowseFilters(true));
   [...new Set(data.map(p => p.category))].sort((a,b) => a.localeCompare(b,'ja')).forEach(value => {
     const option = el('option', '', value); option.value = value; $('#overview-category').append(option);
   });
@@ -679,8 +700,8 @@ function cookieSvg(p, suffix){const i=data.indexOf(p);let dots='';for(let k=0;k<
     $('#search-panel').hidden = !open; $('#search-toggle').setAttribute('aria-expanded', String(open));
     if (open) $('#search').focus({preventScroll: true});
   };
-  $('#clear-filters').onclick = () => { $('#search').value = ''; $('#category').value = ''; refresh(); $('#search').focus({preventScroll: true}); };
-  for (const input of [$('#search'), $('#category'), $('#sort')]) input.addEventListener(input.id === 'search' ? 'input' : 'change', () => refresh());
+  $('#clear-filters').onclick = resetBrowseFilters;
+  for (const input of [$('#search'), $('#category'), $('#sort')]) input.addEventListener(input.id === 'search' ? 'input' : 'change', () => changeBrowseFilters());
   [...new Set(data.map(p => p.category))].sort((a, b) => a.localeCompare(b, 'ja')).forEach(value => {
     const option = el('option', '', value); option.value = value; $('#category').append(option);
   });
