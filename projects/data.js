@@ -378,7 +378,7 @@ window.PROJECTS = [
         "levelLabel": ""
       }
     ],
-    "category": "システム管理",
+    "category": "PC環境管理",
     "tags": [
       "システム管理",
       "ユーティリティ",
@@ -540,7 +540,7 @@ window.PROJECTS = [
         "levelLabel": ""
       }
     ],
-    "category": "システム管理",
+    "category": "PC環境管理",
     "tags": [
       "ユーティリティ",
       "開発支援",
@@ -723,7 +723,7 @@ window.PROJECTS = [
         "levelLabel": ""
       }
     ],
-    "category": "AI評価",
+    "category": "AIモデル活用",
     "tags": [
       "AI",
       "ローカルLLM",
@@ -905,7 +905,7 @@ window.PROJECTS = [
         "levelLabel": ""
       }
     ],
-    "category": "文書・図解",
+    "category": "文書作成・推敲",
     "tags": [
       "文書作成",
       "LaTeX",
@@ -1299,7 +1299,7 @@ window.PROJECTS = [
         "levelLabel": ""
       }
     ],
-    "category": "音声・字幕",
+    "category": "音声・文字起こし",
     "tags": [
       "AI",
       "リアルタイム字幕",
@@ -1538,7 +1538,7 @@ window.PROJECTS = [
         "levelLabel": ""
       }
     ],
-    "category": "文書・図解",
+    "category": "図解・可視化",
     "tags": [
       "AIエージェント",
       "情報可視化",
@@ -1725,7 +1725,7 @@ window.PROJECTS = [
         "levelLabel": ""
       }
     ],
-    "category": "Webデザイン",
+    "category": "UI・Webデザイン",
     "tags": [
       "Webデザイン",
       "UI・UX",
@@ -2151,7 +2151,7 @@ window.PROJECTS = [
         "levelLabel": ""
       }
     ],
-    "category": "文書・図解",
+    "category": "図解・可視化",
     "tags": [
       "AIエージェント",
       "図解",
@@ -2350,7 +2350,7 @@ window.PROJECTS = [
         "levelLabel": ""
       }
     ],
-    "category": "AI開発",
+    "category": "AIモデル活用",
     "tags": [
       "AIエージェント",
       "LLM",
@@ -2542,7 +2542,7 @@ window.PROJECTS = [
         "levelLabel": ""
       }
     ],
-    "category": "文書・図解",
+    "category": "文書作成・推敲",
     "tags": [
       "日本語",
       "文章校正",
@@ -2727,7 +2727,7 @@ window.PROJECTS = [
         "levelLabel": ""
       }
     ],
-    "category": "画像処理",
+    "category": "画像最適化",
     "tags": [
       "画像最適化",
       "画像圧縮",
@@ -3138,7 +3138,7 @@ window.PROJECTS = [
         "levelLabel": ""
       }
     ],
-    "category": "動画・視聴",
+    "category": "動画視聴",
     "tags": [
       "YouTube",
       "ブラウザ拡張",
