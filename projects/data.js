@@ -3245,5 +3245,317 @@ window.PROJECTS = [
         "remaining": 1
       }
     }
+  },
+  {
+    "name": "Meltype — 日本語と英語を自動判別する入力ツール",
+    "url": "https://github.com/yksr-melt/Meltype",
+    "summary": "日本語と英語を自動判別し、入力モードを手動で切り替えずにローマ字から日本語・英語を混在入力できるツール。",
+    "description": "Meltypeは、ローマ字入力から日本語と英語を自動判別する日本語入力ツール。入力した文字列や前後の文脈をもとに、日本語部分をかな・漢字へ変換し、英単語はアルファベットのまま残す。「kyouhagoogledekensaku」を「今日はgoogleで検索」と入力するような使い方ができる。\nWindows版では、VS Codeやターミナルなどをコード入力向けに設定でき、プログラムの記述中は英字を優先し、コメントや文字列では日本語を判定する。予測変換、ユーザー辞書、絵文字変換、誤字の指摘にも対応。判定結果を手動で修正し、次回以降の変換に反映する学習機能も備える。\n日本語と英語の判定・変換はローカル環境で処理され、入力内容を外部サーバーへ送信しない設計。Windows 10・11に対応し、macOS・Linux向けにはプレビュー版を提供する。ただし、OSによって利用可能な機能は異なり、Mac版ではWindows版のアプリ種別による自動判定や設定画面などは未対応。GPL-3.0-or-laterライセンスで公開。",
+    "category": "文字入力",
+    "tags": [
+      "日本語入力",
+      "IME",
+      "自動判別",
+      "Windows",
+      "macOS",
+      "Linux",
+      "GPL-3.0"
+    ],
+    "environmentVersion": 1,
+    "requirementsStatus": "documented",
+    "environment": [
+      {
+        "key": "platformOptions",
+        "value": "Windows 10・11（64bit）／Microsoft IME\nMac・Linux版はプレビュー版（各OS別に利用条件あり）",
+        "scope": "basic",
+        "level": "required",
+        "status": "documented",
+        "label": "OS別の利用条件",
+        "group": "requirements",
+        "order": 23,
+        "stateLabel": "",
+        "scopeLabel": "",
+        "levelLabel": "必須"
+      },
+      {
+        "key": "dependencies",
+        "value": "IBus／fcitx5",
+        "scope": "Linux版・条件",
+        "level": "info",
+        "status": "documented",
+        "label": "必要ソフト",
+        "group": "requirements",
+        "order": 7,
+        "stateLabel": "",
+        "scopeLabel": "Linux版・条件",
+        "levelLabel": ""
+      },
+      {
+        "key": "os",
+        "value": "macOS 13以降",
+        "scope": "Mac版",
+        "level": "required",
+        "status": "documented",
+        "label": "OS",
+        "group": "requirements",
+        "order": 1,
+        "stateLabel": "",
+        "scopeLabel": "Mac版",
+        "levelLabel": "必須"
+      },
+      {
+        "key": "cpu",
+        "value": "配布ZIPはApple Silicon向け。Intel Macはソースからビルド",
+        "scope": "Mac版・条件",
+        "level": "info",
+        "status": "documented",
+        "label": "CPU",
+        "group": "requirements",
+        "order": 2,
+        "stateLabel": "",
+        "scopeLabel": "Mac版・条件",
+        "levelLabel": ""
+      },
+      {
+        "key": "os",
+        "value": "Windows 10・11（64bit）",
+        "scope": "Windows版",
+        "level": "required",
+        "status": "documented",
+        "label": "OS",
+        "group": "requirements",
+        "order": 1,
+        "stateLabel": "",
+        "scopeLabel": "Windows版",
+        "levelLabel": "必須"
+      },
+      {
+        "key": "dependencies",
+        "value": "Microsoft IME（.NET同梱）",
+        "scope": "Windows版",
+        "level": "required",
+        "status": "documented",
+        "label": "必要ソフト",
+        "group": "requirements",
+        "order": 7,
+        "stateLabel": "",
+        "scopeLabel": "Windows版",
+        "levelLabel": "必須"
+      },
+      {
+        "key": "releaseStatus",
+        "value": "Windows版は通常配布、Mac・Linux版はプレビュー版",
+        "scope": "basic",
+        "level": "info",
+        "status": "documented",
+        "label": "開発状況",
+        "group": "specifications",
+        "order": 24,
+        "stateLabel": "",
+        "scopeLabel": "",
+        "levelLabel": ""
+      },
+      {
+        "key": "processing",
+        "value": "ローカル処理",
+        "scope": "basic",
+        "level": "info",
+        "status": "documented",
+        "label": "入力処理",
+        "group": "specifications",
+        "order": 25,
+        "stateLabel": "",
+        "scopeLabel": "",
+        "levelLabel": ""
+      },
+      {
+        "key": "license",
+        "value": "GPL-3.0-or-later",
+        "scope": "basic",
+        "level": "info",
+        "status": "documented",
+        "label": "ライセンス",
+        "group": "licenses",
+        "order": 22,
+        "stateLabel": "",
+        "scopeLabel": "",
+        "levelLabel": ""
+      }
+    ],
+    "addedAt": "2026-10-19",
+    "checkedAt": "2026-10-18",
+    "sources": [
+      {
+        "label": "公式README",
+        "url": "https://github.com/yksr-melt/Meltype"
+      },
+      {
+        "label": "Windows版の導入方法",
+        "url": "https://github.com/yksr-melt/Meltype/blob/main/docs/WINDOWS.md"
+      },
+      {
+        "label": "macOS版の導入方法",
+        "url": "https://github.com/yksr-melt/Meltype/blob/main/mac/README.md"
+      },
+      {
+        "label": "Linux版の導入方法",
+        "url": "https://github.com/yksr-melt/Meltype/blob/main/linux/README.md"
+      },
+      {
+        "label": "詳しい使い方",
+        "url": "https://github.com/yksr-melt/Meltype/blob/main/docs/USAGE.md"
+      },
+      {
+        "label": "公式リリース",
+        "url": "https://github.com/yksr-melt/Meltype/releases"
+      }
+    ],
+    "presentation": {
+      "groups": [
+        {
+          "key": "requirements",
+          "label": "利用条件",
+          "rows": [
+            {
+              "key": "platformOptions",
+              "value": "Windows 10・11（64bit）／Microsoft IME\nMac・Linux版はプレビュー版（各OS別に利用条件あり）",
+              "scope": "basic",
+              "level": "required",
+              "status": "documented",
+              "label": "OS別の利用条件",
+              "group": "requirements",
+              "order": 23,
+              "stateLabel": "",
+              "scopeLabel": "",
+              "levelLabel": "必須"
+            },
+            {
+              "key": "dependencies",
+              "value": "IBus／fcitx5",
+              "scope": "Linux版・条件",
+              "level": "info",
+              "status": "documented",
+              "label": "必要ソフト",
+              "group": "requirements",
+              "order": 7,
+              "stateLabel": "",
+              "scopeLabel": "Linux版・条件",
+              "levelLabel": ""
+            },
+            {
+              "key": "os",
+              "value": "macOS 13以降",
+              "scope": "Mac版",
+              "level": "required",
+              "status": "documented",
+              "label": "OS",
+              "group": "requirements",
+              "order": 1,
+              "stateLabel": "",
+              "scopeLabel": "Mac版",
+              "levelLabel": "必須"
+            },
+            {
+              "key": "cpu",
+              "value": "配布ZIPはApple Silicon向け。Intel Macはソースからビルド",
+              "scope": "Mac版・条件",
+              "level": "info",
+              "status": "documented",
+              "label": "CPU",
+              "group": "requirements",
+              "order": 2,
+              "stateLabel": "",
+              "scopeLabel": "Mac版・条件",
+              "levelLabel": ""
+            },
+            {
+              "key": "os",
+              "value": "Windows 10・11（64bit）",
+              "scope": "Windows版",
+              "level": "required",
+              "status": "documented",
+              "label": "OS",
+              "group": "requirements",
+              "order": 1,
+              "stateLabel": "",
+              "scopeLabel": "Windows版",
+              "levelLabel": "必須"
+            },
+            {
+              "key": "dependencies",
+              "value": "Microsoft IME（.NET同梱）",
+              "scope": "Windows版",
+              "level": "required",
+              "status": "documented",
+              "label": "必要ソフト",
+              "group": "requirements",
+              "order": 7,
+              "stateLabel": "",
+              "scopeLabel": "Windows版",
+              "levelLabel": "必須"
+            }
+          ]
+        },
+        {
+          "key": "specifications",
+          "label": "仕様・出力",
+          "rows": [
+            {
+              "key": "releaseStatus",
+              "value": "Windows版は通常配布、Mac・Linux版はプレビュー版",
+              "scope": "basic",
+              "level": "info",
+              "status": "documented",
+              "label": "開発状況",
+              "group": "specifications",
+              "order": 24,
+              "stateLabel": "",
+              "scopeLabel": "",
+              "levelLabel": ""
+            },
+            {
+              "key": "processing",
+              "value": "ローカル処理",
+              "scope": "basic",
+              "level": "info",
+              "status": "documented",
+              "label": "入力処理",
+              "group": "specifications",
+              "order": 25,
+              "stateLabel": "",
+              "scopeLabel": "",
+              "levelLabel": ""
+            }
+          ]
+        },
+        {
+          "key": "licenses",
+          "label": "ライセンス",
+          "rows": [
+            {
+              "key": "license",
+              "value": "GPL-3.0-or-later",
+              "scope": "basic",
+              "level": "info",
+              "status": "documented",
+              "label": "ライセンス",
+              "group": "licenses",
+              "order": 22,
+              "stateLabel": "",
+              "scopeLabel": "",
+              "levelLabel": ""
+            }
+          ]
+        }
+      ],
+      "overview": {
+        "label": "利用条件",
+        "value": "OS別の利用条件：Windows 10・11（64bit）／Microsoft IME\nMac・Linux版はプレビュー版（各OS別に利用条件あり）",
+        "lines": [
+          "OS別の利用条件：Windows 10・11（64bit）／Microsoft IME\nMac・Linux版はプレビュー版（各OS別に利用条件あり）"
+        ],
+        "remaining": 5
+      }
+    }
   }
 ];
