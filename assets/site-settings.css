@@ -1,0 +1,23 @@
+/* Privacy controls remain usable if Google is blocked or unavailable. */
+.metrics-open{font:inherit;color:inherit;border:0;background:none;padding:5px 8px;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+.metrics-panel{position:fixed;right:20px;bottom:calc(var(--footer-height,60px) + var(--dock-height,0px) + 12px);z-index:45;width:min(390px,calc(100vw - 40px));padding:17px 19px;background:#fbf5e5;color:#173e2c;border:1px solid #173e2c80;border-radius:6px;box-shadow:0 5px 22px #173e2c33;font:13px/1.7 system-ui,sans-serif}
+.metrics-panel[hidden]{display:none!important}
+.metrics-panel p{margin:0 0 12px;font:inherit;color:inherit}
+.metrics-actions{display:flex;flex-wrap:wrap;gap:8px}
+.metrics-actions button,.metrics-close{font:600 12px/1.5 system-ui,sans-serif;border:1px solid #173e2c;border-radius:4px;padding:8px 13px;background:transparent;color:#173e2c;cursor:pointer;min-height:36px}
+.metrics-actions [data-metrics-choice=granted]{background:#173e2c;color:#fbf5e5}
+.metrics-actions button:focus-visible,.metrics-open:focus-visible{outline:3px solid currentColor;outline-offset:3px}
+.metrics-dialog{box-sizing:border-box;width:min(540px,calc(100vw - 32px));max-height:calc(100dvh - 32px);padding:24px;border:1px solid #173e2c;border-radius:12px;background:#fbf5e5;color:#173e2c;font:14px/1.8 system-ui,sans-serif;overflow:auto}
+.metrics-dialog::backdrop{background:#102d2180}
+.metrics-dialog h2{margin:0 0 15px;font:bold 20px/1.5 system-ui,sans-serif;color:inherit}
+.metrics-dialog p{margin:0 0 13px;font:inherit;color:inherit}
+.metrics-dialog a{color:inherit;text-decoration:underline}
+.metrics-dialog label{display:flex;align-items:flex-start;gap:10px;font:inherit;color:inherit;margin:16px 0}
+.metrics-dialog input[type=checkbox]{display:block;flex:0 0 auto;appearance:auto;width:18px;height:18px;min-height:0;margin:4px 0 0;padding:0;accent-color:#173e2c}
+.metrics-close{display:block;margin:15px 0 0 auto}
+.metrics-dialog .metrics-actions button{flex:1}
+@media(max-width:600px){.metrics-panel{right:12px;width:calc(100vw - 24px);padding:14px 16px}.metrics-dialog{padding:20px}}
+body.metrics-modal-open{overflow:hidden}
+footer:has(.metrics-open){flex-wrap:wrap;gap:4px 8px}
+footer .metrics-open{flex:0 0 auto;white-space:nowrap;font-size:10px;min-height:32px}
+footer:has(.metrics-open)>span{flex:1 1 140px}

@@ -390,3 +390,18 @@ main{padding-top:26px}
  .related-purpose{font-size:13px}
  .related-link{padding:8px 0 12px}
 }
+
+/* Shared home geometry; this row is reserved for site-wide navigation. */
+.site-header{display:flex;align-items:center;justify-content:space-between;gap:20px;max-width:none;margin:0 5vw;padding:30px 0;border-bottom:1px solid #f5f3ed40;color:#f5f3ed;font-size:14px;line-height:1.8}
+.site-header .site-signature{font-family:CookieLogo,system-ui,sans-serif;font-size:19px;font-weight:700;letter-spacing:.02em;text-decoration:none;line-height:1.8}
+.site-header nav{display:flex;align-items:center;flex-wrap:wrap;justify-content:flex-end;gap:12px 24px;min-width:0}
+.site-header .home-back{display:inline-flex;align-items:center;min-height:34px;color:inherit;font-size:12px;text-decoration:none}
+.site-header a:hover{text-decoration:underline;text-underline-offset:4px}
+.related{align-items:stretch;gap:12px 18px}
+.related .related-label{margin-bottom:2px}
+.related .related-link{min-width:0;padding:15px 18px;border:1px solid #f2e8cd80;background:#f2e8cd18;color:var(--paper);border-radius:4px;gap:5px 14px;transition:background .15s,border-color .15s}
+.related-link .related-purpose,.related-link .related-project{overflow-wrap:anywhere}
+.related .related-link:hover{background:#f2e8cd2e;border-color:var(--paper)}
+.related .related-link:active{background:#f2e8cd40}
+@media(max-width:700px){.site-header{margin:0 20px;padding:22px 0}}
+@media(max-width:600px){.related{gap:10px}.related .related-link{padding:13px 15px}}

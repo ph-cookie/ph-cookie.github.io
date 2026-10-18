@@ -5,16 +5,19 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="description" content="気になったGitHubプロジェクトを、用途や利用条件とともに紹介。">
   <title>気になったGitHub — ph-cookie</title>
-  <link rel="stylesheet" href="../assets/collection.css?v=fa496d4a1f9d">
+  <link rel="stylesheet" href="../assets/collection.css?v=414d01db8b60">
   <script defer src="data.js?v=c925394f3f58"></script>
-  <script defer src="../assets/projects.js?v=d605beb3c19e"></script>
-</head>
+  <script defer src="../assets/projects.js?v=3e82fefd5011"></script>
+<link rel="stylesheet" href="../assets/site-settings.css?v=dbaac64d1aff"><script defer src="../assets/site-settings.js?v=22b683aef506"></script></head>
 <body class="cookie-projects" data-concept="section">
   <svg class="filter-defs" aria-hidden="true" focusable="false"><defs><filter id="collection-grain"><feTurbulence type="fractalNoise" baseFrequency=".6" numOctaves="3" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter></defs></svg>
   <div class="noise" aria-hidden="true"></div>
 
+  <header class="site-header">
+    <a class="site-signature" href="../">ph-cookie</a>
+    <nav aria-label="サイト内の移動"><a class="home-back" href="../">← ホーム</a></nav>
+  </header>
   <main>
-    <nav class="home-return" aria-label="ホームへの移動"><a class="site-signature" href="../">ph-cookie</a><a class="home-back" href="../">← ホーム</a></nav>
     <div class="collection-masthead">
     <section class="intro" aria-labelledby="page-title">
       <h1 id="page-title">気になったGitHub</h1>
@@ -38,7 +41,7 @@
     <noscript><p>この表示にはJavaScriptが必要です。上の一覧から全紹介を読めます。</p></noscript>
 
   </main>
-    <footer><span>ph-cookie / Notes & Projects</span><a class="profile-link" href="https://github.com/ph-cookie" target="_blank" rel="noopener noreferrer" aria-label="ph-cookieのGitHubアカウント" title="GitHub"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12 .75a11.25 11.25 0 0 0-3.558 21.923c.563.104.768-.244.768-.543 0-.267-.01-.975-.015-1.913-3.13.68-3.79-1.508-3.79-1.508-.512-1.3-1.25-1.646-1.25-1.646-1.023-.7.078-.686.078-.686 1.13.08 1.725 1.16 1.725 1.16 1.006 1.724 2.64 1.226 3.283.938.102-.73.394-1.226.716-1.508-2.5-.284-5.128-1.25-5.128-5.565 0-1.23.44-2.234 1.16-3.022-.116-.285-.503-1.43.11-2.982 0 0 .945-.302 3.095 1.154a10.8 10.8 0 0 1 5.625 0c2.15-1.456 3.094-1.154 3.094-1.154.614 1.552.227 2.697.111 2.982.721.788 1.159 1.792 1.159 3.022 0 4.326-2.633 5.278-5.14 5.557.405.35.766 1.043.766 2.1 0 1.516-.014 2.74-.014 3.112 0 .3.203.65.773.54A11.25 11.25 0 0 0 12 .75Z"/></svg></a></footer>
+    <footer><span>ph-cookie / Notes & Projects</span><button type="button" class="metrics-open" data-metrics-open>アクセス解析</button><a class="profile-link" href="https://github.com/ph-cookie" target="_blank" rel="noopener noreferrer" aria-label="ph-cookieのGitHubアカウント" title="GitHub"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12 .75a11.25 11.25 0 0 0-3.558 21.923c.563.104.768-.244.768-.543 0-.267-.01-.975-.015-1.913-3.13.68-3.79-1.508-3.79-1.508-.512-1.3-1.25-1.646-1.25-1.646-1.023-.7.078-.686.078-.686 1.13.08 1.725 1.16 1.725 1.16 1.006 1.724 2.64 1.226 3.283.938.102-.73.394-1.226.716-1.508-2.5-.284-5.128-1.25-5.128-5.565 0-1.23.44-2.234 1.16-3.022-.116-.285-.503-1.43.11-2.982 0 0 .945-.302 3.095 1.154a10.8 10.8 0 0 1 5.625 0c2.15-1.456 3.094-1.154 3.094-1.154.614 1.552.227 2.697.111 2.982.721.788 1.159 1.792 1.159 3.022 0 4.326-2.633 5.278-5.14 5.557.405.35.766 1.043.766 2.1 0 1.516-.014 2.74-.014 3.112 0 .3.203.65.773.54A11.25 11.25 0 0 0 12 .75Z"/></svg></a></footer>
   <aside class="candidate-dock" aria-label="比較候補" hidden>
     <div class="dock-label">比較候補 <b id="selected-count">0</b><span>最大3件</span></div>
     <div id="selected"></div><button id="compare" type="button" disabled>並べて確認 ↗</button>
@@ -67,5 +70,6 @@
     <div class="dialog-head"><h2 id="comparison-title">比較候補</h2><button class="close" type="button" aria-label="比較を閉じる">×</button></div>
     <div class="comparison-body"></div>
   </dialog>
-</body>
+<aside id="metrics-panel" class="metrics-panel" aria-label="アクセス解析の選択" hidden><p>サイトの改善のため、Google Analyticsで閲覧とリンクの利用を計測します。許可しなくてもすべての機能を使えます。</p><div class="metrics-actions"><button type="button" data-metrics-choice="denied">許可しない</button><button type="button" data-metrics-choice="granted">許可する</button><button type="button" data-metrics-open>詳しく見る</button></div></aside>
+<dialog id="metrics-dialog" class="metrics-dialog" aria-labelledby="metrics-title"><h2 id="metrics-title">アクセス解析</h2><p>このサイトでは、許可した場合にGoogle Analyticsを読み込み、Cookieを使ってページの閲覧、紹介の詳細表示、GitHubなどへの移動を計測します。Cookie等の識別子や閲覧情報はGoogleに送信されます。広告目的では利用しません。</p><p>検索入力や選択した文章は送信せず、計測に送るページURLから検索条件を取り除きます。端末・ブラウザの情報などはGoogle Analyticsの仕組みで収集されます。許可前の操作を後から送信することはありません。</p><p>選択はこのブラウザに180日間保存します。フッターの「アクセス解析」からいつでも変更できます。許可を取り消すとこのサイトの計測用Cookieを削除し、読み込み済みの場合はページを再読み込みします。すでに送信された情報は取り消されません。</p><p><a href="https://policies.google.com/privacy?hl=ja" target="_blank" rel="noopener noreferrer">Googleのプライバシーポリシー</a> / <a href="https://policies.google.com/technologies/partner-sites?hl=ja" target="_blank" rel="noopener noreferrer">Googleによるデータの利用</a></p><p data-metrics-status></p><label><input type="checkbox" data-metrics-exclude>このブラウザを制作確認用として計測から除外する</label><div class="metrics-actions"><button type="button" data-metrics-choice="denied">許可しないで保存</button><button type="button" data-metrics-choice="granted">許可して保存</button></div><button type="button" class="metrics-close" data-metrics-close>閉じる</button></dialog></body>
 </html>

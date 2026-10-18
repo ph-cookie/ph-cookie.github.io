@@ -458,8 +458,9 @@ function cookieSvg(p, suffix){const i=data.indexOf(p);let dots='';for(let k=0;k<
     dialog.scrollTop = 0;
     dialog.querySelector('.close').focus({preventScroll: true});
   }
-  function openDetail(p) {
+  function openDetail(p, entryPoint = 'main') {
     const dialog = $('#detail'), body = dialog.querySelector('.dialog-body');
+    const wasOpen = dialog.open;
     $('#detail-title').textContent = p.name;
     dialog.querySelector('.dialog-eyebrow').textContent = p.category;
     body.replaceChildren(el('p', 'summary', p.summary));
@@ -468,9 +469,16 @@ function cookieSvg(p, suffix){const i=data.indexOf(p);let dots='';for(let k=0;k<
       if (text.trim() && !(text.trim().startsWith('対応環境：') && p.environment?.length)) body.append(el('p', '', text.trim()));
     }
     const table = tableFor(p); if (table) body.append(table);
-    const actions = el('div', 'dialog-actions'); actions.append(link('GitHubで見る ↗', p.url), pickButton(p));
+    const actions = el('div', 'dialog-actions'); actions.append(projectLink(p), pickButton(p));
     body.append(actions, el('p', 'checked-date', '確認 ' + p.checkedAt), sourcesFor(p));
     updateDock(); showDialog(dialog);
+    if (!wasOpen) window.siteMetrics?.track('project_detail_open', {project_id: repository(p), entry_point: entryPoint});
+  }
+  function projectLink(p) {
+    const node = link('GitHubで見る ↗', p.url);
+    node.dataset.metricsProject = repository(p);
+    node.dataset.metricsDestination = 'github';
+    return node;
   }
   async function animateStage(stage, frames, duration, easing, persist = false) {
     if (!stage || reducedMotion() || !stage.animate) return;
@@ -574,7 +582,7 @@ function cookieSvg(p, suffix){const i=data.indexOf(p);let dots='';for(let k=0;k<
     const corner = el('th', '', '項目'); corner.scope = 'col'; header.append(corner);
     for (const p of list) {
       const column = el('th'); column.scope = 'col';
-      column.append(el('p', 'compare-category', p.category), el('h3', '', short(p)), el('p', 'compare-purpose', what(p)), link('GitHubで見る ↗', p.url)); header.append(column);
+      column.append(el('p', 'compare-category', p.category), el('h3', '', short(p)), el('p', 'compare-purpose', what(p)), projectLink(p)); header.append(column);
     }
     head.append(header); grid.append(head);
     const intro = el('tr'), label = el('th', '', '一言紹介'); label.scope = 'row'; intro.append(label);
@@ -652,7 +660,7 @@ function cookieSvg(p, suffix){const i=data.indexOf(p);let dots='';for(let k=0;k<
         item.classList.add('is-current'); open.setAttribute('aria-current', 'true');
         words.append(el('span', 'overview-current', '表示中'));
       }
-      open.onclick = event => { if (!canOpenOverviewDetail(event.detail, selectedText())) return; openDetail(p); };
+      open.onclick = event => { if (!canOpenOverviewDetail(event.detail, selectedText())) return; openDetail(p, 'overview'); };
       const pick = pickButton(p), toggle = pick.onclick;
       pick.onclick = () => { toggle(); updateOverviewSelection(); };
       item.append(open, pick); host.append(item);
@@ -672,7 +680,7 @@ function cookieSvg(p, suffix){const i=data.indexOf(p);let dots='';for(let k=0;k<
     const option = el('option', '', value); option.value = value; $('#overview-category').append(option);
   });
   $('#overview-compare').onclick = showComparison;
-  for (const dialog of document.querySelectorAll('dialog')) {
+  for (const dialog of document.querySelectorAll('dialog:not(#metrics-dialog)')) {
     dialog.querySelector('.close').onclick = () => dialog.close();
     dialog.addEventListener('keydown', event => {
       if (event.key !== 'Tab' || [...document.querySelectorAll('dialog[open]')].pop() !== dialog) return;
