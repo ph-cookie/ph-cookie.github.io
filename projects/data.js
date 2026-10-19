@@ -3795,5 +3795,374 @@ window.PROJECTS = [
         "remaining": 1
       }
     }
+  },
+  {
+    "name": "Graphify — コードや文書の関係を検索できる知識グラフ作成ツール",
+    "url": "https://github.com/Graphify-Labs/graphify",
+    "summary": "コードや文書の構造と関係を知識グラフにまとめ、依存関係の検索・経路追跡・可視化に使えるツール。",
+    "description": "Graphifyは、ソースコードや文書、PDF、画像などを知識グラフにまとめ、プロジェクト内の関係を調べるツール。コードから関数・クラス・呼び出し・インポートなどを抽出し、要素どうしのつながりや機能ごとのまとまりを確認できる。初めて触れるコードの構造把握や、変更前に関連箇所をたどる用途に使える。\n生成したグラフは、ブラウザで操作できるHTML、概要をまとめたMarkdown、グラフ全体のJSONとして保存される。CLIから質問に関係する部分グラフを検索したり、2つの要素を結ぶ経路をたどったりできる。Claude Code・Codex・CursorなどのAIコーディングツールと連携し、コードを読み直す前にグラフを参照させる使い方にも対応する。\nコードの構造抽出はtree-sitterでローカル実行され、コードのみならAPIキーなしで利用できる。文書や画像などの意味解析には、AIアシスタントまたは設定したLLMバックエンドを使い、外部APIを選ぶと対象データが送信される。コードだけを対象にする場合は --code-only で文書などを除外できる。資料の種類や連携方法によって追加パッケージや設定が必要で、抽出した関係と推定した関係は区別して表示される。",
+    "category": "コード解析",
+    "tags": [
+      "知識グラフ",
+      "コード解析",
+      "可視化",
+      "AIエージェント",
+      "tree-sitter",
+      "Python",
+      "Apache-2.0"
+    ],
+    "addedAt": "2026-10-19",
+    "checkedAt": "2026-10-19",
+    "environmentVersion": 1,
+    "requirementsStatus": "documented",
+    "environment": [
+      {
+        "key": "os",
+        "value": "macOS／Linux／Windows",
+        "scope": "basic",
+        "level": "required",
+        "status": "documented",
+        "label": "OS",
+        "group": "requirements",
+        "order": 1,
+        "stateLabel": "",
+        "scopeLabel": "",
+        "levelLabel": "必須"
+      },
+      {
+        "key": "runtime",
+        "value": "Python 3.10以降",
+        "scope": "basic",
+        "level": "required",
+        "status": "documented",
+        "label": "実行環境",
+        "group": "requirements",
+        "order": 6,
+        "stateLabel": "",
+        "scopeLabel": "",
+        "levelLabel": "必須"
+      },
+      {
+        "key": "dependencies",
+        "value": "uvを推奨。pipx・pipでも導入可能",
+        "scope": "basic",
+        "level": "recommended",
+        "status": "documented",
+        "label": "必要ソフト",
+        "group": "requirements",
+        "order": 7,
+        "stateLabel": "",
+        "scopeLabel": "",
+        "levelLabel": "推奨"
+      },
+      {
+        "key": "agent",
+        "value": "Claude Code／Codex／Cursor／Gemini CLIなどの対応ツール",
+        "scope": "AIツール連携",
+        "level": "required",
+        "status": "documented",
+        "label": "AIツール",
+        "group": "requirements",
+        "order": 5,
+        "stateLabel": "",
+        "scopeLabel": "AIツール連携",
+        "levelLabel": "必須"
+      },
+      {
+        "key": "dependencies",
+        "value": "graphifyy[pdf]の追加パッケージ",
+        "scope": "PDF解析",
+        "level": "required",
+        "status": "documented",
+        "label": "必要ソフト",
+        "group": "requirements",
+        "order": 7,
+        "stateLabel": "",
+        "scopeLabel": "PDF解析",
+        "levelLabel": "必須"
+      },
+      {
+        "key": "auth",
+        "value": "APIキー不要（graphify extractでコードのみを構造抽出する場合）",
+        "scope": "コードのみの構造抽出",
+        "level": "unnecessary",
+        "status": "documented",
+        "label": "認証",
+        "group": "requirements",
+        "order": 9,
+        "stateLabel": "",
+        "scopeLabel": "コードのみの構造抽出",
+        "levelLabel": "不要"
+      },
+      {
+        "key": "runtime",
+        "value": "対応するAIアシスタント、対応LLM API、またはローカルOllamaなどの解析環境",
+        "scope": "文書・画像などの意味解析",
+        "level": "required",
+        "status": "documented",
+        "label": "実行環境",
+        "group": "requirements",
+        "order": 6,
+        "stateLabel": "",
+        "scopeLabel": "文書・画像などの意味解析",
+        "levelLabel": "必須"
+      },
+      {
+        "key": "format",
+        "value": "graph.html／GRAPH_REPORT.md／graph.json",
+        "scope": "basic",
+        "level": "info",
+        "status": "documented",
+        "label": "形式・出力",
+        "group": "specifications",
+        "order": 17,
+        "stateLabel": "",
+        "scopeLabel": "",
+        "levelLabel": ""
+      },
+      {
+        "key": "storage",
+        "value": "ローカルのgraphify-out/に保存",
+        "scope": "basic",
+        "level": "info",
+        "status": "documented",
+        "label": "保存・共有",
+        "group": "specifications",
+        "order": 19,
+        "stateLabel": "",
+        "scopeLabel": "",
+        "levelLabel": ""
+      },
+      {
+        "key": "usage",
+        "value": "公式Pythonパッケージ名はgraphifyy（末尾のyは2つ）。uv tool install graphifyyなどで導入し、CLIまたはAIツール連携から利用する。",
+        "scope": "basic",
+        "level": "info",
+        "status": "documented",
+        "label": "参照方法",
+        "group": "usage",
+        "order": 20,
+        "stateLabel": "",
+        "scopeLabel": "",
+        "levelLabel": ""
+      },
+      {
+        "key": "license",
+        "value": "Apache-2.0",
+        "scope": "basic",
+        "level": "info",
+        "status": "documented",
+        "label": "ライセンス",
+        "group": "licenses",
+        "order": 22,
+        "stateLabel": "",
+        "scopeLabel": "",
+        "levelLabel": ""
+      }
+    ],
+    "related": [
+      {
+        "label": "コードの構成やデータフローをMermaid図で確認したい",
+        "url": "https://github.com/oh-my-mermaid/oh-my-mermaid"
+      }
+    ],
+    "sources": [
+      {
+        "label": "公式README",
+        "url": "https://github.com/Graphify-Labs/graphify/blob/v8/README.md"
+      },
+      {
+        "label": "実行条件・追加パッケージ",
+        "url": "https://github.com/Graphify-Labs/graphify/blob/v8/pyproject.toml"
+      },
+      {
+        "label": "抽出の仕組み・グラフ形式",
+        "url": "https://github.com/Graphify-Labs/graphify/blob/v8/docs/how-it-works.md"
+      },
+      {
+        "label": "Apache-2.0ライセンス",
+        "url": "https://github.com/Graphify-Labs/graphify/blob/v8/LICENSE"
+      }
+    ],
+    "presentation": {
+      "groups": [
+        {
+          "key": "requirements",
+          "label": "利用条件",
+          "rows": [
+            {
+              "key": "os",
+              "value": "macOS／Linux／Windows",
+              "scope": "basic",
+              "level": "required",
+              "status": "documented",
+              "label": "OS",
+              "group": "requirements",
+              "order": 1,
+              "stateLabel": "",
+              "scopeLabel": "",
+              "levelLabel": "必須"
+            },
+            {
+              "key": "runtime",
+              "value": "Python 3.10以降",
+              "scope": "basic",
+              "level": "required",
+              "status": "documented",
+              "label": "実行環境",
+              "group": "requirements",
+              "order": 6,
+              "stateLabel": "",
+              "scopeLabel": "",
+              "levelLabel": "必須"
+            },
+            {
+              "key": "dependencies",
+              "value": "uvを推奨。pipx・pipでも導入可能",
+              "scope": "basic",
+              "level": "recommended",
+              "status": "documented",
+              "label": "必要ソフト",
+              "group": "requirements",
+              "order": 7,
+              "stateLabel": "",
+              "scopeLabel": "",
+              "levelLabel": "推奨"
+            },
+            {
+              "key": "agent",
+              "value": "Claude Code／Codex／Cursor／Gemini CLIなどの対応ツール",
+              "scope": "AIツール連携",
+              "level": "required",
+              "status": "documented",
+              "label": "AIツール",
+              "group": "requirements",
+              "order": 5,
+              "stateLabel": "",
+              "scopeLabel": "AIツール連携",
+              "levelLabel": "必須"
+            },
+            {
+              "key": "dependencies",
+              "value": "graphifyy[pdf]の追加パッケージ",
+              "scope": "PDF解析",
+              "level": "required",
+              "status": "documented",
+              "label": "必要ソフト",
+              "group": "requirements",
+              "order": 7,
+              "stateLabel": "",
+              "scopeLabel": "PDF解析",
+              "levelLabel": "必須"
+            },
+            {
+              "key": "auth",
+              "value": "APIキー不要（graphify extractでコードのみを構造抽出する場合）",
+              "scope": "コードのみの構造抽出",
+              "level": "unnecessary",
+              "status": "documented",
+              "label": "認証",
+              "group": "requirements",
+              "order": 9,
+              "stateLabel": "",
+              "scopeLabel": "コードのみの構造抽出",
+              "levelLabel": "不要"
+            },
+            {
+              "key": "runtime",
+              "value": "対応するAIアシスタント、対応LLM API、またはローカルOllamaなどの解析環境",
+              "scope": "文書・画像などの意味解析",
+              "level": "required",
+              "status": "documented",
+              "label": "実行環境",
+              "group": "requirements",
+              "order": 6,
+              "stateLabel": "",
+              "scopeLabel": "文書・画像などの意味解析",
+              "levelLabel": "必須"
+            }
+          ]
+        },
+        {
+          "key": "specifications",
+          "label": "仕様・出力",
+          "rows": [
+            {
+              "key": "format",
+              "value": "graph.html／GRAPH_REPORT.md／graph.json",
+              "scope": "basic",
+              "level": "info",
+              "status": "documented",
+              "label": "形式・出力",
+              "group": "specifications",
+              "order": 17,
+              "stateLabel": "",
+              "scopeLabel": "",
+              "levelLabel": ""
+            },
+            {
+              "key": "storage",
+              "value": "ローカルのgraphify-out/に保存",
+              "scope": "basic",
+              "level": "info",
+              "status": "documented",
+              "label": "保存・共有",
+              "group": "specifications",
+              "order": 19,
+              "stateLabel": "",
+              "scopeLabel": "",
+              "levelLabel": ""
+            }
+          ]
+        },
+        {
+          "key": "usage",
+          "label": "利用方法",
+          "rows": [
+            {
+              "key": "usage",
+              "value": "公式Pythonパッケージ名はgraphifyy（末尾のyは2つ）。uv tool install graphifyyなどで導入し、CLIまたはAIツール連携から利用する。",
+              "scope": "basic",
+              "level": "info",
+              "status": "documented",
+              "label": "参照方法",
+              "group": "usage",
+              "order": 20,
+              "stateLabel": "",
+              "scopeLabel": "",
+              "levelLabel": ""
+            }
+          ]
+        },
+        {
+          "key": "licenses",
+          "label": "ライセンス",
+          "rows": [
+            {
+              "key": "license",
+              "value": "Apache-2.0",
+              "scope": "basic",
+              "level": "info",
+              "status": "documented",
+              "label": "ライセンス",
+              "group": "licenses",
+              "order": 22,
+              "stateLabel": "",
+              "scopeLabel": "",
+              "levelLabel": ""
+            }
+          ]
+        }
+      ],
+      "overview": {
+        "label": "利用条件",
+        "value": "OS：macOS／Linux／Windows ／ 実行環境：Python 3.10以降",
+        "lines": [
+          "OS：macOS／Linux／Windows",
+          "実行環境：Python 3.10以降"
+        ],
+        "remaining": 5
+      }
+    }
   }
 ];
