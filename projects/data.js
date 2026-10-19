@@ -4410,5 +4410,192 @@ window.PROJECTS = [
         "remaining": 2
       }
     }
+  },
+  {
+    "name": "Motion-Primitives — Webアニメーション用UIコンポーネント集",
+    "url": "https://github.com/ibelick/motion-primitives",
+    "summary": "テキストやボタン、カードなどに滑らかなアニメーションを追加できる、カスタマイズ可能なReact向けUIコンポーネント集。",
+    "description": "Motion-Primitivesは、Webサイトやアプリにアニメーションを組み込むためのオープンソースUIコンポーネント集。React向けアニメーションライブラリのMotionとTailwind CSSを使用し、動きのあるインターフェースを構築できる。\n文字を一文字ずつ表示するテキスト演出、選択項目に追従する背景、カードから詳細画面へ滑らかに切り替わるダイアログなどを収録。Webサイトの見出し、ナビゲーション、コンテンツ表示、操作時の視覚的なフィードバックに利用できる。\n各コンポーネントには動作例とコード、設定方法が用意されており、CLIまたは手動でプロジェクトに追加できる。アニメーションの速度や動き方、デザインを調整できるため、既存のUIにも組み込みやすい。現在はベータ版として開発されており、コードの大幅な変更が行われる可能性がある。MITライセンスで公開。",
+    "category": "UI・Webデザイン",
+    "tags": [
+      "React",
+      "アニメーション",
+      "UIコンポーネント",
+      "Tailwind CSS",
+      "Motion",
+      "MIT"
+    ],
+    "environmentVersion": 1,
+    "requirementsStatus": "documented",
+    "environment": [
+      {
+        "key": "dependencies",
+        "value": "React／Tailwind CSS／Motion",
+        "scope": "basic",
+        "level": "required",
+        "status": "documented",
+        "label": "必要ソフト",
+        "group": "requirements",
+        "order": 7,
+        "stateLabel": "",
+        "scopeLabel": "",
+        "levelLabel": "必須"
+      },
+      {
+        "key": "releaseStatus",
+        "value": "ベータ版",
+        "scope": "basic",
+        "level": "info",
+        "status": "documented",
+        "label": "開発状況",
+        "group": "specifications",
+        "order": 24,
+        "stateLabel": "",
+        "scopeLabel": "",
+        "levelLabel": ""
+      },
+      {
+        "key": "usage",
+        "value": "CLIまたはコードの手動追加",
+        "scope": "basic",
+        "level": "info",
+        "status": "documented",
+        "label": "参照方法",
+        "group": "usage",
+        "order": 20,
+        "stateLabel": "",
+        "scopeLabel": "",
+        "levelLabel": ""
+      },
+      {
+        "key": "license",
+        "value": "MIT",
+        "scope": "basic",
+        "level": "info",
+        "status": "documented",
+        "label": "ライセンス",
+        "group": "licenses",
+        "order": 22,
+        "stateLabel": "",
+        "scopeLabel": "",
+        "levelLabel": ""
+      }
+    ],
+    "addedAt": "2026-10-20",
+    "checkedAt": "2026-10-20",
+    "sources": [
+      {
+        "label": "公式README",
+        "url": "https://github.com/ibelick/motion-primitives/blob/main/README.md"
+      },
+      {
+        "label": "導入方法（公式サイトと同じGitHub原本）",
+        "url": "https://github.com/ibelick/motion-primitives/blob/main/app/docs/installation/page.mdx"
+      },
+      {
+        "label": "アニメーション付き背景（公式資料原本）",
+        "url": "https://github.com/ibelick/motion-primitives/blob/main/app/docs/animated-background/page.mdx"
+      },
+      {
+        "label": "テキストアニメーション（公式資料原本）",
+        "url": "https://github.com/ibelick/motion-primitives/blob/main/app/docs/text-effect/page.mdx"
+      },
+      {
+        "label": "変形するダイアログ（公式資料原本）",
+        "url": "https://github.com/ibelick/motion-primitives/blob/main/app/docs/morphing-dialog/page.mdx"
+      },
+      {
+        "label": "MITライセンス",
+        "url": "https://github.com/ibelick/motion-primitives/blob/main/LICENCE.md"
+      }
+    ],
+    "presentation": {
+      "groups": [
+        {
+          "key": "requirements",
+          "label": "利用条件",
+          "rows": [
+            {
+              "key": "dependencies",
+              "value": "React／Tailwind CSS／Motion",
+              "scope": "basic",
+              "level": "required",
+              "status": "documented",
+              "label": "必要ソフト",
+              "group": "requirements",
+              "order": 7,
+              "stateLabel": "",
+              "scopeLabel": "",
+              "levelLabel": "必須"
+            }
+          ]
+        },
+        {
+          "key": "specifications",
+          "label": "仕様・出力",
+          "rows": [
+            {
+              "key": "releaseStatus",
+              "value": "ベータ版",
+              "scope": "basic",
+              "level": "info",
+              "status": "documented",
+              "label": "開発状況",
+              "group": "specifications",
+              "order": 24,
+              "stateLabel": "",
+              "scopeLabel": "",
+              "levelLabel": ""
+            }
+          ]
+        },
+        {
+          "key": "usage",
+          "label": "利用方法",
+          "rows": [
+            {
+              "key": "usage",
+              "value": "CLIまたはコードの手動追加",
+              "scope": "basic",
+              "level": "info",
+              "status": "documented",
+              "label": "参照方法",
+              "group": "usage",
+              "order": 20,
+              "stateLabel": "",
+              "scopeLabel": "",
+              "levelLabel": ""
+            }
+          ]
+        },
+        {
+          "key": "licenses",
+          "label": "ライセンス",
+          "rows": [
+            {
+              "key": "license",
+              "value": "MIT",
+              "scope": "basic",
+              "level": "info",
+              "status": "documented",
+              "label": "ライセンス",
+              "group": "licenses",
+              "order": 22,
+              "stateLabel": "",
+              "scopeLabel": "",
+              "levelLabel": ""
+            }
+          ]
+        }
+      ],
+      "overview": {
+        "label": "利用条件",
+        "value": "必要ソフト：React／Tailwind CSS／Motion",
+        "lines": [
+          "必要ソフト：React／Tailwind CSS／Motion"
+        ],
+        "remaining": 0
+      }
+    }
   }
 ];
