@@ -4597,5 +4597,377 @@ window.PROJECTS = [
         "remaining": 0
       }
     }
+  },
+  {
+    "name": "MoneyPrinterTurbo — 台本・音声・素材を組み合わせるショート動画制作ツール",
+    "url": "https://github.com/harry0703/MoneyPrinterTurbo",
+    "summary": "テーマやキーワードから台本、ナレーション、映像素材、字幕、BGMを組み合わせ、短い動画の制作を自動化するツール。",
+    "description": "MoneyPrinterTurboは、テーマやキーワードをもとにショート動画を制作するツール。AIによる台本作成、ナレーション生成、素材の検索・取得、字幕付与、BGMの追加、動画の合成をまとめて行える。自分で用意した台本・画像・動画・音声を使い、各工程を調整することもできる。\nブラウザのWebUI、API、CLIから操作でき、複数動画の一括生成や自動化フローへの組み込みに対応する。Pexels・Pixabayなどのストック素材に加え、対応サービスで生成した画像や動画も利用できる。縦長・横長・正方形の動画を出力し、字幕のフォント・位置・色や、素材の長さ・画面への収め方などを設定できる。\nLLM、音声合成、素材サービスは用途に応じて選び、外部サービスによってAPIキーや利用料金が必要になる。GPUは必須ではないが、ローカルWhisperなど負荷の高い処理では性能が影響する。本体はMITライセンスで、同梱BGMや使用する素材の権利条件は個別に確認する必要がある。",
+    "category": "動画制作",
+    "tags": [
+      "動画生成",
+      "ショート動画",
+      "字幕",
+      "音声合成",
+      "Python",
+      "MIT"
+    ],
+    "addedAt": "2026-10-20",
+    "checkedAt": "2026-10-20",
+    "environmentVersion": 1,
+    "requirementsStatus": "documented",
+    "environment": [
+      {
+        "key": "os",
+        "value": "Windows 10／macOS 11以降／主要なLinuxディストリビューション",
+        "scope": "basic",
+        "level": "recommended",
+        "status": "documented",
+        "label": "OS",
+        "group": "requirements",
+        "order": 1,
+        "stateLabel": "",
+        "scopeLabel": "",
+        "levelLabel": "推奨"
+      },
+      {
+        "key": "runtime",
+        "value": "4コアCPU・RAM4GB以上（ローカル実行の最低構成）",
+        "scope": "basic",
+        "level": "required",
+        "status": "documented",
+        "label": "実行環境",
+        "group": "requirements",
+        "order": 6,
+        "stateLabel": "",
+        "scopeLabel": "",
+        "levelLabel": "必須"
+      },
+      {
+        "key": "dependencies",
+        "value": "FFmpeg。通常は自動取得され、取得できない環境では手動設定",
+        "scope": "basic",
+        "level": "required",
+        "status": "documented",
+        "label": "必要ソフト",
+        "group": "requirements",
+        "order": 7,
+        "stateLabel": "",
+        "scopeLabel": "",
+        "levelLabel": "必須"
+      },
+      {
+        "key": "gpu",
+        "value": "GPUは必須ではない",
+        "scope": "basic",
+        "level": "unnecessary",
+        "status": "documented",
+        "label": "GPU",
+        "group": "requirements",
+        "order": 14,
+        "stateLabel": "",
+        "scopeLabel": "",
+        "levelLabel": "不要"
+      },
+      {
+        "key": "download",
+        "value": "初回利用時にWhisperモデルを取得",
+        "scope": "Whisper字幕生成",
+        "level": "required",
+        "status": "documented",
+        "label": "追加ダウンロード",
+        "group": "requirements",
+        "order": 13,
+        "stateLabel": "",
+        "scopeLabel": "Whisper字幕生成",
+        "levelLabel": "必須"
+      },
+      {
+        "key": "runtime",
+        "value": "Python 3.11以降",
+        "scope": "pip・ソースからのローカル導入",
+        "level": "required",
+        "status": "documented",
+        "label": "実行環境",
+        "group": "requirements",
+        "order": 6,
+        "stateLabel": "",
+        "scopeLabel": "pip・ソースからのローカル導入",
+        "levelLabel": "必須"
+      },
+      {
+        "key": "auth",
+        "value": "選択したサービスのAPIキー・認証情報",
+        "scope": "クラウドLLM・オンライン素材・有料音声サービス",
+        "level": "required",
+        "status": "documented",
+        "label": "認証",
+        "group": "requirements",
+        "order": 9,
+        "stateLabel": "",
+        "scopeLabel": "クラウドLLM・オンライン素材・有料音声サービス",
+        "levelLabel": "必須"
+      },
+      {
+        "key": "format",
+        "value": "縦長9:16（1080×1920）／横長16:9（1920×1080）／正方形1:1（1080×1080）",
+        "scope": "basic",
+        "level": "info",
+        "status": "documented",
+        "label": "形式・出力",
+        "group": "specifications",
+        "order": 17,
+        "stateLabel": "",
+        "scopeLabel": "",
+        "levelLabel": ""
+      },
+      {
+        "key": "storage",
+        "value": "OS別のアプリデータディレクトリ内の storage/tasks",
+        "scope": "pipインストール版",
+        "level": "info",
+        "status": "documented",
+        "label": "保存・共有",
+        "group": "specifications",
+        "order": 19,
+        "stateLabel": "",
+        "scopeLabel": "pipインストール版",
+        "levelLabel": ""
+      },
+      {
+        "key": "usage",
+        "value": "公式Pythonパッケージはmpt。pipで導入し mpt webui などで起動する。Windows用起動パッケージやDockerによる導入にも対応。",
+        "scope": "basic",
+        "level": "info",
+        "status": "documented",
+        "label": "参照方法",
+        "group": "usage",
+        "order": 20,
+        "stateLabel": "",
+        "scopeLabel": "",
+        "levelLabel": ""
+      },
+      {
+        "key": "license",
+        "value": "MIT",
+        "scope": "本体コード",
+        "level": "info",
+        "status": "documented",
+        "label": "ライセンス",
+        "group": "licenses",
+        "order": 22,
+        "stateLabel": "",
+        "scopeLabel": "本体コード",
+        "levelLabel": ""
+      }
+    ],
+    "related": [
+      {
+        "label": "配信中の音声をリアルタイム字幕にしたい",
+        "url": "https://github.com/oboroge0/hayamimi"
+      }
+    ],
+    "sources": [
+      {
+        "label": "公式README・機能と導入条件",
+        "url": "https://github.com/harry0703/MoneyPrinterTurbo/blob/main/README.md"
+      },
+      {
+        "label": "日本語README",
+        "url": "https://github.com/harry0703/MoneyPrinterTurbo/blob/main/README-ja.md"
+      },
+      {
+        "label": "Python実行条件・公式パッケージ",
+        "url": "https://github.com/harry0703/MoneyPrinterTurbo/blob/main/pyproject.toml"
+      },
+      {
+        "label": "サービス設定例",
+        "url": "https://github.com/harry0703/MoneyPrinterTurbo/blob/main/config.example.toml"
+      },
+      {
+        "label": "MITライセンス",
+        "url": "https://github.com/harry0703/MoneyPrinterTurbo/blob/main/LICENSE"
+      }
+    ],
+    "presentation": {
+      "groups": [
+        {
+          "key": "requirements",
+          "label": "利用条件",
+          "rows": [
+            {
+              "key": "os",
+              "value": "Windows 10／macOS 11以降／主要なLinuxディストリビューション",
+              "scope": "basic",
+              "level": "recommended",
+              "status": "documented",
+              "label": "OS",
+              "group": "requirements",
+              "order": 1,
+              "stateLabel": "",
+              "scopeLabel": "",
+              "levelLabel": "推奨"
+            },
+            {
+              "key": "runtime",
+              "value": "4コアCPU・RAM4GB以上（ローカル実行の最低構成）",
+              "scope": "basic",
+              "level": "required",
+              "status": "documented",
+              "label": "実行環境",
+              "group": "requirements",
+              "order": 6,
+              "stateLabel": "",
+              "scopeLabel": "",
+              "levelLabel": "必須"
+            },
+            {
+              "key": "dependencies",
+              "value": "FFmpeg。通常は自動取得され、取得できない環境では手動設定",
+              "scope": "basic",
+              "level": "required",
+              "status": "documented",
+              "label": "必要ソフト",
+              "group": "requirements",
+              "order": 7,
+              "stateLabel": "",
+              "scopeLabel": "",
+              "levelLabel": "必須"
+            },
+            {
+              "key": "gpu",
+              "value": "GPUは必須ではない",
+              "scope": "basic",
+              "level": "unnecessary",
+              "status": "documented",
+              "label": "GPU",
+              "group": "requirements",
+              "order": 14,
+              "stateLabel": "",
+              "scopeLabel": "",
+              "levelLabel": "不要"
+            },
+            {
+              "key": "download",
+              "value": "初回利用時にWhisperモデルを取得",
+              "scope": "Whisper字幕生成",
+              "level": "required",
+              "status": "documented",
+              "label": "追加ダウンロード",
+              "group": "requirements",
+              "order": 13,
+              "stateLabel": "",
+              "scopeLabel": "Whisper字幕生成",
+              "levelLabel": "必須"
+            },
+            {
+              "key": "runtime",
+              "value": "Python 3.11以降",
+              "scope": "pip・ソースからのローカル導入",
+              "level": "required",
+              "status": "documented",
+              "label": "実行環境",
+              "group": "requirements",
+              "order": 6,
+              "stateLabel": "",
+              "scopeLabel": "pip・ソースからのローカル導入",
+              "levelLabel": "必須"
+            },
+            {
+              "key": "auth",
+              "value": "選択したサービスのAPIキー・認証情報",
+              "scope": "クラウドLLM・オンライン素材・有料音声サービス",
+              "level": "required",
+              "status": "documented",
+              "label": "認証",
+              "group": "requirements",
+              "order": 9,
+              "stateLabel": "",
+              "scopeLabel": "クラウドLLM・オンライン素材・有料音声サービス",
+              "levelLabel": "必須"
+            }
+          ]
+        },
+        {
+          "key": "specifications",
+          "label": "仕様・出力",
+          "rows": [
+            {
+              "key": "format",
+              "value": "縦長9:16（1080×1920）／横長16:9（1920×1080）／正方形1:1（1080×1080）",
+              "scope": "basic",
+              "level": "info",
+              "status": "documented",
+              "label": "形式・出力",
+              "group": "specifications",
+              "order": 17,
+              "stateLabel": "",
+              "scopeLabel": "",
+              "levelLabel": ""
+            },
+            {
+              "key": "storage",
+              "value": "OS別のアプリデータディレクトリ内の storage/tasks",
+              "scope": "pipインストール版",
+              "level": "info",
+              "status": "documented",
+              "label": "保存・共有",
+              "group": "specifications",
+              "order": 19,
+              "stateLabel": "",
+              "scopeLabel": "pipインストール版",
+              "levelLabel": ""
+            }
+          ]
+        },
+        {
+          "key": "usage",
+          "label": "利用方法",
+          "rows": [
+            {
+              "key": "usage",
+              "value": "公式Pythonパッケージはmpt。pipで導入し mpt webui などで起動する。Windows用起動パッケージやDockerによる導入にも対応。",
+              "scope": "basic",
+              "level": "info",
+              "status": "documented",
+              "label": "参照方法",
+              "group": "usage",
+              "order": 20,
+              "stateLabel": "",
+              "scopeLabel": "",
+              "levelLabel": ""
+            }
+          ]
+        },
+        {
+          "key": "licenses",
+          "label": "ライセンス",
+          "rows": [
+            {
+              "key": "license",
+              "value": "MIT",
+              "scope": "本体コード",
+              "level": "info",
+              "status": "documented",
+              "label": "ライセンス",
+              "group": "licenses",
+              "order": 22,
+              "stateLabel": "",
+              "scopeLabel": "本体コード",
+              "levelLabel": ""
+            }
+          ]
+        }
+      ],
+      "overview": {
+        "label": "利用条件",
+        "value": "実行環境：4コアCPU・RAM4GB以上（ローカル実行の最低構成） ／ 必要ソフト：FFmpeg。通常は自動取得され、取得できない環境では手動設定",
+        "lines": [
+          "実行環境：4コアCPU・RAM4GB以上（ローカル実行の最低構成）",
+          "必要ソフト：FFmpeg。通常は自動取得され、取得できない環境では手動設定"
+        ],
+        "remaining": 5
+      }
+    }
   }
 ];
