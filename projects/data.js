@@ -3557,5 +3557,243 @@ window.PROJECTS = [
         "remaining": 5
       }
     }
+  },
+  {
+    "name": "Claude Security — コードの脆弱性調査と修正案を作るClaude Codeプラグイン",
+    "url": "https://github.com/anthropics/claude-plugins-official",
+    "summary": "リポジトリ全体やコード差分を調べ、脆弱性の検証結果を報告書にまとめ、修正用のパッチ案も作成するClaude Codeプラグイン。",
+    "description": "Claude Securityは、Anthropicの公式プラグイン集に収録された、Claude Code向けのセキュリティ調査プラグイン。複数のエージェントがコードの構造把握、脅威モデルの作成、脆弱性の探索を分担し、候補を別のエージェントが検証してから報告書にまとめる。リポジトリ全体、一部のディレクトリ、ブランチやプルリクエストの差分、特定コミットを調査できる。\n調査結果はMarkdown・JSONL・SARIF形式で保存される。確認済みの指摘から修正パッチ案を作る機能もあり、作業ツリーとは別のコピーで修正とレビューを行う。パッチの適用・コミット・pushは自動では実行せず、利用者が内容を確認して適用する。\n調査と修正案の作成はClaude Codeのセッション権限で動き、プラグイン独自の隔離機能はない。自分が管理するコードでの利用に向いており、信頼できないリポジトリを扱う場合はセッション全体の隔離が推奨される。調査結果は実行ごとに変わる可能性があり、静的解析・依存関係の検査・コードレビューを補う用途で使う。",
+    "category": "セキュリティ",
+    "tags": [
+      "Claude Code",
+      "プラグイン",
+      "脆弱性調査",
+      "脅威モデリング",
+      "セキュリティレビュー",
+      "SARIF"
+    ],
+    "addedAt": "2026-10-19",
+    "checkedAt": "2026-10-19",
+    "environmentVersion": 1,
+    "requirementsStatus": "documented",
+    "environment": [
+      {
+        "key": "agent",
+        "value": "Claude Code（Claude Securityプラグイン導入済み）",
+        "scope": "basic",
+        "level": "required",
+        "status": "documented",
+        "label": "AIツール",
+        "group": "requirements",
+        "order": 5,
+        "stateLabel": "",
+        "scopeLabel": "",
+        "levelLabel": "必須"
+      },
+      {
+        "key": "runtime",
+        "value": "Python 3.9以降（PATHに登録）",
+        "scope": "basic",
+        "level": "required",
+        "status": "documented",
+        "label": "実行環境",
+        "group": "requirements",
+        "order": 6,
+        "stateLabel": "",
+        "scopeLabel": "",
+        "levelLabel": "必須"
+      },
+      {
+        "key": "dependencies",
+        "value": "Gitチェックアウト（リポジトリ全体の調査だけなら不要）",
+        "scope": "差分の調査・修正パッチ案の作成",
+        "level": "required",
+        "status": "documented",
+        "label": "必要ソフト",
+        "group": "requirements",
+        "order": 7,
+        "stateLabel": "",
+        "scopeLabel": "差分の調査・修正パッチ案の作成",
+        "levelLabel": "必須"
+      },
+      {
+        "key": "format",
+        "value": "調査結果：Markdown・JSONL・SARIF 2.1.0。修正案：パッチファイル。",
+        "scope": "basic",
+        "level": "info",
+        "status": "documented",
+        "label": "形式・出力",
+        "group": "specifications",
+        "order": 17,
+        "stateLabel": "",
+        "scopeLabel": "",
+        "levelLabel": ""
+      },
+      {
+        "key": "usage",
+        "value": "Claude Codeで /plugin install claude-security@claude-plugins-official と /reload-plugins を実行し、/claude-security から利用する。",
+        "scope": "basic",
+        "level": "info",
+        "status": "documented",
+        "label": "参照方法",
+        "group": "usage",
+        "order": 20,
+        "stateLabel": "",
+        "scopeLabel": "",
+        "levelLabel": ""
+      },
+      {
+        "key": "license",
+        "value": "Anthropic独自ライセンス。契約条件に従い、Claude CodeなどAnthropic製品・サービスでの内部利用に限定。契約で明示的に許可される場合を除き、第三者への再配布や非Anthropic製品での利用は禁止。",
+        "scope": "basic",
+        "level": "info",
+        "status": "documented",
+        "label": "ライセンス",
+        "group": "licenses",
+        "order": 22,
+        "stateLabel": "",
+        "scopeLabel": "",
+        "levelLabel": ""
+      }
+    ],
+    "related": [
+      {
+        "label": "Webアプリ・APIの脆弱性調査も進めたい",
+        "url": "https://github.com/elementalsouls/Claude-BugHunter"
+      }
+    ],
+    "sources": [
+      {
+        "label": "Claude Security公式README",
+        "url": "https://github.com/anthropics/claude-plugins-official/blob/main/plugins/claude-security/README.md"
+      },
+      {
+        "label": "公式プラグインディレクトリ",
+        "url": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/claude-security"
+      },
+      {
+        "label": "セキュリティ方針",
+        "url": "https://github.com/anthropics/claude-plugins-official/blob/main/plugins/claude-security/SECURITY.md"
+      },
+      {
+        "label": "ライセンス",
+        "url": "https://github.com/anthropics/claude-plugins-official/blob/main/plugins/claude-security/LICENSE"
+      }
+    ],
+    "presentation": {
+      "groups": [
+        {
+          "key": "requirements",
+          "label": "利用条件",
+          "rows": [
+            {
+              "key": "agent",
+              "value": "Claude Code（Claude Securityプラグイン導入済み）",
+              "scope": "basic",
+              "level": "required",
+              "status": "documented",
+              "label": "AIツール",
+              "group": "requirements",
+              "order": 5,
+              "stateLabel": "",
+              "scopeLabel": "",
+              "levelLabel": "必須"
+            },
+            {
+              "key": "runtime",
+              "value": "Python 3.9以降（PATHに登録）",
+              "scope": "basic",
+              "level": "required",
+              "status": "documented",
+              "label": "実行環境",
+              "group": "requirements",
+              "order": 6,
+              "stateLabel": "",
+              "scopeLabel": "",
+              "levelLabel": "必須"
+            },
+            {
+              "key": "dependencies",
+              "value": "Gitチェックアウト（リポジトリ全体の調査だけなら不要）",
+              "scope": "差分の調査・修正パッチ案の作成",
+              "level": "required",
+              "status": "documented",
+              "label": "必要ソフト",
+              "group": "requirements",
+              "order": 7,
+              "stateLabel": "",
+              "scopeLabel": "差分の調査・修正パッチ案の作成",
+              "levelLabel": "必須"
+            }
+          ]
+        },
+        {
+          "key": "specifications",
+          "label": "仕様・出力",
+          "rows": [
+            {
+              "key": "format",
+              "value": "調査結果：Markdown・JSONL・SARIF 2.1.0。修正案：パッチファイル。",
+              "scope": "basic",
+              "level": "info",
+              "status": "documented",
+              "label": "形式・出力",
+              "group": "specifications",
+              "order": 17,
+              "stateLabel": "",
+              "scopeLabel": "",
+              "levelLabel": ""
+            }
+          ]
+        },
+        {
+          "key": "usage",
+          "label": "利用方法",
+          "rows": [
+            {
+              "key": "usage",
+              "value": "Claude Codeで /plugin install claude-security@claude-plugins-official と /reload-plugins を実行し、/claude-security から利用する。",
+              "scope": "basic",
+              "level": "info",
+              "status": "documented",
+              "label": "参照方法",
+              "group": "usage",
+              "order": 20,
+              "stateLabel": "",
+              "scopeLabel": "",
+              "levelLabel": ""
+            }
+          ]
+        },
+        {
+          "key": "licenses",
+          "label": "ライセンス",
+          "rows": [
+            {
+              "key": "license",
+              "value": "Anthropic独自ライセンス。契約条件に従い、Claude CodeなどAnthropic製品・サービスでの内部利用に限定。契約で明示的に許可される場合を除き、第三者への再配布や非Anthropic製品での利用は禁止。",
+              "scope": "basic",
+              "level": "info",
+              "status": "documented",
+              "label": "ライセンス",
+              "group": "licenses",
+              "order": 22,
+              "stateLabel": "",
+              "scopeLabel": "",
+              "levelLabel": ""
+            }
+          ]
+        }
+      ],
+      "overview": {
+        "label": "利用条件",
+        "value": "AIツール：Claude Code（Claude Securityプラグイン導入済み） ／ 実行環境：Python 3.9以降（PATHに登録）",
+        "lines": [
+          "AIツール：Claude Code（Claude Securityプラグイン導入済み）",
+          "実行環境：Python 3.9以降（PATHに登録）"
+        ],
+        "remaining": 1
+      }
+    }
   }
 ];
