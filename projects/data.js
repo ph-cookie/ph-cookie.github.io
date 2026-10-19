@@ -4969,5 +4969,374 @@ window.PROJECTS = [
         "remaining": 5
       }
     }
+  },
+  {
+    "name": "Mesh Avatar Studio — 1枚のイラストから動く2Dアバターを作るツール",
+    "url": "https://github.com/shinshin86/mesh-avatar-studio",
+    "summary": "イラストをまばたきや口パクのできるアバターにし、プレビューを見ながら調整して配信に使える。",
+    "description": "Mesh Avatar Studioは、1枚のイラストから、まばたき・口パク・首振り・呼吸・髪の揺れをする2Dメッシュアバターを作るツール。公式手順ではClaude CodeまたはCodexに作成を依頼し、ローカルのエディタでパーツの点を動かして調整する。正面向きのバストアップで、背景が透明なPNGが推奨されている。\n作ったアバターは、カメラで顔の動きを追従させたり、マイクの声に合わせて口を動かしたりできる。ローカルStudioの配信画面はOBSのブラウザソースに対応し、透明な背景で重ねて表示できる。.mavatar形式で書き出して共有することもできる。\n公開Playerでは、サンプルや手元の.mavatarをChrome・Edgeで開き、インストールせずに動かせる。ただしOBS用URLはなく、OBSではウィンドウキャプチャと緑背景のクロマキーを使う。顔追従・口パクの映像と音声は端末内で処理する一方、Codexで目や口の描き分け画像を生成する場合は画像を画像生成へ送信する。",
+    "category": "アバター制作",
+    "tags": [
+      "2Dアバター",
+      "メッシュ変形",
+      "フェイストラッキング",
+      "OBS",
+      "Claude Code",
+      "Codex"
+    ],
+    "addedAt": "2026-10-20",
+    "checkedAt": "2026-10-20",
+    "environmentVersion": 1,
+    "requirementsStatus": "documented",
+    "environment": [
+      {
+        "key": "browser",
+        "value": "Webブラウザ。公開PlayerはChromeまたはEdgeを使用する。",
+        "scope": "basic",
+        "level": "required",
+        "status": "documented",
+        "label": "ブラウザ",
+        "group": "requirements",
+        "order": 3,
+        "stateLabel": "",
+        "scopeLabel": "",
+        "levelLabel": "必須"
+      },
+      {
+        "key": "dependencies",
+        "value": "PlaywrightのChromium",
+        "scope": "エージェントによる動きの確認",
+        "level": "required",
+        "status": "documented",
+        "label": "必要ソフト",
+        "group": "requirements",
+        "order": 7,
+        "stateLabel": "",
+        "scopeLabel": "エージェントによる動きの確認",
+        "levelLabel": "必須"
+      },
+      {
+        "key": "dependencies",
+        "value": "uvとPython 3.10以上。レイヤー生成にNumPy・Pillow・OpenCVを使用する。",
+        "scope": "レイヤーの生成・作り直し",
+        "level": "required",
+        "status": "documented",
+        "label": "必要ソフト",
+        "group": "requirements",
+        "order": 7,
+        "stateLabel": "",
+        "scopeLabel": "レイヤーの生成・作り直し",
+        "levelLabel": "必須"
+      },
+      {
+        "key": "runtime",
+        "value": "Node.js 22.17以上とGit",
+        "scope": "ローカルStudioの導入",
+        "level": "required",
+        "status": "documented",
+        "label": "実行環境",
+        "group": "requirements",
+        "order": 6,
+        "stateLabel": "",
+        "scopeLabel": "ローカルStudioの導入",
+        "levelLabel": "必須"
+      },
+      {
+        "key": "agent",
+        "value": "Claude CodeまたはCodex",
+        "scope": "公式のエージェント作成手順",
+        "level": "required",
+        "status": "documented",
+        "label": "AIツール",
+        "group": "requirements",
+        "order": 5,
+        "stateLabel": "",
+        "scopeLabel": "公式のエージェント作成手順",
+        "levelLabel": "必須"
+      },
+      {
+        "key": "dependencies",
+        "value": "顔追従にはカメラ、声に合わせた口パクにはマイク。どちらも使わず待機動作で表示できる。",
+        "scope": "顔追従・音声口パク",
+        "level": "required",
+        "status": "documented",
+        "label": "必要ソフト",
+        "group": "requirements",
+        "order": 7,
+        "stateLabel": "",
+        "scopeLabel": "顔追従・音声口パク",
+        "levelLabel": "必須"
+      },
+      {
+        "key": "format",
+        "value": ".mavatarファイルに設定・レイヤー画像・表情用画像などをまとめて書き出せる。",
+        "scope": "共有",
+        "level": "info",
+        "status": "documented",
+        "label": "形式・出力",
+        "group": "specifications",
+        "order": 17,
+        "stateLabel": "",
+        "scopeLabel": "共有",
+        "levelLabel": ""
+      },
+      {
+        "key": "processing",
+        "value": "顔追従・口パクの映像と音声は端末内で処理する。Codexの描き分け画像生成では画像を画像生成へ送信する。",
+        "scope": "映像・音声処理／描き分け画像生成",
+        "level": "info",
+        "status": "documented",
+        "label": "入力処理",
+        "group": "specifications",
+        "order": 25,
+        "stateLabel": "",
+        "scopeLabel": "映像・音声処理／描き分け画像生成",
+        "levelLabel": ""
+      },
+      {
+        "key": "editing",
+        "value": "元画像を含めず書き出した.mavatarは再生専用で、編集・レイヤーの作り直しはできない。Studioへの取り込み上限は128 MiB。",
+        "scope": "共有ファイルの再編集",
+        "level": "info",
+        "status": "documented",
+        "label": "編集方法",
+        "group": "usage",
+        "order": 21,
+        "stateLabel": "",
+        "scopeLabel": "共有ファイルの再編集",
+        "levelLabel": ""
+      },
+      {
+        "key": "license",
+        "value": "コード：MIT。顔追従に使うMediaPipeと同梱モデル：Apache-2.0。",
+        "scope": "コード・顔追従",
+        "level": "info",
+        "status": "documented",
+        "label": "ライセンス",
+        "group": "licenses",
+        "order": 22,
+        "stateLabel": "",
+        "scopeLabel": "コード・顔追従",
+        "levelLabel": ""
+      },
+      {
+        "key": "license",
+        "value": "サンプル「ミコ」はMITの対象外。キャラクター利用ガイドラインが適用され、画像単体・素材集としての再配布は禁止。",
+        "scope": "サンプル素材",
+        "level": "info",
+        "status": "documented",
+        "label": "ライセンス",
+        "group": "licenses",
+        "order": 22,
+        "stateLabel": "",
+        "scopeLabel": "サンプル素材",
+        "levelLabel": ""
+      }
+    ],
+    "sources": [
+      {
+        "label": "日本語README",
+        "url": "https://github.com/shinshin86/mesh-avatar-studio/blob/main/README.ja.md"
+      },
+      {
+        "label": "利用方法・配信・プライバシー",
+        "url": "https://github.com/shinshin86/mesh-avatar-studio/blob/main/docs/reference.md"
+      },
+      {
+        "label": "アバターファイル形式",
+        "url": "https://github.com/shinshin86/mesh-avatar-studio/blob/main/docs/format.md"
+      },
+      {
+        "label": "MITライセンス",
+        "url": "https://github.com/shinshin86/mesh-avatar-studio/blob/main/LICENSE"
+      },
+      {
+        "label": "サンプル「ミコ」の利用条件概要",
+        "url": "https://github.com/shinshin86/mesh-avatar-studio/blob/main/samples/miko-qipao/MIKO_ASSET_TERMS.md"
+      },
+      {
+        "label": "MediaPipeのライセンス",
+        "url": "https://github.com/shinshin86/mesh-avatar-studio/blob/main/vendor/mediapipe/LICENSE"
+      }
+    ],
+    "presentation": {
+      "groups": [
+        {
+          "key": "requirements",
+          "label": "利用条件",
+          "rows": [
+            {
+              "key": "browser",
+              "value": "Webブラウザ。公開PlayerはChromeまたはEdgeを使用する。",
+              "scope": "basic",
+              "level": "required",
+              "status": "documented",
+              "label": "ブラウザ",
+              "group": "requirements",
+              "order": 3,
+              "stateLabel": "",
+              "scopeLabel": "",
+              "levelLabel": "必須"
+            },
+            {
+              "key": "dependencies",
+              "value": "PlaywrightのChromium",
+              "scope": "エージェントによる動きの確認",
+              "level": "required",
+              "status": "documented",
+              "label": "必要ソフト",
+              "group": "requirements",
+              "order": 7,
+              "stateLabel": "",
+              "scopeLabel": "エージェントによる動きの確認",
+              "levelLabel": "必須"
+            },
+            {
+              "key": "dependencies",
+              "value": "uvとPython 3.10以上。レイヤー生成にNumPy・Pillow・OpenCVを使用する。",
+              "scope": "レイヤーの生成・作り直し",
+              "level": "required",
+              "status": "documented",
+              "label": "必要ソフト",
+              "group": "requirements",
+              "order": 7,
+              "stateLabel": "",
+              "scopeLabel": "レイヤーの生成・作り直し",
+              "levelLabel": "必須"
+            },
+            {
+              "key": "runtime",
+              "value": "Node.js 22.17以上とGit",
+              "scope": "ローカルStudioの導入",
+              "level": "required",
+              "status": "documented",
+              "label": "実行環境",
+              "group": "requirements",
+              "order": 6,
+              "stateLabel": "",
+              "scopeLabel": "ローカルStudioの導入",
+              "levelLabel": "必須"
+            },
+            {
+              "key": "agent",
+              "value": "Claude CodeまたはCodex",
+              "scope": "公式のエージェント作成手順",
+              "level": "required",
+              "status": "documented",
+              "label": "AIツール",
+              "group": "requirements",
+              "order": 5,
+              "stateLabel": "",
+              "scopeLabel": "公式のエージェント作成手順",
+              "levelLabel": "必須"
+            },
+            {
+              "key": "dependencies",
+              "value": "顔追従にはカメラ、声に合わせた口パクにはマイク。どちらも使わず待機動作で表示できる。",
+              "scope": "顔追従・音声口パク",
+              "level": "required",
+              "status": "documented",
+              "label": "必要ソフト",
+              "group": "requirements",
+              "order": 7,
+              "stateLabel": "",
+              "scopeLabel": "顔追従・音声口パク",
+              "levelLabel": "必須"
+            }
+          ]
+        },
+        {
+          "key": "specifications",
+          "label": "仕様・出力",
+          "rows": [
+            {
+              "key": "format",
+              "value": ".mavatarファイルに設定・レイヤー画像・表情用画像などをまとめて書き出せる。",
+              "scope": "共有",
+              "level": "info",
+              "status": "documented",
+              "label": "形式・出力",
+              "group": "specifications",
+              "order": 17,
+              "stateLabel": "",
+              "scopeLabel": "共有",
+              "levelLabel": ""
+            },
+            {
+              "key": "processing",
+              "value": "顔追従・口パクの映像と音声は端末内で処理する。Codexの描き分け画像生成では画像を画像生成へ送信する。",
+              "scope": "映像・音声処理／描き分け画像生成",
+              "level": "info",
+              "status": "documented",
+              "label": "入力処理",
+              "group": "specifications",
+              "order": 25,
+              "stateLabel": "",
+              "scopeLabel": "映像・音声処理／描き分け画像生成",
+              "levelLabel": ""
+            }
+          ]
+        },
+        {
+          "key": "usage",
+          "label": "利用方法",
+          "rows": [
+            {
+              "key": "editing",
+              "value": "元画像を含めず書き出した.mavatarは再生専用で、編集・レイヤーの作り直しはできない。Studioへの取り込み上限は128 MiB。",
+              "scope": "共有ファイルの再編集",
+              "level": "info",
+              "status": "documented",
+              "label": "編集方法",
+              "group": "usage",
+              "order": 21,
+              "stateLabel": "",
+              "scopeLabel": "共有ファイルの再編集",
+              "levelLabel": ""
+            }
+          ]
+        },
+        {
+          "key": "licenses",
+          "label": "ライセンス",
+          "rows": [
+            {
+              "key": "license",
+              "value": "コード：MIT。顔追従に使うMediaPipeと同梱モデル：Apache-2.0。",
+              "scope": "コード・顔追従",
+              "level": "info",
+              "status": "documented",
+              "label": "ライセンス",
+              "group": "licenses",
+              "order": 22,
+              "stateLabel": "",
+              "scopeLabel": "コード・顔追従",
+              "levelLabel": ""
+            },
+            {
+              "key": "license",
+              "value": "サンプル「ミコ」はMITの対象外。キャラクター利用ガイドラインが適用され、画像単体・素材集としての再配布は禁止。",
+              "scope": "サンプル素材",
+              "level": "info",
+              "status": "documented",
+              "label": "ライセンス",
+              "group": "licenses",
+              "order": 22,
+              "stateLabel": "",
+              "scopeLabel": "サンプル素材",
+              "levelLabel": ""
+            }
+          ]
+        }
+      ],
+      "overview": {
+        "label": "利用条件",
+        "value": "ブラウザ：Webブラウザ。公開PlayerはChromeまたはEdgeを使用する。",
+        "lines": [
+          "ブラウザ：Webブラウザ。公開PlayerはChromeまたはEdgeを使用する。"
+        ],
+        "remaining": 5
+      }
+    }
   }
 ];
