@@ -4164,5 +4164,251 @@ window.PROJECTS = [
         "remaining": 5
       }
     }
+  },
+  {
+    "name": "Skills For Real Engineers — AIと要件整理・実装・テストを進めるスキル集",
+    "url": "https://github.com/mattpocock/skills",
+    "summary": "AIコーディングエージェントに、要件の聞き取り、仕様・チケット作成、テスト駆動開発、設計・レビューの手順を追加するスキル集。",
+    "description": "Skills For Real Engineersは、Matt Pocockが公開するAIエージェント向けのスキル集。ソフトウェア開発の要件整理、設計、実装、テスト、レビューを、小さく組み合わせられる手順として追加できる。開発用に加え、計画の聞き取り、学習、会話の引き継ぎなどの生産性向上スキルも含む。\n/grill-with-docsで要件や設計を掘り下げながら用語集・設計判断の記録を整え、/to-specで会話を仕様にまとめ、/to-ticketsで実装単位へ分割する使い方ができる。/tddは失敗するテストから実装へ進む手順を定め、デバッグ、コードベースの設計改善、変更内容のレビューを支援するスキルも備える。\nClaude Code・Codex・GitHub Copilotにはプラグインとして導入でき、Gemini CLIやその他の対応エージェントにはスキルファイルをインストールして使う。開発用スキルを使う前に、リポジトリごとに /setup-matt-pocock-skills で課題管理方法や文書の保存先などを設定する。人が明示的に呼び出すスキルと、エージェントが状況に応じて使うスキルが分かれており、既存プロジェクトに必要な手順を選んで組み込める。",
+    "category": "ソフトウェア開発",
+    "tags": [
+      "AIエージェント",
+      "Claude Code",
+      "Codex",
+      "要件定義",
+      "TDD",
+      "コードレビュー",
+      "MIT"
+    ],
+    "addedAt": "2026-10-19",
+    "checkedAt": "2026-10-19",
+    "environmentVersion": 1,
+    "requirementsStatus": "documented",
+    "environment": [
+      {
+        "key": "agent",
+        "value": "Claude Code／Codex／GitHub Copilot／Gemini CLIなどの対応AIエージェント",
+        "scope": "basic",
+        "level": "required",
+        "status": "documented",
+        "label": "AIツール",
+        "group": "requirements",
+        "order": 5,
+        "stateLabel": "",
+        "scopeLabel": "",
+        "levelLabel": "必須"
+      },
+      {
+        "key": "runtime",
+        "value": "npxを実行できるNode.js・npm（最低バージョンの明記なし）",
+        "scope": "skills.sh経由の導入",
+        "level": "required",
+        "status": "documented",
+        "label": "実行環境",
+        "group": "requirements",
+        "order": 6,
+        "stateLabel": "",
+        "scopeLabel": "skills.sh経由の導入",
+        "levelLabel": "必須"
+      },
+      {
+        "key": "installation",
+        "value": "リポジトリごとに /setup-matt-pocock-skills を実行し、課題管理方法・ラベル・文書配置を設定",
+        "scope": "開発用スキル",
+        "level": "required",
+        "status": "documented",
+        "label": "導入条件",
+        "group": "requirements",
+        "order": 10,
+        "stateLabel": "",
+        "scopeLabel": "開発用スキル",
+        "levelLabel": "必須"
+      },
+      {
+        "key": "format",
+        "value": "開発・生産性向上のためのプロンプト型スキル集",
+        "scope": "basic",
+        "level": "info",
+        "status": "documented",
+        "label": "形式・出力",
+        "group": "specifications",
+        "order": 17,
+        "stateLabel": "",
+        "scopeLabel": "",
+        "levelLabel": ""
+      },
+      {
+        "key": "usage",
+        "value": "Claude Code・Codex・GitHub Copilotはプラグイン導入に対応。Gemini CLIはskills install、その他は npx skills@latest add mattpocock/skills などで導入する。同じエージェントには導入方式を重複させない。",
+        "scope": "basic",
+        "level": "info",
+        "status": "documented",
+        "label": "参照方法",
+        "group": "usage",
+        "order": 20,
+        "stateLabel": "",
+        "scopeLabel": "",
+        "levelLabel": ""
+      },
+      {
+        "key": "license",
+        "value": "MIT",
+        "scope": "basic",
+        "level": "info",
+        "status": "documented",
+        "label": "ライセンス",
+        "group": "licenses",
+        "order": 22,
+        "stateLabel": "",
+        "scopeLabel": "",
+        "levelLabel": ""
+      }
+    ],
+    "related": [
+      {
+        "label": "実装前にコードの依存関係をグラフで調べたい",
+        "url": "https://github.com/Graphify-Labs/graphify"
+      }
+    ],
+    "sources": [
+      {
+        "label": "公式README・スキル一覧・導入方法",
+        "url": "https://github.com/mattpocock/skills/blob/main/README.md"
+      },
+      {
+        "label": "初期設定スキル",
+        "url": "https://github.com/mattpocock/skills/blob/main/skills/engineering/setup-matt-pocock-skills/SKILL.md"
+      },
+      {
+        "label": "仕様作成スキル",
+        "url": "https://github.com/mattpocock/skills/blob/main/skills/engineering/to-spec/SKILL.md"
+      },
+      {
+        "label": "テスト駆動開発スキル",
+        "url": "https://github.com/mattpocock/skills/blob/main/skills/engineering/tdd/SKILL.md"
+      },
+      {
+        "label": "実装スキル",
+        "url": "https://github.com/mattpocock/skills/blob/main/skills/engineering/implement/SKILL.md"
+      },
+      {
+        "label": "MITライセンス",
+        "url": "https://github.com/mattpocock/skills/blob/main/LICENSE"
+      }
+    ],
+    "presentation": {
+      "groups": [
+        {
+          "key": "requirements",
+          "label": "利用条件",
+          "rows": [
+            {
+              "key": "agent",
+              "value": "Claude Code／Codex／GitHub Copilot／Gemini CLIなどの対応AIエージェント",
+              "scope": "basic",
+              "level": "required",
+              "status": "documented",
+              "label": "AIツール",
+              "group": "requirements",
+              "order": 5,
+              "stateLabel": "",
+              "scopeLabel": "",
+              "levelLabel": "必須"
+            },
+            {
+              "key": "runtime",
+              "value": "npxを実行できるNode.js・npm（最低バージョンの明記なし）",
+              "scope": "skills.sh経由の導入",
+              "level": "required",
+              "status": "documented",
+              "label": "実行環境",
+              "group": "requirements",
+              "order": 6,
+              "stateLabel": "",
+              "scopeLabel": "skills.sh経由の導入",
+              "levelLabel": "必須"
+            },
+            {
+              "key": "installation",
+              "value": "リポジトリごとに /setup-matt-pocock-skills を実行し、課題管理方法・ラベル・文書配置を設定",
+              "scope": "開発用スキル",
+              "level": "required",
+              "status": "documented",
+              "label": "導入条件",
+              "group": "requirements",
+              "order": 10,
+              "stateLabel": "",
+              "scopeLabel": "開発用スキル",
+              "levelLabel": "必須"
+            }
+          ]
+        },
+        {
+          "key": "specifications",
+          "label": "仕様・出力",
+          "rows": [
+            {
+              "key": "format",
+              "value": "開発・生産性向上のためのプロンプト型スキル集",
+              "scope": "basic",
+              "level": "info",
+              "status": "documented",
+              "label": "形式・出力",
+              "group": "specifications",
+              "order": 17,
+              "stateLabel": "",
+              "scopeLabel": "",
+              "levelLabel": ""
+            }
+          ]
+        },
+        {
+          "key": "usage",
+          "label": "利用方法",
+          "rows": [
+            {
+              "key": "usage",
+              "value": "Claude Code・Codex・GitHub Copilotはプラグイン導入に対応。Gemini CLIはskills install、その他は npx skills@latest add mattpocock/skills などで導入する。同じエージェントには導入方式を重複させない。",
+              "scope": "basic",
+              "level": "info",
+              "status": "documented",
+              "label": "参照方法",
+              "group": "usage",
+              "order": 20,
+              "stateLabel": "",
+              "scopeLabel": "",
+              "levelLabel": ""
+            }
+          ]
+        },
+        {
+          "key": "licenses",
+          "label": "ライセンス",
+          "rows": [
+            {
+              "key": "license",
+              "value": "MIT",
+              "scope": "basic",
+              "level": "info",
+              "status": "documented",
+              "label": "ライセンス",
+              "group": "licenses",
+              "order": 22,
+              "stateLabel": "",
+              "scopeLabel": "",
+              "levelLabel": ""
+            }
+          ]
+        }
+      ],
+      "overview": {
+        "label": "利用条件",
+        "value": "AIツール：Claude Code／Codex／GitHub Copilot／Gemini CLIなどの対応AIエージェント",
+        "lines": [
+          "AIツール：Claude Code／Codex／GitHub Copilot／Gemini CLIなどの対応AIエージェント"
+        ],
+        "remaining": 2
+      }
+    }
   }
 ];
