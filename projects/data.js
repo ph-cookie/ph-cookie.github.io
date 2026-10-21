@@ -5338,5 +5338,240 @@ window.PROJECTS = [
         "remaining": 5
       }
     }
+  },
+  {
+    "name": "Glassy UI — ガラス調の画面を作るReact向けUIコンポーネント集",
+    "url": "https://github.com/alexburlis/glassyui",
+    "summary": "透けた背景やぼかし、縁の光を備えたUI部品をアプリに取り込み、ソースを編集して見た目を調整できる。",
+    "description": "Glassy UIは、ReactとReact Native向けのガラス調UIコンポーネント集。ボタン、入力欄、パネル、ダイアログ、ナビゲーションなどを収録する。shadcn CLIで必要な部品と共有ファイル・依存パッケージをアプリに取り込む方式で、専用の実行時パッケージを追加する形式ではない。取り込んだソースやclassName、CSS変数で見た目を調整できる。\nWeb版は背景のぼかし、彩度、縁の光などを組み合わせてガラス表現を描く。ページ背景を屈折させるレンズ効果はChromium向けで、SafariとFirefoxでは曇りガラスの表現になる。GlassSceneは指定した背景画像をWebGL2で屈折させ、非対応時はCSS表示へ切り替わる。透明度やコントラスト、動きを抑える設定にも対応する。\nWeb版はReact 19以降とTailwind CSS 4が必要。Expo向けのReact Native版もあり、iOS 26以降ではシステムのガラス表現、それ以前のiOSやAndroidなどではぼかしを使う。一部の部品はWeb専用で、Expo SDKの必要バージョンも部品によって異なる。公開リポジトリのライブラリはMITライセンスで、Proのテンプレートは別の非公開リポジトリで管理されている。",
+    "category": "UI・Webデザイン",
+    "tags": [
+      "UIコンポーネント",
+      "ガラス表現",
+      "React",
+      "React Native",
+      "Tailwind CSS",
+      "shadcn"
+    ],
+    "addedAt": "2026-10-21",
+    "checkedAt": "2026-10-21",
+    "environmentVersion": 1,
+    "requirementsStatus": "documented",
+    "environment": [
+      {
+        "key": "dependencies",
+        "value": "Web版はReact 19以降・Tailwind CSS 4。React Native版はExpo SDK 55以降。",
+        "scope": "basic",
+        "level": "required",
+        "status": "documented",
+        "label": "必要ソフト",
+        "group": "requirements",
+        "order": 7,
+        "stateLabel": "",
+        "scopeLabel": "",
+        "levelLabel": "必須"
+      },
+      {
+        "key": "installation",
+        "value": "shadcn CLIで必要な部品を追加する。公式手順はshadcn 4.14.1を使用し、手動コピーにも対応する。",
+        "scope": "basic",
+        "level": "recommended",
+        "status": "documented",
+        "label": "導入条件",
+        "group": "requirements",
+        "order": 10,
+        "stateLabel": "",
+        "scopeLabel": "",
+        "levelLabel": "推奨"
+      },
+      {
+        "key": "dependencies",
+        "value": "Expo SDK 57",
+        "scope": "React Native版のPicker・Swipe Row・Card Stack",
+        "level": "required",
+        "status": "documented",
+        "label": "必要ソフト",
+        "group": "requirements",
+        "order": 7,
+        "stateLabel": "",
+        "scopeLabel": "React Native版のPicker・Swipe Row・Card Stack",
+        "levelLabel": "必須"
+      },
+      {
+        "key": "graphics",
+        "value": "背景画像を屈折させる描画にはWebGL2を使用する。非対応時はCSSのガラス表現に切り替わる。",
+        "scope": "Web版のGlassScene",
+        "level": "required",
+        "status": "documented",
+        "label": "描画API",
+        "group": "requirements",
+        "order": 12,
+        "stateLabel": "",
+        "scopeLabel": "Web版のGlassScene",
+        "levelLabel": "必須"
+      },
+      {
+        "key": "usage",
+        "value": "部品と必要な共有ファイル・依存パッケージをアプリへ取り込んで編集する。Glassy UI専用の実行時パッケージはない。",
+        "scope": "basic",
+        "level": "info",
+        "status": "documented",
+        "label": "参照方法",
+        "group": "usage",
+        "order": 20,
+        "stateLabel": "",
+        "scopeLabel": "",
+        "levelLabel": ""
+      },
+      {
+        "key": "license",
+        "value": "MIT。コピー元のコードと依存パッケージの著作権表示・ライセンス条件は別途保持する。",
+        "scope": "basic",
+        "level": "info",
+        "status": "documented",
+        "label": "ライセンス",
+        "group": "licenses",
+        "order": 22,
+        "stateLabel": "",
+        "scopeLabel": "",
+        "levelLabel": ""
+      }
+    ],
+    "related": [
+      {
+        "label": "サイト全体の配色やレイアウトの指針を探したい",
+        "url": "https://github.com/VoltAgent/awesome-design-md"
+      },
+      {
+        "label": "文字やカードにアニメーションを加えたい",
+        "url": "https://github.com/ibelick/motion-primitives"
+      }
+    ],
+    "sources": [
+      {
+        "label": "公式README",
+        "url": "https://github.com/alexburlis/glassyui/blob/main/README.md"
+      },
+      {
+        "label": "導入方法・レジストリの仕様",
+        "url": "https://github.com/alexburlis/glassyui/blob/main/docs/registry-installation.md"
+      },
+      {
+        "label": "MITライセンス",
+        "url": "https://github.com/alexburlis/glassyui/blob/main/LICENSE"
+      },
+      {
+        "label": "第三者コード・依存パッケージの権利表記",
+        "url": "https://github.com/alexburlis/glassyui/blob/main/THIRD_PARTY_NOTICES.md"
+      }
+    ],
+    "presentation": {
+      "groups": [
+        {
+          "key": "requirements",
+          "label": "利用条件",
+          "rows": [
+            {
+              "key": "dependencies",
+              "value": "Web版はReact 19以降・Tailwind CSS 4。React Native版はExpo SDK 55以降。",
+              "scope": "basic",
+              "level": "required",
+              "status": "documented",
+              "label": "必要ソフト",
+              "group": "requirements",
+              "order": 7,
+              "stateLabel": "",
+              "scopeLabel": "",
+              "levelLabel": "必須"
+            },
+            {
+              "key": "installation",
+              "value": "shadcn CLIで必要な部品を追加する。公式手順はshadcn 4.14.1を使用し、手動コピーにも対応する。",
+              "scope": "basic",
+              "level": "recommended",
+              "status": "documented",
+              "label": "導入条件",
+              "group": "requirements",
+              "order": 10,
+              "stateLabel": "",
+              "scopeLabel": "",
+              "levelLabel": "推奨"
+            },
+            {
+              "key": "dependencies",
+              "value": "Expo SDK 57",
+              "scope": "React Native版のPicker・Swipe Row・Card Stack",
+              "level": "required",
+              "status": "documented",
+              "label": "必要ソフト",
+              "group": "requirements",
+              "order": 7,
+              "stateLabel": "",
+              "scopeLabel": "React Native版のPicker・Swipe Row・Card Stack",
+              "levelLabel": "必須"
+            },
+            {
+              "key": "graphics",
+              "value": "背景画像を屈折させる描画にはWebGL2を使用する。非対応時はCSSのガラス表現に切り替わる。",
+              "scope": "Web版のGlassScene",
+              "level": "required",
+              "status": "documented",
+              "label": "描画API",
+              "group": "requirements",
+              "order": 12,
+              "stateLabel": "",
+              "scopeLabel": "Web版のGlassScene",
+              "levelLabel": "必須"
+            }
+          ]
+        },
+        {
+          "key": "usage",
+          "label": "利用方法",
+          "rows": [
+            {
+              "key": "usage",
+              "value": "部品と必要な共有ファイル・依存パッケージをアプリへ取り込んで編集する。Glassy UI専用の実行時パッケージはない。",
+              "scope": "basic",
+              "level": "info",
+              "status": "documented",
+              "label": "参照方法",
+              "group": "usage",
+              "order": 20,
+              "stateLabel": "",
+              "scopeLabel": "",
+              "levelLabel": ""
+            }
+          ]
+        },
+        {
+          "key": "licenses",
+          "label": "ライセンス",
+          "rows": [
+            {
+              "key": "license",
+              "value": "MIT。コピー元のコードと依存パッケージの著作権表示・ライセンス条件は別途保持する。",
+              "scope": "basic",
+              "level": "info",
+              "status": "documented",
+              "label": "ライセンス",
+              "group": "licenses",
+              "order": 22,
+              "stateLabel": "",
+              "scopeLabel": "",
+              "levelLabel": ""
+            }
+          ]
+        }
+      ],
+      "overview": {
+        "label": "利用条件",
+        "value": "必要ソフト：Web版はReact 19以降・Tailwind CSS 4。React Native版はExpo SDK 55以降。",
+        "lines": [
+          "必要ソフト：Web版はReact 19以降・Tailwind CSS 4。React Native版はExpo SDK 55以降。"
+        ],
+        "remaining": 3
+      }
+    }
   }
 ];
