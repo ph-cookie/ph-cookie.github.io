@@ -5573,5 +5573,326 @@ window.PROJECTS = [
         "remaining": 3
       }
     }
+  },
+  {
+    "name": "Unsloth — AIモデルのローカル実行と追加学習を行うツール",
+    "url": "https://github.com/unslothai/unsloth",
+    "summary": "デスクトップアプリやWeb画面、PythonからAIモデルを動かし、データセット作成・追加学習・モデルの書き出しまで進められる。",
+    "description": "Unslothは、AIモデルをローカルで実行し、手元のデータで追加学習するためのツール。Desktopアプリ、ブラウザで操作するStudio、コードで扱うCoreの3つの利用方法がある。言語モデルに加え、画像・音声・埋め込みなどのモデルも扱える。\nLoRA・QLoRAによる追加学習や強化学習に対応し、PDF・CSV・DOCXなどから学習用データセットを作成できる。モデルをGGUFなどの形式へ書き出したり、OpenAI互換APIで提供したりする機能も備える。ローカルモデルをClaude CodeやCodexなどのエージェントから使うための起動コマンドも用意されている。\nWindows・macOS・Linux・WSLに対応するが、使えるモデルや機能、必要なメモリはハードウェアと実行方式によって異なる。CPUで動く推論経路の条件を、学習の条件と混同しないことが必要。CoreはApache-2.0、StudioやCLIはAGPL-3.0と、構成部分によってライセンスが分かれている。",
+    "category": "AIモデル活用",
+    "tags": [
+      "ローカルAI",
+      "ファインチューニング",
+      "LoRA",
+      "QLoRA",
+      "モデル推論",
+      "Python"
+    ],
+    "addedAt": "2026-10-22",
+    "checkedAt": "2026-10-22",
+    "environmentVersion": 1,
+    "requirementsStatus": "documented",
+    "environment": [
+      {
+        "key": "os",
+        "value": "Windows／macOS／Linux／WSL",
+        "scope": "basic",
+        "level": "required",
+        "status": "documented",
+        "label": "OS",
+        "group": "requirements",
+        "order": 1,
+        "stateLabel": "",
+        "scopeLabel": "",
+        "levelLabel": "必須"
+      },
+      {
+        "key": "installation",
+        "value": "公式はDesktopアプリを推奨。ブラウザで使うStudio、コードで使うCoreも選べる。",
+        "scope": "basic",
+        "level": "recommended",
+        "status": "documented",
+        "label": "導入条件",
+        "group": "requirements",
+        "order": 10,
+        "stateLabel": "",
+        "scopeLabel": "",
+        "levelLabel": "推奨"
+      },
+      {
+        "key": "runtime",
+        "value": "Python 3.9以上・3.15未満。READMEのCore導入例ではPython 3.13を使用する。",
+        "scope": "CoreのPython環境",
+        "level": "required",
+        "status": "documented",
+        "label": "実行環境",
+        "group": "requirements",
+        "order": 6,
+        "stateLabel": "",
+        "scopeLabel": "CoreのPython環境",
+        "levelLabel": "必須"
+      },
+      {
+        "key": "gpu",
+        "value": "GPUなしでStudioのGGUFチャットを利用できる。このCPUのみの構成では学習できない。",
+        "scope": "Docker版のCPUのみの推論",
+        "level": "unnecessary",
+        "status": "documented",
+        "label": "GPU",
+        "group": "requirements",
+        "order": 14,
+        "stateLabel": "",
+        "scopeLabel": "Docker版のCPUのみの推論",
+        "levelLabel": "不要"
+      },
+      {
+        "key": "gpu",
+        "value": "NVIDIA GPUとドライバー570.26以上。一部GPUやARM64版のGGUF処理では580以上が必要。",
+        "scope": "公式CUDA DockerイメージのGPU利用",
+        "level": "required",
+        "status": "documented",
+        "label": "GPU",
+        "group": "requirements",
+        "order": 14,
+        "stateLabel": "",
+        "scopeLabel": "公式CUDA DockerイメージのGPU利用",
+        "levelLabel": "必須"
+      },
+      {
+        "key": "format",
+        "value": "GGUFなどへのモデル書き出しと、OpenAI互換APIによるモデルの提供に対応する。",
+        "scope": "モデルの保存・提供",
+        "level": "info",
+        "status": "documented",
+        "label": "形式・出力",
+        "group": "specifications",
+        "order": 17,
+        "stateLabel": "",
+        "scopeLabel": "モデルの保存・提供",
+        "levelLabel": ""
+      },
+      {
+        "key": "memoryUsage",
+        "value": "学習時のVRAM使用量は、モデル重み、量子化、LoRA設定、バッチサイズ、系列長などで変わる。",
+        "scope": "モデル学習",
+        "level": "info",
+        "status": "documented",
+        "label": "メモリ使用量",
+        "group": "specifications",
+        "order": 18,
+        "stateLabel": "",
+        "scopeLabel": "モデル学習",
+        "levelLabel": ""
+      },
+      {
+        "key": "license",
+        "value": "Apache-2.0",
+        "scope": "Core（unsloth/*など）",
+        "level": "info",
+        "status": "documented",
+        "label": "ライセンス",
+        "group": "licenses",
+        "order": 22,
+        "stateLabel": "",
+        "scopeLabel": "Core（unsloth/*など）",
+        "levelLabel": ""
+      },
+      {
+        "key": "license",
+        "value": "AGPL-3.0",
+        "scope": "Studio・CLI（studio/*・unsloth_cli/*）",
+        "level": "info",
+        "status": "documented",
+        "label": "ライセンス",
+        "group": "licenses",
+        "order": 22,
+        "stateLabel": "",
+        "scopeLabel": "Studio・CLI（studio/*・unsloth_cli/*）",
+        "levelLabel": ""
+      }
+    ],
+    "related": [
+      {
+        "label": "ローカルLLMの性能や回答傾向を比較したい",
+        "url": "https://github.com/isichan-ai/local-model-diagnosis"
+      },
+      {
+        "label": "クラウドモデルの選定やAPI連携を進めたい",
+        "url": "https://github.com/OpenRouterTeam/skills"
+      }
+    ],
+    "sources": [
+      {
+        "label": "公式README・機能と導入方法",
+        "url": "https://github.com/unslothai/unsloth/blob/main/README.md"
+      },
+      {
+        "label": "CoreのPython要件",
+        "url": "https://github.com/unslothai/unsloth/blob/main/pyproject.toml"
+      },
+      {
+        "label": "Docker版のCPU・GPU条件",
+        "url": "https://github.com/unslothai/unsloth/blob/main/docker/DOCKERHUB.md"
+      },
+      {
+        "label": "学習時のVRAM見積もり",
+        "url": "https://github.com/unslothai/unsloth/blob/main/studio/backend/utils/hardware/VRAM_ESTIMATION.md"
+      },
+      {
+        "label": "Apacheライセンスと適用範囲",
+        "url": "https://github.com/unslothai/unsloth/blob/main/LICENSE"
+      },
+      {
+        "label": "StudioのAGPLライセンス",
+        "url": "https://github.com/unslothai/unsloth/blob/main/studio/LICENSE.AGPL-3.0"
+      }
+    ],
+    "presentation": {
+      "groups": [
+        {
+          "key": "requirements",
+          "label": "利用条件",
+          "rows": [
+            {
+              "key": "os",
+              "value": "Windows／macOS／Linux／WSL",
+              "scope": "basic",
+              "level": "required",
+              "status": "documented",
+              "label": "OS",
+              "group": "requirements",
+              "order": 1,
+              "stateLabel": "",
+              "scopeLabel": "",
+              "levelLabel": "必須"
+            },
+            {
+              "key": "installation",
+              "value": "公式はDesktopアプリを推奨。ブラウザで使うStudio、コードで使うCoreも選べる。",
+              "scope": "basic",
+              "level": "recommended",
+              "status": "documented",
+              "label": "導入条件",
+              "group": "requirements",
+              "order": 10,
+              "stateLabel": "",
+              "scopeLabel": "",
+              "levelLabel": "推奨"
+            },
+            {
+              "key": "runtime",
+              "value": "Python 3.9以上・3.15未満。READMEのCore導入例ではPython 3.13を使用する。",
+              "scope": "CoreのPython環境",
+              "level": "required",
+              "status": "documented",
+              "label": "実行環境",
+              "group": "requirements",
+              "order": 6,
+              "stateLabel": "",
+              "scopeLabel": "CoreのPython環境",
+              "levelLabel": "必須"
+            },
+            {
+              "key": "gpu",
+              "value": "GPUなしでStudioのGGUFチャットを利用できる。このCPUのみの構成では学習できない。",
+              "scope": "Docker版のCPUのみの推論",
+              "level": "unnecessary",
+              "status": "documented",
+              "label": "GPU",
+              "group": "requirements",
+              "order": 14,
+              "stateLabel": "",
+              "scopeLabel": "Docker版のCPUのみの推論",
+              "levelLabel": "不要"
+            },
+            {
+              "key": "gpu",
+              "value": "NVIDIA GPUとドライバー570.26以上。一部GPUやARM64版のGGUF処理では580以上が必要。",
+              "scope": "公式CUDA DockerイメージのGPU利用",
+              "level": "required",
+              "status": "documented",
+              "label": "GPU",
+              "group": "requirements",
+              "order": 14,
+              "stateLabel": "",
+              "scopeLabel": "公式CUDA DockerイメージのGPU利用",
+              "levelLabel": "必須"
+            }
+          ]
+        },
+        {
+          "key": "specifications",
+          "label": "仕様・出力",
+          "rows": [
+            {
+              "key": "format",
+              "value": "GGUFなどへのモデル書き出しと、OpenAI互換APIによるモデルの提供に対応する。",
+              "scope": "モデルの保存・提供",
+              "level": "info",
+              "status": "documented",
+              "label": "形式・出力",
+              "group": "specifications",
+              "order": 17,
+              "stateLabel": "",
+              "scopeLabel": "モデルの保存・提供",
+              "levelLabel": ""
+            },
+            {
+              "key": "memoryUsage",
+              "value": "学習時のVRAM使用量は、モデル重み、量子化、LoRA設定、バッチサイズ、系列長などで変わる。",
+              "scope": "モデル学習",
+              "level": "info",
+              "status": "documented",
+              "label": "メモリ使用量",
+              "group": "specifications",
+              "order": 18,
+              "stateLabel": "",
+              "scopeLabel": "モデル学習",
+              "levelLabel": ""
+            }
+          ]
+        },
+        {
+          "key": "licenses",
+          "label": "ライセンス",
+          "rows": [
+            {
+              "key": "license",
+              "value": "Apache-2.0",
+              "scope": "Core（unsloth/*など）",
+              "level": "info",
+              "status": "documented",
+              "label": "ライセンス",
+              "group": "licenses",
+              "order": 22,
+              "stateLabel": "",
+              "scopeLabel": "Core（unsloth/*など）",
+              "levelLabel": ""
+            },
+            {
+              "key": "license",
+              "value": "AGPL-3.0",
+              "scope": "Studio・CLI（studio/*・unsloth_cli/*）",
+              "level": "info",
+              "status": "documented",
+              "label": "ライセンス",
+              "group": "licenses",
+              "order": 22,
+              "stateLabel": "",
+              "scopeLabel": "Studio・CLI（studio/*・unsloth_cli/*）",
+              "levelLabel": ""
+            }
+          ]
+        }
+      ],
+      "overview": {
+        "label": "利用条件",
+        "value": "OS：Windows／macOS／Linux／WSL",
+        "lines": [
+          "OS：Windows／macOS／Linux／WSL"
+        ],
+        "remaining": 4
+      }
+    }
   }
 ];
