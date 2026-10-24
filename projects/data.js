@@ -1299,7 +1299,7 @@ window.PROJECTS = [
         "levelLabel": ""
       }
     ],
-    "category": "音声・文字起こし",
+    "category": "音楽・音声作成",
     "tags": [
       "AI",
       "リアルタイム字幕",
