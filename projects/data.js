@@ -5894,5 +5894,419 @@ window.PROJECTS = [
         "remaining": 4
       }
     }
+  },
+  {
+    "name": "Audio Studio MCP — BGM・効果音をローカルで生成・編集するMCPサーバー",
+    "url": "https://github.com/kanaworksai-hue/audio-studio-mcp",
+    "summary": "Claude Codeなどから文章でBGMや効果音を作り、部分的な作り直し、長さの延長、ループ化、音量調整まで進められる。",
+    "description": "Audio Studio MCPは、Stable Audio 3を使い、BGM・楽器のループ・効果音をローカルで生成するMCPサーバー。Claude Code、Claude Desktop、Cursorなどから依頼でき、1回の呼び出しで1〜4件の候補を作れる。インストゥルメンタル音楽と効果音が対象で、歌詞を伴う明瞭な歌声の生成には対応しない。\n音源全体の作り直し、指定した時間範囲の再生成、楽曲の延長に対応する。後処理ではトリミング、無音除去、ループ化、フェード、LUFSに基づく音量調整、WAV・OGG・FLACへの書き出しを行える。生成ファイルにはプロンプトやseed、設定を記録したJSONが付き、ゲームや動画に使う音素材を準備できる。\nApple Silicon MacではMLX、NVIDIA GPU搭載のWindowsではPyTorchを使用する。音声の生成・処理はローカルで行うが、導入時にはランタイムやモデルの取得が必要で、Windows版のモデル取得にはHugging Faceでのライセンス同意とログインが必要。コードはMITライセンスで、モデルと生成音声の利用条件は別途Stability AI Community Licenseを確認する。",
+    "category": "音楽・音声作成",
+    "tags": [
+      "BGM",
+      "効果音",
+      "音声生成",
+      "MCP",
+      "Stable Audio 3",
+      "ローカルAI"
+    ],
+    "addedAt": "2026-10-24",
+    "checkedAt": "2026-10-24",
+    "environmentVersion": 1,
+    "requirementsStatus": "documented",
+    "environment": [
+      {
+        "key": "agent",
+        "value": "Claude Code・Claude Desktop・Cursorなど、MCP対応クライアント",
+        "scope": "basic",
+        "level": "required",
+        "status": "documented",
+        "label": "AIツール",
+        "group": "requirements",
+        "order": 5,
+        "stateLabel": "",
+        "scopeLabel": "",
+        "levelLabel": "必須"
+      },
+      {
+        "key": "platformOptions",
+        "value": "macOS：Apple Silicon（M1以降）／Windows：64bit Windows 10・11、NVIDIA GPU・VRAM 8GB以上",
+        "scope": "basic",
+        "level": "required",
+        "status": "documented",
+        "label": "OS別の利用条件",
+        "group": "requirements",
+        "order": 23,
+        "stateLabel": "",
+        "scopeLabel": "",
+        "levelLabel": "必須"
+      },
+      {
+        "key": "download",
+        "value": "モデルとPyTorch用に約14GBのディスク領域",
+        "scope": "Windows版",
+        "level": "required",
+        "status": "documented",
+        "label": "追加ダウンロード",
+        "group": "requirements",
+        "order": 13,
+        "stateLabel": "",
+        "scopeLabel": "Windows版",
+        "levelLabel": "必須"
+      },
+      {
+        "key": "auth",
+        "value": "Hugging Faceアカウント、対象モデルのライセンスへの同意、読み取り権限でのログイン",
+        "scope": "Windows版のモデル取得",
+        "level": "required",
+        "status": "documented",
+        "label": "認証",
+        "group": "requirements",
+        "order": 9,
+        "stateLabel": "",
+        "scopeLabel": "Windows版のモデル取得",
+        "levelLabel": "必須"
+      },
+      {
+        "key": "runtime",
+        "value": "メモリ16GBを推奨。8GBモデルは未テスト。",
+        "scope": "macOS版",
+        "level": "recommended",
+        "status": "documented",
+        "label": "実行環境",
+        "group": "requirements",
+        "order": 6,
+        "stateLabel": "",
+        "scopeLabel": "macOS版",
+        "levelLabel": "推奨"
+      },
+      {
+        "key": "download",
+        "value": "mediumモデル用に約6GBのディスク領域",
+        "scope": "macOS版",
+        "level": "required",
+        "status": "documented",
+        "label": "追加ダウンロード",
+        "group": "requirements",
+        "order": 13,
+        "stateLabel": "",
+        "scopeLabel": "macOS版",
+        "levelLabel": "必須"
+      },
+      {
+        "key": "platform",
+        "value": "Linux＋NVIDIA GPUは動作想定だが未検証・インストーラーなし。Intel MacとAMD GPUは非対応。",
+        "scope": "その他の環境",
+        "level": "info",
+        "status": "documented",
+        "label": "OS・CPU",
+        "group": "requirements",
+        "order": 0,
+        "stateLabel": "",
+        "scopeLabel": "その他の環境",
+        "levelLabel": ""
+      },
+      {
+        "key": "runtime",
+        "value": "Python 3.10以降とuv。インストーラーは必要に応じてuvを導入する。",
+        "scope": "サーバー導入",
+        "level": "required",
+        "status": "documented",
+        "label": "実行環境",
+        "group": "requirements",
+        "order": 6,
+        "stateLabel": "",
+        "scopeLabel": "サーバー導入",
+        "levelLabel": "必須"
+      },
+      {
+        "key": "dependencies",
+        "value": "Gitとffmpeg",
+        "scope": "サーバー導入",
+        "level": "required",
+        "status": "documented",
+        "label": "必要ソフト",
+        "group": "requirements",
+        "order": 7,
+        "stateLabel": "",
+        "scopeLabel": "サーバー導入",
+        "levelLabel": "必須"
+      },
+      {
+        "key": "format",
+        "value": "生成時は44.1kHz・24bit・ステレオWAV。後処理で48kHzへの変換やWAV／OGG／FLACの書き出しに対応する。",
+        "scope": "basic",
+        "level": "info",
+        "status": "documented",
+        "label": "形式・出力",
+        "group": "specifications",
+        "order": 17,
+        "stateLabel": "",
+        "scopeLabel": "",
+        "levelLabel": ""
+      },
+      {
+        "key": "storage",
+        "value": "標準ではoutputs/へ保存し、プロンプト・seed・設定を記録したJSONを添える。",
+        "scope": "basic",
+        "level": "info",
+        "status": "documented",
+        "label": "保存・共有",
+        "group": "specifications",
+        "order": 19,
+        "stateLabel": "",
+        "scopeLabel": "",
+        "levelLabel": ""
+      },
+      {
+        "key": "license",
+        "value": "READMEではモデル重みと生成音声にStability AI Community Licenseの条件が適用されると案内している。商用利用前にモデル規約を確認する。",
+        "scope": "モデル・生成音声",
+        "level": "info",
+        "status": "documented",
+        "label": "ライセンス",
+        "group": "licenses",
+        "order": 22,
+        "stateLabel": "",
+        "scopeLabel": "モデル・生成音声",
+        "levelLabel": ""
+      },
+      {
+        "key": "license",
+        "value": "コードはMIT。KanaWorks_AIの名称・ロゴ・キャラクターKanaはMITの対象外。",
+        "scope": "本体コード・ブランド素材",
+        "level": "info",
+        "status": "documented",
+        "label": "ライセンス",
+        "group": "licenses",
+        "order": 22,
+        "stateLabel": "",
+        "scopeLabel": "本体コード・ブランド素材",
+        "levelLabel": ""
+      }
+    ],
+    "related": [
+      {
+        "label": "台本・字幕・ナレーションを含むショート動画を作りたい",
+        "url": "https://github.com/harry0703/MoneyPrinterTurbo"
+      }
+    ],
+    "sources": [
+      {
+        "label": "公式README・機能とOS別要件",
+        "url": "https://github.com/kanaworksai-hue/audio-studio-mcp/blob/main/README.md"
+      },
+      {
+        "label": "Python要件と依存パッケージ",
+        "url": "https://github.com/kanaworksai-hue/audio-studio-mcp/blob/main/pyproject.toml"
+      },
+      {
+        "label": "MITライセンス",
+        "url": "https://github.com/kanaworksai-hue/audio-studio-mcp/blob/main/LICENSE"
+      },
+      {
+        "label": "ブランド素材の利用条件",
+        "url": "https://github.com/kanaworksai-hue/audio-studio-mcp/blob/main/docs/brand/README.md"
+      }
+    ],
+    "presentation": {
+      "groups": [
+        {
+          "key": "requirements",
+          "label": "利用条件",
+          "rows": [
+            {
+              "key": "agent",
+              "value": "Claude Code・Claude Desktop・Cursorなど、MCP対応クライアント",
+              "scope": "basic",
+              "level": "required",
+              "status": "documented",
+              "label": "AIツール",
+              "group": "requirements",
+              "order": 5,
+              "stateLabel": "",
+              "scopeLabel": "",
+              "levelLabel": "必須"
+            },
+            {
+              "key": "platformOptions",
+              "value": "macOS：Apple Silicon（M1以降）／Windows：64bit Windows 10・11、NVIDIA GPU・VRAM 8GB以上",
+              "scope": "basic",
+              "level": "required",
+              "status": "documented",
+              "label": "OS別の利用条件",
+              "group": "requirements",
+              "order": 23,
+              "stateLabel": "",
+              "scopeLabel": "",
+              "levelLabel": "必須"
+            },
+            {
+              "key": "download",
+              "value": "モデルとPyTorch用に約14GBのディスク領域",
+              "scope": "Windows版",
+              "level": "required",
+              "status": "documented",
+              "label": "追加ダウンロード",
+              "group": "requirements",
+              "order": 13,
+              "stateLabel": "",
+              "scopeLabel": "Windows版",
+              "levelLabel": "必須"
+            },
+            {
+              "key": "auth",
+              "value": "Hugging Faceアカウント、対象モデルのライセンスへの同意、読み取り権限でのログイン",
+              "scope": "Windows版のモデル取得",
+              "level": "required",
+              "status": "documented",
+              "label": "認証",
+              "group": "requirements",
+              "order": 9,
+              "stateLabel": "",
+              "scopeLabel": "Windows版のモデル取得",
+              "levelLabel": "必須"
+            },
+            {
+              "key": "runtime",
+              "value": "メモリ16GBを推奨。8GBモデルは未テスト。",
+              "scope": "macOS版",
+              "level": "recommended",
+              "status": "documented",
+              "label": "実行環境",
+              "group": "requirements",
+              "order": 6,
+              "stateLabel": "",
+              "scopeLabel": "macOS版",
+              "levelLabel": "推奨"
+            },
+            {
+              "key": "download",
+              "value": "mediumモデル用に約6GBのディスク領域",
+              "scope": "macOS版",
+              "level": "required",
+              "status": "documented",
+              "label": "追加ダウンロード",
+              "group": "requirements",
+              "order": 13,
+              "stateLabel": "",
+              "scopeLabel": "macOS版",
+              "levelLabel": "必須"
+            },
+            {
+              "key": "platform",
+              "value": "Linux＋NVIDIA GPUは動作想定だが未検証・インストーラーなし。Intel MacとAMD GPUは非対応。",
+              "scope": "その他の環境",
+              "level": "info",
+              "status": "documented",
+              "label": "OS・CPU",
+              "group": "requirements",
+              "order": 0,
+              "stateLabel": "",
+              "scopeLabel": "その他の環境",
+              "levelLabel": ""
+            },
+            {
+              "key": "runtime",
+              "value": "Python 3.10以降とuv。インストーラーは必要に応じてuvを導入する。",
+              "scope": "サーバー導入",
+              "level": "required",
+              "status": "documented",
+              "label": "実行環境",
+              "group": "requirements",
+              "order": 6,
+              "stateLabel": "",
+              "scopeLabel": "サーバー導入",
+              "levelLabel": "必須"
+            },
+            {
+              "key": "dependencies",
+              "value": "Gitとffmpeg",
+              "scope": "サーバー導入",
+              "level": "required",
+              "status": "documented",
+              "label": "必要ソフト",
+              "group": "requirements",
+              "order": 7,
+              "stateLabel": "",
+              "scopeLabel": "サーバー導入",
+              "levelLabel": "必須"
+            }
+          ]
+        },
+        {
+          "key": "specifications",
+          "label": "仕様・出力",
+          "rows": [
+            {
+              "key": "format",
+              "value": "生成時は44.1kHz・24bit・ステレオWAV。後処理で48kHzへの変換やWAV／OGG／FLACの書き出しに対応する。",
+              "scope": "basic",
+              "level": "info",
+              "status": "documented",
+              "label": "形式・出力",
+              "group": "specifications",
+              "order": 17,
+              "stateLabel": "",
+              "scopeLabel": "",
+              "levelLabel": ""
+            },
+            {
+              "key": "storage",
+              "value": "標準ではoutputs/へ保存し、プロンプト・seed・設定を記録したJSONを添える。",
+              "scope": "basic",
+              "level": "info",
+              "status": "documented",
+              "label": "保存・共有",
+              "group": "specifications",
+              "order": 19,
+              "stateLabel": "",
+              "scopeLabel": "",
+              "levelLabel": ""
+            }
+          ]
+        },
+        {
+          "key": "licenses",
+          "label": "ライセンス",
+          "rows": [
+            {
+              "key": "license",
+              "value": "READMEではモデル重みと生成音声にStability AI Community Licenseの条件が適用されると案内している。商用利用前にモデル規約を確認する。",
+              "scope": "モデル・生成音声",
+              "level": "info",
+              "status": "documented",
+              "label": "ライセンス",
+              "group": "licenses",
+              "order": 22,
+              "stateLabel": "",
+              "scopeLabel": "モデル・生成音声",
+              "levelLabel": ""
+            },
+            {
+              "key": "license",
+              "value": "コードはMIT。KanaWorks_AIの名称・ロゴ・キャラクターKanaはMITの対象外。",
+              "scope": "本体コード・ブランド素材",
+              "level": "info",
+              "status": "documented",
+              "label": "ライセンス",
+              "group": "licenses",
+              "order": 22,
+              "stateLabel": "",
+              "scopeLabel": "本体コード・ブランド素材",
+              "levelLabel": ""
+            }
+          ]
+        }
+      ],
+      "overview": {
+        "label": "利用条件",
+        "value": "AIツール：Claude Code・Claude Desktop・Cursorなど、MCP対応クライアント ／ OS別の利用条件：macOS：Apple Silicon（M1以降）／Windows：64bit Windows 10・11、NVIDIA GPU・VRAM 8GB以上",
+        "lines": [
+          "AIツール：Claude Code・Claude Desktop・Cursorなど、MCP対応クライアント",
+          "OS別の利用条件：macOS：Apple Silicon（M1以降）／Windows：64bit Windows 10・11、NVIDIA GPU・VRAM 8GB以上"
+        ],
+        "remaining": 7
+      }
+    }
   }
 ];
