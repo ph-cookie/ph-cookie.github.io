@@ -6308,5 +6308,377 @@ window.PROJECTS = [
         "remaining": 7
       }
     }
+  },
+  {
+    "name": "Neuron Explorer — LLMのニューロン操作と出力変化を調べる可視化ツール",
+    "url": "https://github.com/lyramakesmusic/neuron-explorer",
+    "summary": "Qwen3.5-4Bのニューロンに介入し、生成文章や活性化の違いを3Dマップと比較チャットで調べられる。",
+    "description": "Neuron Explorerは、Qwen3.5-4Bの内部ニューロンを操作し、生成される文章の変化を調べる研究用ツール。モデルの層やニューロンを3Dマップで表示し、選んだニューロンへの介入を強めたり弱めたりした結果を比較できる。\n単語を手掛かりにニューロンを探したり、自分の文章を入力して活性化を確認したりできる。ニューロンの詳細では、介入を負・なし・正に分けた3列の対話、関連するトークン、ほかのニューロンとの接続などを調べられる。実験結果をUMAPで配置した表示や、Claude CLIを使って探索操作を支援するチャットも備える。\nブラウザで使うExplorerは、ライブ機能のためにモデルをMPS・CUDA・CPUのいずれかでローカルに読み込む。大量の介入実験を行うSweepは別工程で、CUDA 13のGPU環境と専用のvLLM派生版を使う構成。表示用キャッシュは同梱されているが、実験結果のruns/や統計のstats/はSweepで作成する。",
+    "category": "AIモデル活用",
+    "tags": [
+      "LLM解析",
+      "ニューロン",
+      "ステアリング",
+      "Qwen",
+      "3D可視化",
+      "Python"
+    ],
+    "addedAt": "2026-10-26",
+    "checkedAt": "2026-10-26",
+    "environmentVersion": 1,
+    "requirementsStatus": "documented",
+    "environment": [
+      {
+        "key": "runtime",
+        "value": "Python 3.11以降とuv",
+        "scope": "basic",
+        "level": "required",
+        "status": "documented",
+        "label": "実行環境",
+        "group": "requirements",
+        "order": 6,
+        "stateLabel": "",
+        "scopeLabel": "",
+        "levelLabel": "必須"
+      },
+      {
+        "key": "dependencies",
+        "value": "PyTorch・Transformersなど。uv syncで依存パッケージを導入する。",
+        "scope": "basic",
+        "level": "required",
+        "status": "documented",
+        "label": "必要ソフト",
+        "group": "requirements",
+        "order": 7,
+        "stateLabel": "",
+        "scopeLabel": "",
+        "levelLabel": "必須"
+      },
+      {
+        "key": "agent",
+        "value": "claude CLIのインストールとログイン",
+        "scope": "Claudeタブ",
+        "level": "required",
+        "status": "documented",
+        "label": "AIツール",
+        "group": "requirements",
+        "order": 5,
+        "stateLabel": "",
+        "scopeLabel": "Claudeタブ",
+        "levelLabel": "必須"
+      },
+      {
+        "key": "gpu",
+        "value": "CUDA 13のGPU環境と、steering対応のRhizoNymph版vLLM",
+        "scope": "Sweepによる実験データ生成",
+        "level": "required",
+        "status": "documented",
+        "label": "GPU",
+        "group": "requirements",
+        "order": 14,
+        "stateLabel": "",
+        "scopeLabel": "Sweepによる実験データ生成",
+        "levelLabel": "必須"
+      },
+      {
+        "key": "runtime",
+        "value": "MPS／CUDA／CPUのいずれかでQwen3.5-4Bをローカル実行する。",
+        "scope": "ライブ推論・対話",
+        "level": "required",
+        "status": "documented",
+        "label": "実行環境",
+        "group": "requirements",
+        "order": 6,
+        "stateLabel": "",
+        "scopeLabel": "ライブ推論・対話",
+        "levelLabel": "必須"
+      },
+      {
+        "key": "download",
+        "value": "Qwen/Qwen3.5-4Bのモデル・トークナイザーを取得して読み込む。",
+        "scope": "ライブ推論・対話",
+        "level": "required",
+        "status": "documented",
+        "label": "追加ダウンロード",
+        "group": "requirements",
+        "order": 13,
+        "stateLabel": "",
+        "scopeLabel": "ライブ推論・対話",
+        "levelLabel": "必須"
+      },
+      {
+        "key": "memoryUsage",
+        "value": "ライブ実行に必要なRAM・VRAMの最低容量は記載なし。",
+        "scope": "ライブ推論・対話",
+        "level": "info",
+        "status": "notSpecified",
+        "label": "メモリ使用量",
+        "group": "specifications",
+        "order": 18,
+        "stateLabel": "記載なし",
+        "scopeLabel": "ライブ推論・対話",
+        "levelLabel": ""
+      },
+      {
+        "key": "format",
+        "value": "Sweepの生成結果はJSONL、統計・キャッシュはNPZ、UMAP埋め込みはJSONなどで保存する。",
+        "scope": "実験結果",
+        "level": "info",
+        "status": "documented",
+        "label": "形式・出力",
+        "group": "specifications",
+        "order": 17,
+        "stateLabel": "",
+        "scopeLabel": "実験結果",
+        "levelLabel": ""
+      },
+      {
+        "key": "usage",
+        "value": "ブラウザでlocalhost:8791を開く。runs/とstats/はSweepで作成し、explorer/cache/のキャッシュは同梱される。",
+        "scope": "basic",
+        "level": "info",
+        "status": "documented",
+        "label": "参照方法",
+        "group": "usage",
+        "order": 20,
+        "stateLabel": "",
+        "scopeLabel": "",
+        "levelLabel": ""
+      },
+      {
+        "key": "usage",
+        "value": "探索用MCPツールに加え、ホームフォルダーのファイル操作・シェル実行ツールも備える。",
+        "scope": "Claudeタブ",
+        "level": "info",
+        "status": "documented",
+        "label": "参照方法",
+        "group": "usage",
+        "order": 20,
+        "stateLabel": "",
+        "scopeLabel": "Claudeタブ",
+        "levelLabel": ""
+      },
+      {
+        "key": "license",
+        "value": "README・pyproject.tomlにライセンスの記載なし。リポジトリにもLICENSEファイルが見当たらない。",
+        "scope": "本リポジトリ",
+        "level": "info",
+        "status": "notSpecified",
+        "label": "ライセンス",
+        "group": "licenses",
+        "order": 22,
+        "stateLabel": "記載なし",
+        "scopeLabel": "本リポジトリ",
+        "levelLabel": ""
+      }
+    ],
+    "related": [
+      {
+        "label": "複数のローカルLLMの性能や回答傾向を比較したい",
+        "url": "https://github.com/isichan-ai/local-model-diagnosis"
+      },
+      {
+        "label": "モデルの追加学習やローカル推論を試したい",
+        "url": "https://github.com/unslothai/unsloth"
+      }
+    ],
+    "sources": [
+      {
+        "label": "公式README・ExplorerとSweepの使い方",
+        "url": "https://github.com/lyramakesmusic/neuron-explorer/blob/main/README.md"
+      },
+      {
+        "label": "Python要件・依存パッケージ",
+        "url": "https://github.com/lyramakesmusic/neuron-explorer/blob/main/pyproject.toml"
+      },
+      {
+        "label": "ライブ推論の実装",
+        "url": "https://github.com/lyramakesmusic/neuron-explorer/blob/main/explorer/runtime.py"
+      },
+      {
+        "label": "Sweep環境のセットアップ",
+        "url": "https://github.com/lyramakesmusic/neuron-explorer/blob/main/sweep/setup_pod.sh"
+      }
+    ],
+    "presentation": {
+      "groups": [
+        {
+          "key": "requirements",
+          "label": "利用条件",
+          "rows": [
+            {
+              "key": "runtime",
+              "value": "Python 3.11以降とuv",
+              "scope": "basic",
+              "level": "required",
+              "status": "documented",
+              "label": "実行環境",
+              "group": "requirements",
+              "order": 6,
+              "stateLabel": "",
+              "scopeLabel": "",
+              "levelLabel": "必須"
+            },
+            {
+              "key": "dependencies",
+              "value": "PyTorch・Transformersなど。uv syncで依存パッケージを導入する。",
+              "scope": "basic",
+              "level": "required",
+              "status": "documented",
+              "label": "必要ソフト",
+              "group": "requirements",
+              "order": 7,
+              "stateLabel": "",
+              "scopeLabel": "",
+              "levelLabel": "必須"
+            },
+            {
+              "key": "agent",
+              "value": "claude CLIのインストールとログイン",
+              "scope": "Claudeタブ",
+              "level": "required",
+              "status": "documented",
+              "label": "AIツール",
+              "group": "requirements",
+              "order": 5,
+              "stateLabel": "",
+              "scopeLabel": "Claudeタブ",
+              "levelLabel": "必須"
+            },
+            {
+              "key": "gpu",
+              "value": "CUDA 13のGPU環境と、steering対応のRhizoNymph版vLLM",
+              "scope": "Sweepによる実験データ生成",
+              "level": "required",
+              "status": "documented",
+              "label": "GPU",
+              "group": "requirements",
+              "order": 14,
+              "stateLabel": "",
+              "scopeLabel": "Sweepによる実験データ生成",
+              "levelLabel": "必須"
+            },
+            {
+              "key": "runtime",
+              "value": "MPS／CUDA／CPUのいずれかでQwen3.5-4Bをローカル実行する。",
+              "scope": "ライブ推論・対話",
+              "level": "required",
+              "status": "documented",
+              "label": "実行環境",
+              "group": "requirements",
+              "order": 6,
+              "stateLabel": "",
+              "scopeLabel": "ライブ推論・対話",
+              "levelLabel": "必須"
+            },
+            {
+              "key": "download",
+              "value": "Qwen/Qwen3.5-4Bのモデル・トークナイザーを取得して読み込む。",
+              "scope": "ライブ推論・対話",
+              "level": "required",
+              "status": "documented",
+              "label": "追加ダウンロード",
+              "group": "requirements",
+              "order": 13,
+              "stateLabel": "",
+              "scopeLabel": "ライブ推論・対話",
+              "levelLabel": "必須"
+            }
+          ]
+        },
+        {
+          "key": "specifications",
+          "label": "仕様・出力",
+          "rows": [
+            {
+              "key": "memoryUsage",
+              "value": "ライブ実行に必要なRAM・VRAMの最低容量は記載なし。",
+              "scope": "ライブ推論・対話",
+              "level": "info",
+              "status": "notSpecified",
+              "label": "メモリ使用量",
+              "group": "specifications",
+              "order": 18,
+              "stateLabel": "記載なし",
+              "scopeLabel": "ライブ推論・対話",
+              "levelLabel": ""
+            },
+            {
+              "key": "format",
+              "value": "Sweepの生成結果はJSONL、統計・キャッシュはNPZ、UMAP埋め込みはJSONなどで保存する。",
+              "scope": "実験結果",
+              "level": "info",
+              "status": "documented",
+              "label": "形式・出力",
+              "group": "specifications",
+              "order": 17,
+              "stateLabel": "",
+              "scopeLabel": "実験結果",
+              "levelLabel": ""
+            }
+          ]
+        },
+        {
+          "key": "usage",
+          "label": "利用方法",
+          "rows": [
+            {
+              "key": "usage",
+              "value": "ブラウザでlocalhost:8791を開く。runs/とstats/はSweepで作成し、explorer/cache/のキャッシュは同梱される。",
+              "scope": "basic",
+              "level": "info",
+              "status": "documented",
+              "label": "参照方法",
+              "group": "usage",
+              "order": 20,
+              "stateLabel": "",
+              "scopeLabel": "",
+              "levelLabel": ""
+            },
+            {
+              "key": "usage",
+              "value": "探索用MCPツールに加え、ホームフォルダーのファイル操作・シェル実行ツールも備える。",
+              "scope": "Claudeタブ",
+              "level": "info",
+              "status": "documented",
+              "label": "参照方法",
+              "group": "usage",
+              "order": 20,
+              "stateLabel": "",
+              "scopeLabel": "Claudeタブ",
+              "levelLabel": ""
+            }
+          ]
+        },
+        {
+          "key": "licenses",
+          "label": "ライセンス",
+          "rows": [
+            {
+              "key": "license",
+              "value": "README・pyproject.tomlにライセンスの記載なし。リポジトリにもLICENSEファイルが見当たらない。",
+              "scope": "本リポジトリ",
+              "level": "info",
+              "status": "notSpecified",
+              "label": "ライセンス",
+              "group": "licenses",
+              "order": 22,
+              "stateLabel": "記載なし",
+              "scopeLabel": "本リポジトリ",
+              "levelLabel": ""
+            }
+          ]
+        }
+      ],
+      "overview": {
+        "label": "利用条件",
+        "value": "実行環境：Python 3.11以降とuv ／ 必要ソフト：PyTorch・Transformersなど。uv syncで依存パッケージを導入する。",
+        "lines": [
+          "実行環境：Python 3.11以降とuv",
+          "必要ソフト：PyTorch・Transformersなど。uv syncで依存パッケージを導入する。"
+        ],
+        "remaining": 4
+      }
+    }
   }
 ];
