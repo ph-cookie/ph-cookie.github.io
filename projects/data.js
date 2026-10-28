@@ -6680,5 +6680,155 @@ window.PROJECTS = [
         "remaining": 4
       }
     }
+  },
+  {
+    "name": "RSIHub — AIエージェントの自動改善・評価フレームワーク",
+    "url": "https://github.com/simple-agent-lab/RSIHub",
+    "summary": "AIエージェントのプロンプトやスキル、実装コードを自動的に改良し、評価結果をもとに改善を繰り返す実験用フレームワーク。",
+    "description": "RSIHubは、AIを使ってAIシステム自体を改善する「AI for AI」の研究・開発を支援するオープンソースフレームワーク。既存のエージェントを評価し、その実行結果をもとにプロンプト、スキル、コードなどを変更する。変更後のエージェントを再評価し、検証された改善を次の世代へ引き継ぐ仕組みを備える。\n改善対象の選択、実行結果の分析、変更案の生成、評価、採用判定を一連の処理として管理する。Hill Climb、A-Evolve、AHE、GEPA、Hyperagentsなど複数の改善手法に対応。Harborを使って実行・検証し、各世代の変更内容、評価スコア、実行ログ、Git履歴を保存できる。実験結果は専用のローカルビューアで確認可能。\n評価基準を改善対象から分離し、変更可能なファイルを制限することで、評価処理そのものの改変を防ぎながら実験できる。AIエージェントの開発、スキルの最適化、改善手法の比較研究などに利用できる。現時点では研究・実験向けのプロトタイプであり、すべての変更が性能向上につながるわけではない。Apache License 2.0で公開。",
+    "category": "ソフトウェア開発",
+    "tags": [
+      "AIエージェント",
+      "自己改善",
+      "自動最適化",
+      "エージェント評価",
+      "Python",
+      "Harbor",
+      "Apache-2.0"
+    ],
+    "addedAt": "2026-10-28",
+    "checkedAt": "2026-10-28",
+    "environmentVersion": 1,
+    "requirementsStatus": "documented",
+    "environment": [
+      {
+        "key": "runtime",
+        "value": "Python 3.12以降",
+        "scope": "basic",
+        "level": "required",
+        "status": "documented",
+        "label": "実行環境",
+        "group": "requirements",
+        "order": 6,
+        "stateLabel": "",
+        "scopeLabel": "",
+        "levelLabel": ""
+      },
+      {
+        "key": "auth",
+        "value": "OpenAI APIキー、または対応構成でCodex認証情報",
+        "scope": "使用するモデル・構成",
+        "level": "required",
+        "status": "documented",
+        "label": "認証",
+        "group": "requirements",
+        "order": 9,
+        "stateLabel": "",
+        "scopeLabel": "",
+        "levelLabel": ""
+      },
+      {
+        "key": "dependencies",
+        "value": "Bash、uv、Git 2.25以降。公式ベンチマーク実行例ではDockerも必要。",
+        "scope": "公式クイックスタート",
+        "level": "required",
+        "status": "documented",
+        "label": "必要ソフト",
+        "group": "requirements",
+        "order": 7,
+        "stateLabel": "",
+        "scopeLabel": "",
+        "levelLabel": ""
+      }
+    ],
+    "related": [],
+    "sources": [
+      {
+        "label": "公式README",
+        "url": "https://github.com/simple-agent-lab/RSIHub"
+      },
+      {
+        "label": "公式ドキュメント",
+        "url": "https://simpleagentlab.com/RSIHub/"
+      },
+      {
+        "label": "クイックスタート",
+        "url": "https://github.com/simple-agent-lab/RSIHub/blob/main/docs/QUICKSTART.md"
+      },
+      {
+        "label": "改善手法一覧",
+        "url": "https://github.com/simple-agent-lab/RSIHub/blob/main/recipes/README.md"
+      },
+      {
+        "label": "設計資料",
+        "url": "https://github.com/simple-agent-lab/RSIHub/blob/main/docs/concepts/design.md"
+      },
+      {
+        "label": "関連論文：RSIHub",
+        "url": "https://arxiv.org/abs/2610.32253"
+      },
+      {
+        "label": "Apache-2.0ライセンス",
+        "url": "https://github.com/simple-agent-lab/RSIHub/blob/main/LICENSE"
+      }
+    ],
+    "environmentDisplay": "compact",
+    "presentation": {
+      "groups": [
+        {
+          "key": "requirements",
+          "label": "利用条件",
+          "rows": [
+            {
+              "key": "runtime",
+              "value": "Python 3.12以降",
+              "scope": "basic",
+              "level": "required",
+              "status": "documented",
+              "label": "実行環境",
+              "group": "requirements",
+              "order": 6,
+              "stateLabel": "",
+              "scopeLabel": "",
+              "levelLabel": ""
+            },
+            {
+              "key": "auth",
+              "value": "OpenAI APIキー、または対応構成でCodex認証情報",
+              "scope": "使用するモデル・構成",
+              "level": "required",
+              "status": "documented",
+              "label": "認証",
+              "group": "requirements",
+              "order": 9,
+              "stateLabel": "",
+              "scopeLabel": "",
+              "levelLabel": ""
+            },
+            {
+              "key": "dependencies",
+              "value": "Bash、uv、Git 2.25以降。公式ベンチマーク実行例ではDockerも必要。",
+              "scope": "公式クイックスタート",
+              "level": "required",
+              "status": "documented",
+              "label": "必要ソフト",
+              "group": "requirements",
+              "order": 7,
+              "stateLabel": "",
+              "scopeLabel": "",
+              "levelLabel": ""
+            }
+          ]
+        }
+      ],
+      "overview": {
+        "label": "利用条件",
+        "value": "実行環境：Python 3.12以降",
+        "lines": [
+          "実行環境：Python 3.12以降"
+        ],
+        "remaining": 2
+      }
+    }
   }
 ];
