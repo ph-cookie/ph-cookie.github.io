@@ -6830,5 +6830,207 @@ window.PROJECTS = [
         "remaining": 2
       }
     }
+  },
+  {
+    "name": "DetectorScope — 判定の根拠を示すAI生成文検出ツール",
+    "url": "https://github.com/google-deepmind/detectorscope",
+    "summary": "文章がAIで書かれた確率と、判定の根拠になった特徴を説明文・寄与度・文中の位置つきで示す、研究用のAI生成文検出ライブラリ。",
+    "description": "DetectorScopeは判定の根拠を示すAI生成文の検出器と、その作成手順をまとめたPythonライブラリ。Google DeepMindとペンシルベニア大学の研究チームが公開した。文章がAIで書かれた確率に加え、判定に寄与した特徴を「前置詞として使われたabout」「繰り返される語句」などの説明文と寄与度の一覧で返し、文中のどこに現れたかも示せる。EMNLP 2026で発表された論文の実装。\n言語モデル（Gemma-2-2b）の内部表現はスパースオートエンコーダー（SAE）で特徴に分解する。最終的な判断は説明文が実際の反応箇所と一致すると検証された特徴だけを使って、線形の判定器が下す。判定は各特徴の寄与の合計になるため、根拠を一つずつ確認できる。説明の確からしさの基準（tau）を上げると根拠は読みやすくなるが精度は下がり、下げると逆になる。学習済みの検出器はニュース・エッセイなど一般の文章向けと、機械学習の査読文（GPT-4o・Llama）向けをHugging Faceで公開している。手元の検出器を同じ手順で作り替え、根拠を示せる形にすることもできる。\n研究用の成果物で、人が書いた文章を誤判定することがある。学習した分野・生成モデル以外での精度は確認されていない。開発者は学術不正の判断や採用・論文の採否など、個人に関する判断の根拠に使わないよう求めている。コードはApache License 2.0、公開モデルはGemmaのライセンスで提供。Googleの公式製品ではない。",
+    "category": "AIモデル活用",
+    "tags": [
+      "AI生成文検出",
+      "解釈可能性",
+      "スパースオートエンコーダー",
+      "Python",
+      "Hugging Face",
+      "Gemma",
+      "Apache-2.0"
+    ],
+    "addedAt": "2026-10-29",
+    "checkedAt": "2026-10-29",
+    "environmentVersion": 1,
+    "requirementsStatus": "documented",
+    "environmentDisplay": "compact",
+    "environment": [
+      {
+        "key": "runtime",
+        "value": "Python 3.10以降（PyTorchなどの依存パッケージはpipで導入）",
+        "scope": "basic",
+        "level": "required",
+        "status": "documented",
+        "label": "実行環境",
+        "group": "requirements",
+        "order": 6,
+        "stateLabel": "",
+        "scopeLabel": "",
+        "levelLabel": ""
+      },
+      {
+        "key": "download",
+        "value": "初回の読み込み時にHugging Faceから検出器モデルを取得（各モデルにGemma-2-2bを同梱）",
+        "scope": "basic",
+        "level": "required",
+        "status": "documented",
+        "label": "追加ダウンロード",
+        "group": "requirements",
+        "order": 13,
+        "stateLabel": "",
+        "scopeLabel": "",
+        "levelLabel": ""
+      },
+      {
+        "key": "auth",
+        "value": "検出器を自分で作る場合、特徴の説明文の生成と検証にGemini APIキーが必要",
+        "scope": "検出器の作成・論文の再現",
+        "level": "required",
+        "status": "documented",
+        "label": "認証",
+        "group": "requirements",
+        "order": 9,
+        "stateLabel": "",
+        "scopeLabel": "",
+        "levelLabel": ""
+      },
+      {
+        "key": "gpu",
+        "value": "検出器を自分で作る場合（論文の再現を含む）、分類器の追加学習・SAEの学習・特徴の抽出でGPUが必要。以降の工程はCPUで実行可能",
+        "scope": "検出器の作成・論文の再現",
+        "level": "required",
+        "status": "documented",
+        "label": "GPU",
+        "group": "requirements",
+        "order": 14,
+        "stateLabel": "",
+        "scopeLabel": "",
+        "levelLabel": ""
+      },
+      {
+        "key": "usage",
+        "value": "pip install detectorscope で導入し、AuditableDetector.from_pretrained(\"liamdugan/detector-scope\") で読み込んだ検出器に文章を渡す。Hugging Face上のデモでも試せる",
+        "scope": "basic",
+        "level": "info",
+        "status": "documented",
+        "label": "参照方法",
+        "group": "usage",
+        "order": 20,
+        "stateLabel": "",
+        "scopeLabel": "",
+        "levelLabel": ""
+      }
+    ],
+    "related": [
+      {
+        "label": "LLM内部のニューロンを直接操作して調べたい",
+        "url": "https://github.com/lyramakesmusic/neuron-explorer"
+      }
+    ],
+    "sources": [
+      {
+        "label": "公式README",
+        "url": "https://github.com/google-deepmind/detectorscope"
+      },
+      {
+        "label": "パッケージ設定（pyproject.toml）",
+        "url": "https://github.com/google-deepmind/detectorscope/blob/main/pyproject.toml"
+      },
+      {
+        "label": "検出器モデルの説明（Hugging Face）",
+        "url": "https://huggingface.co/liamdugan/detector-scope"
+      },
+      {
+        "label": "Apache-2.0ライセンス",
+        "url": "https://github.com/google-deepmind/detectorscope/blob/main/LICENSE"
+      }
+    ],
+    "presentation": {
+      "groups": [
+        {
+          "key": "requirements",
+          "label": "利用条件",
+          "rows": [
+            {
+              "key": "runtime",
+              "value": "Python 3.10以降（PyTorchなどの依存パッケージはpipで導入）",
+              "scope": "basic",
+              "level": "required",
+              "status": "documented",
+              "label": "実行環境",
+              "group": "requirements",
+              "order": 6,
+              "stateLabel": "",
+              "scopeLabel": "",
+              "levelLabel": ""
+            },
+            {
+              "key": "download",
+              "value": "初回の読み込み時にHugging Faceから検出器モデルを取得（各モデルにGemma-2-2bを同梱）",
+              "scope": "basic",
+              "level": "required",
+              "status": "documented",
+              "label": "追加ダウンロード",
+              "group": "requirements",
+              "order": 13,
+              "stateLabel": "",
+              "scopeLabel": "",
+              "levelLabel": ""
+            },
+            {
+              "key": "auth",
+              "value": "検出器を自分で作る場合、特徴の説明文の生成と検証にGemini APIキーが必要",
+              "scope": "検出器の作成・論文の再現",
+              "level": "required",
+              "status": "documented",
+              "label": "認証",
+              "group": "requirements",
+              "order": 9,
+              "stateLabel": "",
+              "scopeLabel": "",
+              "levelLabel": ""
+            },
+            {
+              "key": "gpu",
+              "value": "検出器を自分で作る場合（論文の再現を含む）、分類器の追加学習・SAEの学習・特徴の抽出でGPUが必要。以降の工程はCPUで実行可能",
+              "scope": "検出器の作成・論文の再現",
+              "level": "required",
+              "status": "documented",
+              "label": "GPU",
+              "group": "requirements",
+              "order": 14,
+              "stateLabel": "",
+              "scopeLabel": "",
+              "levelLabel": ""
+            }
+          ]
+        },
+        {
+          "key": "usage",
+          "label": "利用方法",
+          "rows": [
+            {
+              "key": "usage",
+              "value": "pip install detectorscope で導入し、AuditableDetector.from_pretrained(\"liamdugan/detector-scope\") で読み込んだ検出器に文章を渡す。Hugging Face上のデモでも試せる",
+              "scope": "basic",
+              "level": "info",
+              "status": "documented",
+              "label": "参照方法",
+              "group": "usage",
+              "order": 20,
+              "stateLabel": "",
+              "scopeLabel": "",
+              "levelLabel": ""
+            }
+          ]
+        }
+      ],
+      "overview": {
+        "label": "利用条件",
+        "value": "実行環境：Python 3.10以降（PyTorchなどの依存パッケージはpipで導入） ／ 追加ダウンロード：初回の読み込み時にHugging Faceから検出器モデルを取得（各モデルにGemma-2-2bを同梱）",
+        "lines": [
+          "実行環境：Python 3.10以降（PyTorchなどの依存パッケージはpipで導入）",
+          "追加ダウンロード：初回の読み込み時にHugging Faceから検出器モデルを取得（各モデルにGemma-2-2bを同梱）"
+        ],
+        "remaining": 2
+      }
+    }
   }
 ];
