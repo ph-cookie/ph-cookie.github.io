@@ -7032,5 +7032,175 @@ window.PROJECTS = [
         "remaining": 2
       }
     }
+  },
+  {
+    "name": "unslop — AIっぽい画面をデザインし直すAIエージェント用スキル",
+    "url": "https://github.com/heydamir/unslop",
+    "summary": "AIで作った画面に多い紫のグラデーションや絵文字のラベルなどを見つけ、製品に合う方向性を決めてから項目ごとに直すClaude Code・Codex向けのスキル。",
+    "description": "unslopは、AIで手早く作った（バイブコーディングした）画面を、その製品らしいデザインに直すスキル。デザイナーのDamir Sokolovskyが公開した。Claude CodeとCodexで使え、Next.js・React・Vue・Svelte・Tailwind・HTMLとCSSなど、画面を作っている技術のままダッシュボード・アプリ・ランディングページを直す。コードが手元になくても、公開中のサイトのURLや画面のスクリーンショットから始められる。その場合は直した画面をHTMLで作り、サイトの管理者に渡す形になる。\n最初に、紫のグラデーション、光彩、絵文字のラベル、大げさな文言、そろっていない余白など、AIで作った画面に多い特徴を場所とともに一覧にする。次に製品の内容から方向性（性格・世界観・色を集める箇所・その製品だけの細部）を決め、利用者の了承を得てから編集する。修正は余白・色・アイコン・文言・書体・レイアウト・細部・ビジュアル・動きの順で、1項目ずつ画面全体を直していく。特徴が少ない画面は見つかった箇所だけを直し、問題がない画面には小さな改善案を示すだけにとどめる。\n画像生成サービスを接続していれば、ランディングページ上部の画像も作れる。有料の生成の前には毎回プロンプトを示して確認を取る。画面が順に直っていく10秒未満の正方形動画も作れる。CC BY 4.0で公開しており、商用を含めて利用・改変できるが、作者の表記とリポジトリへのリンクが必要。",
+    "category": "UI・Webデザイン",
+    "tags": [
+      "UIデザイン",
+      "AIエージェント",
+      "Claude Code",
+      "Codex",
+      "スキル",
+      "CC-BY-4.0"
+    ],
+    "addedAt": "2026-11-03",
+    "checkedAt": "2026-11-03",
+    "environmentVersion": 1,
+    "requirementsStatus": "documented",
+    "environmentDisplay": "compact",
+    "environment": [
+      {
+        "key": "agent",
+        "value": "Claude Code または Codex",
+        "scope": "basic",
+        "level": "required",
+        "status": "documented",
+        "label": "AIツール",
+        "group": "requirements",
+        "order": 5,
+        "stateLabel": "",
+        "scopeLabel": "",
+        "levelLabel": ""
+      },
+      {
+        "key": "dependencies",
+        "value": "公開中のサイトを取り込む場合と動画を作る場合は、作業するプロジェクトにPlaywrightとChromiumが必要。動画作成にはffmpegも必要",
+        "scope": "サイトの取り込み・動画作成",
+        "level": "required",
+        "status": "documented",
+        "label": "必要ソフト",
+        "group": "requirements",
+        "order": 7,
+        "stateLabel": "",
+        "scopeLabel": "",
+        "levelLabel": ""
+      },
+      {
+        "key": "services",
+        "value": "ランディングページ上部の画像を生成する場合は、fal・Replicate・OpenAI images・Higgsfieldなどの画像生成サービスとの接続が必要（有料の場合あり）",
+        "scope": "画像生成",
+        "level": "required",
+        "status": "documented",
+        "label": "外部サービス",
+        "group": "requirements",
+        "order": 16,
+        "stateLabel": "",
+        "scopeLabel": "",
+        "levelLabel": ""
+      },
+      {
+        "key": "usage",
+        "value": "リポジトリのskills/unslopをスキル用のフォルダへコピーして導入する（Codexは$skill-installerでも導入可）。Claude Codeでは/unslop、Codexでは$unslopに続けて直したい画面を指示する",
+        "scope": "basic",
+        "level": "info",
+        "status": "documented",
+        "label": "参照方法",
+        "group": "usage",
+        "order": 20,
+        "stateLabel": "",
+        "scopeLabel": "",
+        "levelLabel": ""
+      }
+    ],
+    "related": [
+      {
+        "label": "AIっぽい日本語の文章を直したい",
+        "url": "https://github.com/nanaism/yomiyasu"
+      }
+    ],
+    "sources": [
+      {
+        "label": "公式README",
+        "url": "https://github.com/heydamir/unslop/blob/main/README.md"
+      },
+      {
+        "label": "スキルの手順書（SKILL.md）",
+        "url": "https://github.com/heydamir/unslop/blob/main/skills/unslop/SKILL.md"
+      },
+      {
+        "label": "CC BY 4.0ライセンス",
+        "url": "https://github.com/heydamir/unslop/blob/main/LICENSE"
+      }
+    ],
+    "presentation": {
+      "groups": [
+        {
+          "key": "requirements",
+          "label": "利用条件",
+          "rows": [
+            {
+              "key": "agent",
+              "value": "Claude Code または Codex",
+              "scope": "basic",
+              "level": "required",
+              "status": "documented",
+              "label": "AIツール",
+              "group": "requirements",
+              "order": 5,
+              "stateLabel": "",
+              "scopeLabel": "",
+              "levelLabel": ""
+            },
+            {
+              "key": "dependencies",
+              "value": "公開中のサイトを取り込む場合と動画を作る場合は、作業するプロジェクトにPlaywrightとChromiumが必要。動画作成にはffmpegも必要",
+              "scope": "サイトの取り込み・動画作成",
+              "level": "required",
+              "status": "documented",
+              "label": "必要ソフト",
+              "group": "requirements",
+              "order": 7,
+              "stateLabel": "",
+              "scopeLabel": "",
+              "levelLabel": ""
+            },
+            {
+              "key": "services",
+              "value": "ランディングページ上部の画像を生成する場合は、fal・Replicate・OpenAI images・Higgsfieldなどの画像生成サービスとの接続が必要（有料の場合あり）",
+              "scope": "画像生成",
+              "level": "required",
+              "status": "documented",
+              "label": "外部サービス",
+              "group": "requirements",
+              "order": 16,
+              "stateLabel": "",
+              "scopeLabel": "",
+              "levelLabel": ""
+            }
+          ]
+        },
+        {
+          "key": "usage",
+          "label": "利用方法",
+          "rows": [
+            {
+              "key": "usage",
+              "value": "リポジトリのskills/unslopをスキル用のフォルダへコピーして導入する（Codexは$skill-installerでも導入可）。Claude Codeでは/unslop、Codexでは$unslopに続けて直したい画面を指示する",
+              "scope": "basic",
+              "level": "info",
+              "status": "documented",
+              "label": "参照方法",
+              "group": "usage",
+              "order": 20,
+              "stateLabel": "",
+              "scopeLabel": "",
+              "levelLabel": ""
+            }
+          ]
+        }
+      ],
+      "overview": {
+        "label": "利用条件",
+        "value": "AIツール：Claude Code または Codex",
+        "lines": [
+          "AIツール：Claude Code または Codex"
+        ],
+        "remaining": 2
+      }
+    }
   }
 ];
