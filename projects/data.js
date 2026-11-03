@@ -7202,5 +7202,145 @@ window.PROJECTS = [
         "remaining": 2
       }
     }
+  },
+  {
+    "name": "Disc Image Studio — CD・DVD・BD-Rの記録面に絵を浮かび上がらせる書き込みツール",
+    "url": "https://github.com/JiaFeiMiao-K-Cat/DiscImageStudio",
+    "summary": "画像をCD・DVD・BD-Rに書き込むデータに変換し、書き込んだディスクの記録面に肉眼で見える絵柄を描くツール。Windows版はデザインから書き込みまで1つのアプリで行える。",
+    "description": "Disc Image Studioは1枚の画像をCD・DVD・片面一層のBD-R（25 GB）の物理的な制約に合うデータに変換するツール。書き込むと、ディスクの記録面に肉眼で見える模様が現れる。Windows版のデスクトップアプリでは、画像の配置や階調を調整し、記録面に映ったときの見え方を確かめてから書き出せる。Linux・macOS向けには、イメージをオフラインで生成する試験版のコマンドライン版がある。\nCDは音声トラック（WAV+CUE・RAW）、DVDとBD-RはISOイメージとして書き出し、cdrecordやImgBurnなどの書き込みソフトで書き込める。ファイルを一緒に記録するディスクも作れ、ファイルを内周と外周のどちらに置くかを選べる。複数メーカーのディスクの設定値を内蔵し、補正用の図柄を書き込んだディスクを撮影し、その写真から設定値を求め直す補助キャリブレーションも備える。開発者の作例では、補正前に曲がっていた放射方向の線が、補正後は直線に近づいている。\nWindows版には、イメージを保存せずに生成しながら書き込む即時書き込みもある。試験的な機能で、開発者は廃棄してよいテスト用メディアだけを使うよう求めている。書き込みの中断や停電、生成速度の不足でディスクが使えなくなることがあり、空でないディスクへの書き込みは拒否する。見え方はディスク・ドライブ・ファームウェア・書き込み方式によって変わる。アプリはネットワークに接続せず、ファイルのアップロードや利用状況の送信もしない。GPL-3.0-or-laterで公開。",
+    "category": "光ディスク作成",
+    "tags": [
+      "光ディスク",
+      "CD",
+      "DVD",
+      "Blu-ray",
+      "Windows",
+      "CLI",
+      "GPL-3.0"
+    ],
+    "addedAt": "2026-11-03",
+    "checkedAt": "2026-11-03",
+    "environmentVersion": 1,
+    "requirementsStatus": "documented",
+    "environmentDisplay": "compact",
+    "environment": [
+      {
+        "key": "os",
+        "value": "デスクトップ版はWindows 10 2004以降またはWindows 11。Linux（glibc）・macOS向けは試験版のコマンドライン版で、イメージの生成のみ",
+        "scope": "basic",
+        "level": "required",
+        "status": "documented",
+        "label": "OS",
+        "group": "requirements",
+        "order": 1,
+        "stateLabel": "",
+        "scopeLabel": "",
+        "levelLabel": ""
+      },
+      {
+        "key": "installation",
+        "value": "ディスクに書き込む場合は、Windowsが認識できる書き込みドライブと空のディスクが必要。BD-Rにはシーケンシャル書き込みに対応した片面一層の空ディスクが必要",
+        "scope": "ディスクへの書き込み",
+        "level": "required",
+        "status": "documented",
+        "label": "導入条件",
+        "group": "requirements",
+        "order": 10,
+        "stateLabel": "",
+        "scopeLabel": "",
+        "levelLabel": ""
+      },
+      {
+        "key": "usage",
+        "value": "GitHub Releasesから、Windowsはwin-x64.exe、Linux・macOSはCPUに合うコマンドライン版のアーカイブを取得して実行する。いずれも.NETランタイムを同梱している",
+        "scope": "basic",
+        "level": "info",
+        "status": "documented",
+        "label": "参照方法",
+        "group": "usage",
+        "order": 20,
+        "stateLabel": "",
+        "scopeLabel": "",
+        "levelLabel": ""
+      }
+    ],
+    "related": [],
+    "sources": [
+      {
+        "label": "公式README（日本語版）",
+        "url": "https://github.com/JiaFeiMiao-K-Cat/DiscImageStudio/blob/main/README.ja.md"
+      },
+      {
+        "label": "補助キャリブレーションの説明",
+        "url": "https://github.com/JiaFeiMiao-K-Cat/DiscImageStudio/blob/main/docs/CALIBRATION.md"
+      },
+      {
+        "label": "GPL-3.0ライセンス",
+        "url": "https://github.com/JiaFeiMiao-K-Cat/DiscImageStudio/blob/main/LICENSE"
+      }
+    ],
+    "presentation": {
+      "groups": [
+        {
+          "key": "requirements",
+          "label": "利用条件",
+          "rows": [
+            {
+              "key": "os",
+              "value": "デスクトップ版はWindows 10 2004以降またはWindows 11。Linux（glibc）・macOS向けは試験版のコマンドライン版で、イメージの生成のみ",
+              "scope": "basic",
+              "level": "required",
+              "status": "documented",
+              "label": "OS",
+              "group": "requirements",
+              "order": 1,
+              "stateLabel": "",
+              "scopeLabel": "",
+              "levelLabel": ""
+            },
+            {
+              "key": "installation",
+              "value": "ディスクに書き込む場合は、Windowsが認識できる書き込みドライブと空のディスクが必要。BD-Rにはシーケンシャル書き込みに対応した片面一層の空ディスクが必要",
+              "scope": "ディスクへの書き込み",
+              "level": "required",
+              "status": "documented",
+              "label": "導入条件",
+              "group": "requirements",
+              "order": 10,
+              "stateLabel": "",
+              "scopeLabel": "",
+              "levelLabel": ""
+            }
+          ]
+        },
+        {
+          "key": "usage",
+          "label": "利用方法",
+          "rows": [
+            {
+              "key": "usage",
+              "value": "GitHub Releasesから、Windowsはwin-x64.exe、Linux・macOSはCPUに合うコマンドライン版のアーカイブを取得して実行する。いずれも.NETランタイムを同梱している",
+              "scope": "basic",
+              "level": "info",
+              "status": "documented",
+              "label": "参照方法",
+              "group": "usage",
+              "order": 20,
+              "stateLabel": "",
+              "scopeLabel": "",
+              "levelLabel": ""
+            }
+          ]
+        }
+      ],
+      "overview": {
+        "label": "利用条件",
+        "value": "OS：デスクトップ版はWindows 10 2004以降またはWindows 11。Linux（glibc）・macOS向けは試験版のコマンドライン版で、イメージの生成のみ",
+        "lines": [
+          "OS：デスクトップ版はWindows 10 2004以降またはWindows 11。Linux（glibc）・macOS向けは試験版のコマンドライン版で、イメージの生成のみ"
+        ],
+        "remaining": 1
+      }
+    }
   }
 ];
