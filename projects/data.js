@@ -7342,5 +7342,206 @@ window.PROJECTS = [
         "remaining": 1
       }
     }
+  },
+  {
+    "name": "rea-video — 動画の作り方をショットごとに調べるAIエージェント用ツール",
+    "url": "https://github.com/JuneYaooo/rea-video",
+    "summary": "動画をショットに分け、実写・AI生成・コードで作った映像のどれかを判定し、字幕・編集・音声の作り方と、同じ動画を作り直すための計画をまとめるツール。",
+    "description": "rea-videoは、渡した動画がどのように作られたかをショットごとに調べ、同じものを作り直すための計画を示すツール。Claude CodeやCodexなど、コマンドを実行できるAIエージェントから使う。実写のトーク動画や開封動画、AI動画、3D、アニメーション、コードで動かすモーショングラフィックス、画面録画と、それらを組み合わせた動画を扱える。REA（Reverse Engineer Anything）に着想を得て作られた。\n動画をショットに分け、音声を声・音楽・効果音に分けたうえで、フレームの間隔、センサーノイズ、メタデータのAIGCタグ、手や文字の不自然さなどの根拠から、各ショットの作り方を判定する。字幕の表示時間（SRT・ASSに書き出し可）や色、カットの位置とテンポ、声が人かAIか、音楽のBPMなども調べる。結果はショットごとのフレーム・根拠・カメラと照明のメモを含むreport.htmlにまとめ、撮影するもの・AIで生成するもの・コードで作るものに分けた作り直しの計画を示す。AI生成と判定したショットにはプロンプトの案を付け、コードで作るショットはRemotionのプロジェクトとして作り直せる。\n判定はオフラインで無料のツールだけでも行え、開発者の評価（ショットの長さで重み付け）では、元の動画ファイルで98〜99%台の精度だった。動画サイトから取得した再圧縮済みの動画では根拠が失われ、同じ評価で88.6%に下がった。そのため、GeminiやDoubaoなど動画を扱えるモデルか、画像を見られるエージェントによる確認を加えるよう案内している。生成されるレポートと詳しい説明は現在中国語のみだが、エージェントが読んで日本語で答えられる。開発者は他人の映像や音楽をそのまま再利用せず、権利を持つ素材で作り直すよう求めている。Apache License 2.0で公開。",
+    "category": "動画制作",
+    "tags": [
+      "動画分析",
+      "AI生成判定",
+      "AIエージェント",
+      "Python",
+      "Remotion",
+      "Apache-2.0"
+    ],
+    "addedAt": "2026-11-05",
+    "checkedAt": "2026-11-05",
+    "environmentVersion": 1,
+    "requirementsStatus": "documented",
+    "environmentDisplay": "compact",
+    "environment": [
+      {
+        "key": "agent",
+        "value": "Claude Code・Codexなど、コマンドを実行できるAIエージェント（CLIを直接使うことも可）",
+        "scope": "basic",
+        "level": "recommended",
+        "status": "documented",
+        "label": "AIツール",
+        "group": "requirements",
+        "order": 5,
+        "stateLabel": "",
+        "scopeLabel": "",
+        "levelLabel": ""
+      },
+      {
+        "key": "runtime",
+        "value": "Python 3.10以降・ffmpeg",
+        "scope": "basic",
+        "level": "required",
+        "status": "documented",
+        "label": "実行環境",
+        "group": "requirements",
+        "order": 6,
+        "stateLabel": "",
+        "scopeLabel": "",
+        "levelLabel": ""
+      },
+      {
+        "key": "download",
+        "value": "初回の分析時に、声と音楽を分けるモデル（約67 MB）を自動で取得",
+        "scope": "basic",
+        "level": "required",
+        "status": "documented",
+        "label": "追加ダウンロード",
+        "group": "requirements",
+        "order": 13,
+        "stateLabel": "",
+        "scopeLabel": "",
+        "levelLabel": ""
+      },
+      {
+        "key": "api",
+        "value": "判定の精度を上げる場合は、GeminiやDoubaoなど動画を扱えるOpenAI互換モデルのエンドポイントとAPIキーが必要（料金は各サービス次第）",
+        "scope": "モデルによる確認",
+        "level": "required",
+        "status": "documented",
+        "label": "接続条件",
+        "group": "requirements",
+        "order": 8,
+        "stateLabel": "",
+        "scopeLabel": "",
+        "levelLabel": ""
+      },
+      {
+        "key": "usage",
+        "value": "エージェントに「Install https://github.com/JuneYaooo/rea-video, then break down this video: 動画のパス」と伝えると、CLIの導入から分析まで進める",
+        "scope": "basic",
+        "level": "info",
+        "status": "documented",
+        "label": "参照方法",
+        "group": "usage",
+        "order": 20,
+        "stateLabel": "",
+        "scopeLabel": "",
+        "levelLabel": ""
+      }
+    ],
+    "related": [
+      {
+        "label": "アプリの内部構造を解析したい",
+        "url": "https://github.com/morluto/rea"
+      }
+    ],
+    "sources": [
+      {
+        "label": "公式README（日本語版）",
+        "url": "https://github.com/JuneYaooo/rea-video/blob/main/README_ja.md"
+      },
+      {
+        "label": "パッケージ設定（pyproject.toml）",
+        "url": "https://github.com/JuneYaooo/rea-video/blob/main/pyproject.toml"
+      },
+      {
+        "label": "コマンドラインの説明（docs/cli.md）",
+        "url": "https://github.com/JuneYaooo/rea-video/blob/main/docs/cli.md"
+      },
+      {
+        "label": "Apache-2.0ライセンス",
+        "url": "https://github.com/JuneYaooo/rea-video/blob/main/LICENSE"
+      }
+    ],
+    "presentation": {
+      "groups": [
+        {
+          "key": "requirements",
+          "label": "利用条件",
+          "rows": [
+            {
+              "key": "agent",
+              "value": "Claude Code・Codexなど、コマンドを実行できるAIエージェント（CLIを直接使うことも可）",
+              "scope": "basic",
+              "level": "recommended",
+              "status": "documented",
+              "label": "AIツール",
+              "group": "requirements",
+              "order": 5,
+              "stateLabel": "",
+              "scopeLabel": "",
+              "levelLabel": ""
+            },
+            {
+              "key": "runtime",
+              "value": "Python 3.10以降・ffmpeg",
+              "scope": "basic",
+              "level": "required",
+              "status": "documented",
+              "label": "実行環境",
+              "group": "requirements",
+              "order": 6,
+              "stateLabel": "",
+              "scopeLabel": "",
+              "levelLabel": ""
+            },
+            {
+              "key": "download",
+              "value": "初回の分析時に、声と音楽を分けるモデル（約67 MB）を自動で取得",
+              "scope": "basic",
+              "level": "required",
+              "status": "documented",
+              "label": "追加ダウンロード",
+              "group": "requirements",
+              "order": 13,
+              "stateLabel": "",
+              "scopeLabel": "",
+              "levelLabel": ""
+            },
+            {
+              "key": "api",
+              "value": "判定の精度を上げる場合は、GeminiやDoubaoなど動画を扱えるOpenAI互換モデルのエンドポイントとAPIキーが必要（料金は各サービス次第）",
+              "scope": "モデルによる確認",
+              "level": "required",
+              "status": "documented",
+              "label": "接続条件",
+              "group": "requirements",
+              "order": 8,
+              "stateLabel": "",
+              "scopeLabel": "",
+              "levelLabel": ""
+            }
+          ]
+        },
+        {
+          "key": "usage",
+          "label": "利用方法",
+          "rows": [
+            {
+              "key": "usage",
+              "value": "エージェントに「Install https://github.com/JuneYaooo/rea-video, then break down this video: 動画のパス」と伝えると、CLIの導入から分析まで進める",
+              "scope": "basic",
+              "level": "info",
+              "status": "documented",
+              "label": "参照方法",
+              "group": "usage",
+              "order": 20,
+              "stateLabel": "",
+              "scopeLabel": "",
+              "levelLabel": ""
+            }
+          ]
+        }
+      ],
+      "overview": {
+        "label": "利用条件",
+        "value": "実行環境：Python 3.10以降・ffmpeg ／ 追加ダウンロード：初回の分析時に、声と音楽を分けるモデル（約67 MB）を自動で取得",
+        "lines": [
+          "実行環境：Python 3.10以降・ffmpeg",
+          "追加ダウンロード：初回の分析時に、声と音楽を分けるモデル（約67 MB）を自動で取得"
+        ],
+        "remaining": 2
+      }
+    }
   }
 ];
